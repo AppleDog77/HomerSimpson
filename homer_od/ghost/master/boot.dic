@@ -6,7 +6,7 @@ OnFirstBoot
 	continuousstroke = 0
 	LastTalk = ""
 	
-	"\1\s[10]\0\s[1]Hey there, %(username)! I'm Homer Simpson. \s[3]Here are some top tips for making it through a day at the Power Plant:\w4\s[6] You need to look like you're busy at all times! Ask for help whenever you need it, which should be all the time! And most importantly, whenever you're bored,\w5\s[0] (and you will be, believe me),\w5\s[1] you can talk to me, or you can, um,\w5 %(ideas)! \s[0]I'll go back to work now,\w5\s[1] but we can talk or play games together anytime!"
+	"\1\s[10]\0\s[0]Hey there, %(username)!\s[1] I'm Homer Simpson. \s[3]Here are some top tips for making it through a day at the Power Plant:\w4 You need to look like you're busy at all times! Ask for help whenever you need it, which should be all the time! And most importantly, whenever you're bored,\w5\s[0] (and you will be, believe me),\w5\s[1] you can talk to me, or you can, um,\w5 %(ideas)! \s[0]I'll go back to work now,\w5\s[1] but we can talk or play games together anytime!"
 }
 
 OnInitialize
