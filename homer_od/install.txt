@@ -1,0 +1,7 @@
+charset,UTF-8
+type,ghost
+
+name,Homer Simpson
+directory,homer_od
+
+balloon.directory,sky_balloon_od

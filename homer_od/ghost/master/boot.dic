@@ -1,0 +1,61 @@
+OnFirstBoot
+{
+	//If you add variables, make sure to initialize them here!
+	//Note - I haven't added anything about username or pronouns here because it's all handled by the SSP prefs
+	stroke = 0
+	continuousstroke = 0
+	LastTalk = ""
+	
+	"\1\s[10]\0\s[1]Hey there, %(username)! I'm Homer Simpson. \s[3]Here are some top tips for making it through a day at the Power Plant:\w4\s[6] You need to look like you're busy at all times! Ask for help whenever you need it, which should be all the time! And most importantly, whenever you're bored,\w5\s[0] (and you will be, believe me),\w5\s[1] you can talk to me, or you can, um,\w5 %(ideas)! \s[0]I'll go back to work now,\w5\s[1] but we can talk or play games together anytime!"
+}
+
+OnInitialize
+{
+	//If you want some variables to reset on boot, put them here. This event will happen even if you add other events like OnGhostChanged
+	//OnInitialize is a NOTIFY event! That means it cannot return scripts. This event is only meant for things like variable changes. See this page on Ukadoc for more info: https://ukagakadreamteam.github.io/ukadoc/manual/spec_shiori3.html
+	
+	//If you add new variables in updates, I recommend initializing them like so:
+	//if !ISVAR("NewVariable"); NewVariable = 0
+	//This means that it will only set the new variable if the user doesn't already have it, so that their variables don't get overwritten
+	
+	if reference0 != "reload" //For things you want to reset EXCEPT when just reloading; a convenience for you the dev, basically
+	{
+		LastTalk = ""
+	}
+}
+
+OnBoot
+{
+	_temp = SHIORI3FW.UserBirthday
+	_user_birthday = "%(_temp[1])/%(_temp[2])" //M/D, if you want it D/M you can switch it around
+	_today = "%(month)/%(day)" //Again, switch this around if using D/M
+	
+	"\1\s[10]\0\s[0]"
+	--
+	if _today == _user_birthday
+	{
+		"Hello, %(username)!"
+		"Hey, %(username)!"
+		"Oh hey there, %(username)!\s[1] How's it goin'?"
+		"Oh hey there, %(username)! How's it goin'? \w8\s[1]...I just realized, today's your birthday! Happy birthday, %(username)!"
+	}
+	elseif _today == "5/12" //You can add whatever cool dates you want with more elseifs here
+	{
+		"Oh hey there, %(username)!\s[1] Today's a very special day..."
+		"Hey, %(username)!\s[1] Somehow, I feel like today's gonna be a really great day..."
+	}
+	else //Normal boot
+	{
+	"Oh hey there, %(username)!\s[1] How's it goin'?"
+	"Hello, %(username)!"
+	"Hey, %(username)!"
+	}
+}
+
+OnClose
+{
+	"\0\s[3]Oh, you need to go back to work?\s[0] Okay! I'll go back to my very...\w8 important...\w8 job here... \s[5] *snore*"
+	"\0\s[3]You need to leave, eh?\s[0] Okay then, bye!"
+	--
+	"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
+}

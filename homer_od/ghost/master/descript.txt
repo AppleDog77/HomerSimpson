@@ -1,0 +1,21 @@
+charset,UTF-8
+
+name,Homer Simpson
+type,ghost
+
+shiori,yaya.dll
+
+craftman,odie
+craftmanw,Odie
+craftmanurl,https://ladybug-lane.neocities.org/
+
+sakura.name,Homer Simpson
+kero.name,Donut
+
+icon,icon.ico
+cursor,cursor.ani
+
+//Zi: descript.txt uses the name of the balloon, while install.txt needs the directory
+
+balloon,Sky Balloon
+sstp.allowunspecifiedsend,0

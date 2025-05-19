@@ -1,0 +1,60 @@
+food
+{
+	"brownies"
+	"pies"
+	"cakes"
+	"cupcakes"
+	"donuts"
+	"chocolate"
+	"candy"
+	"cookies"
+	"ice cream"
+	"ham"
+	"pink frosted donuts with sprinkles"
+	"beer"
+	"chicken"
+	"pork chops"
+	"peanuts"
+}
+
+ideas
+{
+	"\s[8]eat 10 donuts in less than 10 minutes"
+	"break a world record, like the one for the longest ever sleep session"
+	"make some music by pressing random buttons on the console"
+	"watch the security cameras and see what funny stuff's happening"
+	"write a silly story about %(food) vs. %(food)"
+	"make up some silly words, like\s[1] %(wordgen1)%(wordgen2) or %(wordgen2)%(wordgen1)"
+	"...um...\w8\s[3] actually I can't think of anything right now...\w8 sorry! You should think of something"
+	"spin around in your chair, like this!\s[1]\![sound,play,speech\laugh.mp3,--volume=50] Weeeeeee"
+	"...um...\w8\s[3] actually I dunno what you could do right now...\w8 sorry!"
+	"dance around crazily, like no one's watching! And if you followed my tips, nobody will"
+}
+
+wordgen1
+{
+	"bli"
+	"gro"
+	"mer"
+	"num"
+	"vur"
+	"poi"
+	"min"
+	"oit"
+	"bo"
+	"we"
+}
+
+wordgen2
+{
+	"niff"
+	"kog"
+	"ho"
+	"lin"
+	"nim"
+	"gur"
+	"bus"
+	"mp"
+	"pi"
+	"nu"
+}

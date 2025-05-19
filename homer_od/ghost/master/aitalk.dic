@@ -1,0 +1,39 @@
+OnAiTalk
+{
+	if CHAIN.IDName == ""
+	{
+		LastTalk = RandomTalk
+	}
+	else
+	{
+		LastTalk = ChainTalk
+	}
+	LastTalk
+}
+//Surfaces: 0 = smiling, 1 = grinning, 2 = angry, 3 = neutral, 4 = sad, 5 = sleeping, 6 = determined, 7 = shocked, 8 = drooling, 9 = winking
+RandomTalk : nonoverlap_pool
+{
+	"\0\s[0]I read a strange book about some guy flying over a cuckoo's nest, but the guy was actually -\w4 get this -\w4\s[7] crazy!\w4 Or was he pretending to be crazy?\s[0] I have no idea! I'd read it again, but\w4\s[3] it got lost,\w5 somehow."
+	"\0\s[3]Y'know, I just realized: Maybe the reason why the alarm keeps ringing\w5 is just to try to keep me from falling asleep on the job!\s[6] I'd better do something about that...\s[5] *snore*"
+	"\0\s[3]I just saw this SCARY movie where GIANT cookies were taking over the world! \s[0]But luckily, the hero ate all of the cookies! Then, he started eating all the cakes, pies, chips, donuts, candies...\w8\s[8]\w9 chocolates...\w8\w9\w9\s[0] What was I saying?\w8 Oh yeah, the movie where cookies were trying to take over the world, but the hero ate all of 'em, then\w5 he ate everything else,\w5\s[4] and the world ran out of sweets,\w5 so the hero became the villain,\w5\s[0] and a new hero had to step up and defeat the villain so everybody could eat delicious food again!\w5 What a crazy movie!"
+	"\0\s[3]Thought I needed to do something... Hmm...\w5 What was it?\w8\s[0] Oh yeah, I was gonna go over to Moe's -\w5 he announced a new drink available for a limited time only!\s[3] He said it was sorta strange though..."
+	"\0\s[8]Mmm... %(food)..."
+	"\0\s[0]So I was eating this huge cake that my lovely wife Marge baked for me,\s[7] and suddenly some cake pieces tried to escape and fell from my chin before I could lick them up! Then,\w5\s[4] the dog ran towards me and pounced on my belly to lick off all the pieces! I was so surprised that I accidentally knocked over the cake! It was a horrible tragedy...\w8 Its guts splattered all over the walls!\w8\s[2] I chased the stupid mutt away so that I could mourn the loss of my beloved in peace.\s[0] When Marge came home I'd already eaten the remains of the delicious...\w8 yummy...\w9 cake..."
+	"\0\s[3]I feel like I've forgotten something...\w8\s[0] Nevermind, it's probably not important."
+	"\0\s[0]You look bored. Maybe you should %(ideas)!"
+	"\0\s[0]I've always wondered whether zebras have black stripes, or white stripes. For that matter, do killer tomatoes really exist? Are they the cause of all the major problems of the world, like\w8\s[2] me missing a 90% off donut sale, or when there's a huge traffic jam, and\s[3] I end up late for work, and have to stay overtime to make up for it?\s[2] Damn you, killer tomatoes! DAMN YOU!!!"
+	"\0\s[0]Lenny (or was it Carl?)\w5 told me about some contest going on. I think it was called, Big Burping Contest! It was about burping really big, for a really long time! I was about to win the contest,\s[4] but some random guy who had never entered any contest before won it!\s[0] Just barely though."
+	"\0\s[0]Last night's dream was so boring, I fell asleep during it!\s[8] Then I dreamt of %(food)..."
+	"\0\s[3]Why did the chicken cross the road?\s[0] To let me eat it!\s[9]\![sound,play,speech\laugh.mp3,--volume=50] Heh heh heh heh heh."
+	"\0\s[1]I love donuts! They've saved my life so many times...\s[3] One time, I was starving, and the fridge was empty, but then\w4 I saw a donut just laying there on the street! I ran to grab it, but a huge truck ran over it. It could've run over me!\s[0] The donut heroically sacrificed its life to save mine..."	
+	"\0\s[3]I was watching the series finale of my current favorite show. But it got interrupted by some breaking news or something,\w5\s[4] and I never got to see the ending! *sigh*\s[3] I'll just have to find it on the Internet or something..."
+	"\0\s[4]\![sound,play,speech\doh.mp3,--volume=50]D'oh! I spilled Duff all over the console! \w8\s[3]...I guess I'll go and clean it up."
+	"\0\s[0]I just finished reading this weird story about some %(food) who go on an epic adventure to slay the Mighty Meatdragon, but it turns out to be a dream, but then it turns out to be a dream within a dream within a dream..."
+	"\0\s[1]\![sound,play,speech\burp.mp3,--volume=50]*BURP*"
+	"\0\s[3]Occasionally I can't fall asleep for some reason, so I watch the most boring movies ever, like, 'Revenge of the %(Capitalize(food))', or Cosmic Wars XII, or some boring documentary about some guy from the past,\s[0] and tada! I drift off into... dreamland...\s[5] *snore*"
+	"\0\s[0]Y'know, sometimes I feel so lucky to have met Marge and started a wonderful family with her,\s[3] but other times I don't wanna go to work.\w4\s[4] Or I don't wanna deal with Bart's shenanigans, or Lisa's confusing homework. I just wanna do literally nothing for an entire day\w4\s[0] and maybe bingewatch a new TV show or something instead. But every day I get up anyway, 'cuz\w4 I love my family so much,\w3 even the boy!"
+	"\0\s[1]\![sound,play,speech\he-he.mp3,--volume=50]Heh heh heh, that guy's funny."
+	"\0\s[7]Why's the clock not moving?! \w8\s[0]...Oh, right, it's working again. I guess it's just a weird trick by my eyes, or something."
+	"\0\s[0]Did'ya know that donuts come from... uh... Europe?"
+	"\0\s[0]*yawn* I think I'll take a lil' nap... just for a bit... \s[5]*snore*"
+}

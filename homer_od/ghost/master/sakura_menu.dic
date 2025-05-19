@@ -1,0 +1,102 @@
+SakuraMenuGreetings : nonoverlap
+{
+	"\s[3]Huh? What do you want?\![no-autopause]"
+	"\s[3]Oh? D'you need something?\![no-autopause]"
+}
+
+//Because there is an all modifier here, you don't need to write -- between menu options
+OnSakuraMenu : all
+{
+	"\0\s[0]\b2\![set,autoscroll,disable]"
+	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; SakuraMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
+	
+	"\n\n\_q"
+	
+	"\![*]\q[Talk to me,OnAiTalk]"
+	if LastTalk != ""; "  \![*]\q[Say that again,OnLastTalk]"
+	"\n\n"
+	"\![*]\q[I'm bored,OnIdeaGen]\n"
+	"\![*]\q[Ask me something,OnAskStuff]\n"
+	"\![*]\q[Hug Homer,OnHugHomer]\n"
+	"\![*]\q[Change talk rate,OnTalkRateMenu]\n\n"
+	
+	"\![*]\q[Nevermind,CANCEL]"
+}
+
+OnLastTalk
+{
+	LastTalk
+}
+
+OnTalkRateMenu : all
+{	
+	//This is just setting up a label, you may need to add to it or tweak it if you change what rates are available
+	_talkrate = "Off"
+	if aitalkinterval == 30; _talkrate = "30 seconds"
+	elseif aitalkinterval == 60; _talkrate = "1 minute"
+	elseif aitalkinterval == 180; _talkrate = "3 minutes"
+	elseif aitalkinterval == 300; _talkrate = "5 minutes"
+	elseif aitalkinterval == 600; _talkrate = "10 minutes"
+	elseif aitalkinterval == 900; _talkrate = "15 minutes"
+	elseif aitalkinterval == 1200; _talkrate = "20 minutes"
+	
+	"\0\s[0]\b2\![set,autoscroll,disable]\_q"
+	"Current interval: %(_talkrate)\n\n"
+	
+	"\![*]\q[Off,OnTalkRateChange,0]\n"
+	"\![*]\q[30 seconds,OnTalkRateChange,30]\n"
+	"\![*]\q[1 minute,OnTalkRateChange,60]\n"
+	"\![*]\q[3 minutes,OnTalkRateChange,180]\n"
+	"\![*]\q[5 minutes,OnTalkRateChange,300]\n"
+	"\![*]\q[10 minutes,OnTalkRateChange,600]\n"
+	"\![*]\q[15 minutes,OnTalkRateChange,900]\n"
+	"\![*]\q[20 minutes,OnTalkRateChange,1200]\n"
+	"\n"
+	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Cancel,blank]"
+}
+
+OnTalkRateChange
+{
+	aitalkinterval = TOINT(reference0)
+}
+Select.CANCEL
+{
+	"\0\s[0]OK... \s[5]*snore*"
+}
+OnIdeaGen
+{
+"\0\s[0]You look bored. Maybe you should %(ideas)!"
+"\0\s[0]Oh, you need ideas? Hmm, how about you %(ideas)!"
+"\0\s[0]Maybe you could %(ideas)!"
+}
+OnAskStuff
+{
+	"\0\s[3]I was watching a really cool movie on TV about, uh, something really cool. But it got interrupted by some breaking news or something,\s[4] and I never got to see the ending of the movie!\s[3] Could you tell me the ending of it?\![open,inputbox,OnMovieEnd,-1]"
+	"\0\s[4]\![sound,play,speech\doh.mp3,--volume=50]D'oh! I spilled Duff all over the console! What do I do?\![open,inputbox,OnSpilledBeer,-1]"
+	"\0\s[1]I just drew something on some paper! See? ...It's %(food)! What do you think of it?\![open,inputbox,OnFunnyDrawing,-1]"
+}
+OnMovieEnd
+{
+MovieEnding = reference0
+
+"\0\s[7]That's how it ends?! %(MovieEnding)...\s[3] Well, at least I know the ending now, so I won't be haunted by that unfinished movie I watched on TV one night...\e"
+}
+
+OnSpilledBeer
+{
+SpilledBeer = reference0
+
+"\0\s[3]OK, I'll try that. %(SpilledBeer)...\s[4] Uh, it didn't work...\w5\s[3] but at least the beer's gone. Mostly.\e"
+}
+
+OnFunnyDrawing
+{
+FunnyDrawing = reference0
+
+"\0\s[0]You think it's %(FunnyDrawing)? ...Okay then."
+}
+
+OnHugHomer
+{
+"\0\s[1]...Thanks..."
+}
