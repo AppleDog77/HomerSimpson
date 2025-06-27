@@ -2,7 +2,7 @@ charset,OSNative
 file,delete.txt01622b3c7d332a350a2c14da8f86d4e0size=56date=2025-06-18T21:55:28
 file,developer_options.txt219de9022572144ca08408c8fa70c6f4size=109date=2025-06-14T21:55:02
 file,install.txt1134dccc80920a49c9a41de69aa4c0c2size=105date=2025-05-08T02:34:38
-file,readme.txt12a8fe922b5d9aacf0c672cbac9a43e1size=3567date=2025-06-27T15:42:39
+file,readme.txt87b061c54df23b890610f7330c5e68a3size=3593date=2025-06-27T18:55:10
 file,thumbnail.png2008073dde16eed27155b2db83de8158size=4118date=2025-05-19T13:15:26
 file,ghost/master/aitalk.dicf9f515fd6cacea19914cc417721c0b7asize=7113date=2025-06-27T18:26:07
 file,ghost/master/boot.dicc72f622011205758385ea9e1ae1a58b0size=3557date=2025-06-27T16:20:33
@@ -17,7 +17,7 @@ file,ghost/master/mouse.dica1d9260d763ecada1050f4a3bef29cb1size=4194date=2025
 file,ghost/master/music_player.dic6ee2e1d6c8b73b7dcb77c56d4a1bbd2dsize=99673date=2025-06-26T04:57:22
 file,ghost/master/other.dicaac238c30f9482e0627c6037a70c4864size=14587date=2025-06-26T04:38:10
 file,ghost/master/word.dic18b9655efad858c24e172957a5a0abc1size=3067date=2025-06-27T16:20:16
-file,ghost/master/yaya.dllfa8bac5d6d7346524317f731dc63803dsize=880640date=2024-02-04T11:37:54
+file,ghost/master/yaya.dll7ca71c0691df0379655530fcf6d0fa7csize=884736date=2025-01-16T05:08:02
 file,ghost/master/yaya.txt911709d35a0e98ae25c95914eedb8c0fsize=752date=2025-06-18T22:02:14
 file,ghost/master/yaya_emerg.txt9e43b4696366a536ecc69e45d80e392csize=607date=2023-04-15T01:14:18
 file,ghost/master/speech/Munch.mp3fd62d77f28f124f49f5ee881c19cb81bsize=22552date=2025-05-18T02:16:34
