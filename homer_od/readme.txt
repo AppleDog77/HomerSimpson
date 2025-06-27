@@ -31,5 +31,5 @@ Shell graphics by me
 
 Updates:
 Released on Mon, May 19, 2025.
-Ver 1.1 - Overhauled his shirt's appearance. Added Sleep Mode, Music Player (by Zichqec), Soundbite Toggle and Volume Settings, Idle between Dialogues function, new dressups, more minigames, more wordgroups and words, more clickpoints (ear, nose, and shoulder for Music Player controls), more favorite sites, and more dialogue. Homer will now react to what you say about his drawing (whether it's good or bad or synonyms thereof). Changed filenames of menu dics for sakura and kero.
+Ver 1.1 - Overhauled his shirt's appearance. Added Sleep Mode, Music Player (by Zichqec), Soundbite Toggle and Volume Settings, Idle between Dialogues function, new dressups, more minigames, more wordgroups and words, more clickpoints (ear, nose, and shoulder for Music Player controls), more favorite sites, and more dialogue. Homer will now react to what you say about his drawing (whether it's good or bad or synonyms thereof). Changed filenames of menu dics for sakura and kero. Updated YAYA to Tc571-11.
 
