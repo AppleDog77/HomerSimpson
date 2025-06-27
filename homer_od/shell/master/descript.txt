@@ -14,9 +14,20 @@ seriko.use_self_alpha,1
 //Clothing
 sakura.bindgroup5.name,Stickers,Donut
 sakura.bindgroup5.default,0
+sakura.bindgroup6.name,Stickers,Bowling
+sakura.bindgroup6.default,0
+sakura.bindgroup7.name,Ties,Office Tie
+sakura.bindgroup7.default,0
+sakura.bindgroup8.name,Ties,Rainbow Tie
+sakura.bindgroup8.default,0
 
 //Menu
 sakura.menuitem0,5
+sakura.menuitem1,6
+sakura.menuitem2,-
+sakura.menuitem3,7
+sakura.menuitem4,8
 
 //Layering
 sakura.bindoption0.group,Stickers,multiple
+sakura.bindoption1.group,Ties

@@ -1,0 +1,202 @@
+SakuraMenuGreetings : nonoverlap
+{
+	if CurrentMode == "sleeping"
+	{
+	"\s[5]ZZZZZzzz... \s[6]Huh? What do you want?"
+	"\s[5]ZZZZ..... \s[6]Oh? D'you need something?"
+	}
+	else
+	{
+	"\s[3]Huh? What do you want?\![no-autopause]"
+	"\s[3]Oh? D'you need something?\![no-autopause]"
+	}
+}
+
+//Because there is an all modifier here, you don't need to write -- between menu options
+OnSakuraMenu : all
+{
+	"\0\s[0]\b2\![set,autoscroll,disable]"
+	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; SakuraMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
+	
+	"\n\n\_q"
+	
+	"\![*]\q[Talk to me,OnAiTalk]"
+	switch LastTalk == "" //Uses top option if there is a dialogue to repeat
+	{
+		"\![*]\q[Say that again,OnLastTalk]"
+		"\![*]\f[color,disable]Say that again\f[color,default]"
+	}
+	"\n\n"
+	"\![*]\q[I'm bored,OnIdeaGen]\n"
+	"\![*]\q[Ask me something,OnAskStuff]\n\n"
+	
+	"\![*]\q[You look sleepy,OnSleepyHomer]\n" //Turn on Sleep Mode
+	
+	"\![*]\q[Hug Homer,OnHugHomer]\n\n"
+	
+	"\![*]\q[Music player,OnMusicPlayer.Menu]\n\n"
+	
+	"\![*]\q[Config,OnConfigMenu]\n\n"
+		
+	"\![*]\q[Nevermind,CANCEL]"
+}
+
+OnLastTalk
+{
+	LastTalk
+}
+
+OnConfigMenu : all
+{
+	"\![*]\q[Change talk rate,OnTalkRateMenu]\n\n"
+	"\![*]\q[Soundbite Settings,OnSoundBiteSettings]\n\n"
+	"\![*]\![quicksection,1]Toggle Soundbites? (Currently: \q[%(SoundBiteToggle),OnToggleSoundBites])\![quicksection,0]\n\n"
+	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Cancel,blank]"
+}
+
+OnTalkRateMenu : all
+{	
+	//This is just setting up a label, you may need to add to it or tweak it if you change what rates are available
+	_talkrate = "Off"
+	if aitalkinterval == 30; _talkrate = "30 seconds"
+	elseif aitalkinterval == 60; _talkrate = "1 minute"
+	elseif aitalkinterval == 180; _talkrate = "3 minutes"
+	elseif aitalkinterval == 300; _talkrate = "5 minutes"
+	elseif aitalkinterval == 600; _talkrate = "10 minutes"
+	elseif aitalkinterval == 900; _talkrate = "15 minutes"
+	elseif aitalkinterval == 1200; _talkrate = "20 minutes"
+	
+	"\b2\![set,autoscroll,disable]\_q"
+	"Current interval: %(_talkrate)\n\n"
+	
+	"\![*]\q[Off,OnTalkRateChange,0]\n"
+	"\![*]\q[30 seconds,OnTalkRateChange,30]\n"
+	"\![*]\q[1 minute,OnTalkRateChange,60]\n"
+	"\![*]\q[3 minutes,OnTalkRateChange,180]\n"
+	"\![*]\q[5 minutes,OnTalkRateChange,300]\n"
+	"\![*]\q[10 minutes,OnTalkRateChange,600]\n"
+	"\![*]\q[15 minutes,OnTalkRateChange,900]\n"
+	"\![*]\q[20 minutes,OnTalkRateChange,1200]\n"
+	"\n"
+	"\![*]\q[Back,OnConfigMenu]  \![*]\q[Cancel,blank]"
+}
+
+OnTalkRateChange
+{
+	aitalkinterval = TOINT(reference0)
+}
+
+OnToggleSoundBites
+{
+    if SoundBiteToggle != "On"
+        {
+            SoundBiteToggle = "On"
+			"\0\s[1]Soundbites turned on.\n\n"
+        }
+    else
+        {
+            SoundBiteToggle = "Off"
+			"\0\s[4]Soundbites turned off...\n\n"
+        }
+    --
+    OnConfigMenu
+}
+
+OnSoundBiteSettings
+{
+	"Volume: \__q[OnBiteVolumeUp]▲\__q\__q[OnBiteVolumeDown]▼\__q %(SoundBiteVolume)\n\n/
+	\![*]\q[Back,OnConfigMenu]"
+}
+
+OnBiteVolumeUp
+{
+	SoundBiteVolume += 5
+	if SoundBiteVolume > 100; SoundBiteVolume = 100
+	
+	OnSoundBiteSettings
+}
+
+OnBiteVolumeDown
+{
+	SoundBiteVolume -= 5
+	if SoundBiteVolume < 0; SoundBiteVolume = 0
+	
+	OnSoundBiteSettings
+}
+
+OnIdeaGen
+{
+CurrentMode = "normal"
+"\0\s[0]You look bored. Maybe you should %(ideas)!"
+"\0\s[0]Oh, you need ideas? Hmm, how about you %(ideas)!"
+"\0\s[0]Maybe you could %(ideas)!"
+}
+OnAskStuff
+{
+	CurrentMode = "normal"
+	"\0\s[3]I was watching a really cool movie on TV about, uh, something really cool. But it got interrupted by some breaking news or something,\s[4] and I never got to see the ending of the movie!\s[3] Could you tell me the ending of it?\![open,inputbox,OnMovieEnd,-1]"
+	"\0\s[4]\![embed,OnDohSoundBite]D'oh! I spilled Duff all over the console! What do I do?\![open,inputbox,OnSpilledBeer,-1]"
+	"\0\s[1]I just drew something on some paper! See? ...It's some %(food)! What do you think of it?\![open,inputbox,OnFunnyDrawing,-1]"
+}
+OnMovieEnd
+{
+MovieEnding = reference0
+
+"\0\s[7]That's how it ends?! %(MovieEnding)...\s[3] Well, at least I know the ending now, so I won't be haunted by that unfinished movie I watched on TV one night..."
+}
+
+OnSpilledBeer
+{
+SpilledBeer = reference0
+
+"\0\s[3]OK, I'll try that. %(SpilledBeer)...\s[4] Uh, it didn't work...\w5\s[3] but at least the beer's gone. Mostly."
+}
+
+OnFunnyDrawing
+{
+FunnyDrawing = reference0
+
+	if "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "funny" _in_ reference0
+	{
+	"\0\s[0]You really think it's %(FunnyDrawing)? \s[1]\![embed,OnWoohooSoundBite]Woohoo! Thanks."
+	}
+	elseif "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0
+	{
+	"\0\s[7]*gasp*\w8\s[2] How dare you! It's... \w8\s[4]Okay, I guess it's not my best work, but it's still not %(FunnyDrawing)! My next drawing will be better, you'll see!"
+	}
+	else
+	{
+	"\0\s[0]You think it's %(FunnyDrawing)? ...Okay then."
+	}
+}
+
+OnHugHomer
+{
+	if CurrentMode == "sleeping"
+	{
+	CurrentMode = "normal"
+	"\s[21]ZZZZZzzz... \s[6]Huh? ...Aw! \s[1]Thanks... What do you need?"
+	"\s[22]ZZZZ..... \s[6]Aw! \s[0]D'you need something?"
+	}
+	else
+	{
+	"\0\s[1]...Aw! Thanks..."
+	}
+}
+
+OnSleepyHomer
+{
+CurrentMode = "sleeping"
+"\0\s[6]*yawn* I think I'll take a lil' nap... just for a bit... \s[5]*yawn*\w9 Zzzzz..."
+}
+
+OnAwakeHomer
+{
+CurrentMode = "normal"
+"\0\s[7]AAA! \w9\s[3]Sorry, I had a very strange dream, \w8\s[8]in which it was raining %(food) and desserts of all kinds..."
+}
+
+Select.CANCEL
+{
+	"\0\s[0]OK... \s[5]*snore*"
+}

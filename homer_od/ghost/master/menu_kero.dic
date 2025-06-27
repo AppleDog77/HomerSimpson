@@ -1,7 +1,16 @@
 KeroMenuGreetings : nonoverlap
 {
+	if CurrentMode == "sleeping"
+	{
+	"\1\s[10]\0\s[5]Mmm...\w8 %(food)..."
+	"\1\s[10]\0\s[21]Mmm...\w8 %(food)..."
+	"\1\s[10]\0\s[22]Mmm...\w8 %(food)..."
+	}
+	else
+	{
 	"\0\s[8]Mmm...\w8 %(food)..."
-	"\0\s[3]\![sound,play,speech\burp.mp3,--volume=50]*BURP*\![no-autopause]"
+	"\0\s[3]\![embed,OnBurpSoundBite]*BURP*\![no-autopause]"
+	}
 }
 
 //Because there is an all modifier here, you don't need to write -- between menu options
@@ -19,10 +28,13 @@ OnKeroMenu : all
 
 OnGamesMenu : all
 {
+	CurrentMode == "normal"
 	"\0\s[0]Ooh, minigames! Which one do you wanna play?"
 	"\n\n\_q"
 	
 	"\![*]\q[Word Search,OnStartWordSearch]\n"
+	"\![*]\q[Word Jumble,OnWordJumble.Start]\n"
+	"\![*]\q[Hangman,OnStartHangman]\n"
 	"\![*]\q[Back to main menu,OnKeroMenu]\n"
 	"\![*]\q[Nevermind,blank]"
 }
@@ -82,7 +94,7 @@ WordSearchDialogue
 	}
 	elseif _argv[0] == "Invalid Word" //If the user puts in a word that isn't on the word list or was already guessed - _argv[1] is the word the user guessed
 	{
-		"\s[3]Hmm, I don't know that word. %(_argv[1]). Did you make it up just now or something? Or maybe that word was already found..."
+		"\s[3]Hmm, I don't know that word. %(_argv[1]). Did you make it up just now or something? Or maybe you already found that word..."
 	}
 	elseif _argv[0] == "Invalid Move" //If the user tried an illegal diagonal move
 	{
@@ -94,7 +106,7 @@ WordSearchDialogue
 	}
 	elseif _argv[0] == "Finished Puzzle" //If the user completed the puzzle - _argv[1] is the last word the user found. Might be a good idea to add menu buttons here.
 	{
-		"\s[0]%(_argv[1]) was the last word!\w5 You found all the words! \w5\s[1]\![sound,play,speech\woohoo.mp3,--volume=50]Woohoo!"
+		"\s[0]%(_argv[1]) was the last word!\w5 You found all the words! \w5\s[1]\![embed,OnWoohooSoundBite]Woohoo!"
 		--
 		"\_q\n\![*]\q[Play again,OnStartWordSearch]  \![*]\q[Play something else,OnGamesMenu]\n\![*]\q[I'm done,cancelnodialogue]\e"
 		
@@ -107,7 +119,7 @@ WordSearchDialogue
 }
 OnWordSearchQuit
 {
-	"\0\s[0]Good idea! That puzzle looked pretty tough..."
+	"\0\s[0]Good idea! \s[3]That puzzle looked pretty tough..."
 }
 //Words you want to be placed in the puzzle go here. Be mindful of how long your words are! Make sure they're not too long to fit the grid. Probably don't make them too short, either. I'd recommend at least 4 letters. And have plenty of words available, the more the better! This has to be an array, so if you're using my other games, you won't be able to share a word pool between them. (Unless you get clever and have those word pools read from here using something like ANY(WordSearchWords)
 WordSearchWords : array
@@ -123,6 +135,10 @@ WordSearchWords : array
 	"Beer"
 	"Chicken"
 	"Porkchop"
+	"Lollipop"
+	"Pepper"
+	"Honey"
+	"Sandwich"
 	"Simpsons"
 	"Homer"
 	"Marge"
@@ -140,6 +156,16 @@ WordSearchWords : array
 	"Plopper"
 	"Tulip"
 	"Peanut"
+	"Kavner"
+	"Barney"
+	"Quimby"
+	"Yeardley"
+	"Waylon"
+	"Smithers"
+	"Burns"
+	"Flanders"
+	"Seymour"
+	"Skinner"
 }
 
 OnWordSearch
@@ -726,4 +752,520 @@ CreateWordSearch //:deargodhelpme:
 		}
 		WordSearch[_i] = _row
 	}
+}
+//Written by Zichqec https://ukagaka.zichqec.com/
+//v1.0.1
+/*
+This is an improved version of my original Junior Jumble game. In this version of the game, the user is prompted with a category for the words they will be solving, because as it turns out unscrambling words is hard when you have no idea what they might be!
+
+By default, the user is asked to solve 5 words before they win. You can adjust this at the top of the OnWordJumble.Start function.
+
+To start the game, call the event OnWordJumble.Start in a menu option/raise tag/etc. Example: \![*]\q[Play Word Jumble,OnWordJumble.Start]
+*/
+
+
+//——————————————— Dialogue ———————————————
+//I set these up to display the final words at the end. If you'd rather have your ghost say something about the user winning, you can replace it with simple dialogue or what have you.
+/*
+Quick reference for the local variables in the following functions, in case you want to change things up.
+In particular, you might be interested in _word and _scrambled, but the rest you can probably ignore.
+
+_guess - only available if the user loses. Their incorrect guess, with sakurascript tags escaped
+_category_name - the name of the current category
+_word_list - a list of all the words yet to be guessed, delimited by C_BYTE1
+_word - the current word that is being guessed
+_correct_guesses - words that have been guessed correctly so far, delimited by WordJumble.Delimiter (set to "||" by default)
+_scrambled - the scrambled version of the word to be guessed
+*/
+
+OnWordJumble.Win : all
+{
+	_category_name = reference2
+	_word_list = reference3
+	_word = SPLIT(_word_list,C_BYTE1)[0]
+	_correct_guesses = reference4
+	_scrambled = reference5
+	
+	"\0\b[2]\![set,autoscroll,disable]\_q"
+	"\s[1]\![embed,OnWoohooSoundBite]Woohoo! You win!"
+	"\nCategory:\_w[] %(_category_name)"
+	"\n\n"
+	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
+	"\n\n"
+	
+	WordJumble.MakeDisplay(_correct_guesses)
+}
+
+OnWordJumble.Lose : all
+{
+	_guess = SHIORI3FW.EscapeAllTags(reference0)
+	_category_name = reference2
+	_word_list = reference3
+	_word = SPLIT(_word_list,C_BYTE1)[0]
+	_correct_guesses = reference4
+	_scrambled = reference5
+	
+	"\0\b[2]\![set,autoscroll,disable]\_q"
+	"\s[3]Game over! The correct word was %(_word). I guess you could try again, but..."
+	"\nCategory: %(_category_name)"
+	"\n\n"
+	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
+	"\n\n"
+	
+	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
+	
+	"\f[color,disable]%(_scrambled)\f[color,default]\n"
+	"\f[strike,1]%(_guess)\f[strike,default]\n\n"
+}
+
+OnWordJumble.Quit : all
+{
+	_category_name = reference2
+	_word_list = reference3
+	_word = SPLIT(_word_list,C_BYTE1)[0]
+	_correct_guesses = reference4
+	_scrambled = reference5
+	
+	"\0\b[2]\![set,autoscroll,disable]\_q"
+	"\![close,inputbox,OnWordJumble.Guess]"
+	"Good idea! \s[3]I was gettin' sorta bored anyway."
+	"\nCategory: %(_category_name)"
+	"\n\n"
+	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
+	"\n\n"
+	
+	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
+	
+	"\f[color,disable]%(_scrambled)\f[color,default]\n"
+	"\f[strike,1]%(_word)\f[strike,default]\n\n"
+}
+
+
+//——————————————— Categories / Words ———————————————
+//You can write as many categories as you want. Just copy one of these, and pick a new name.
+//The name of the function after the "WordJumble.Category." part doesn't matter, but for simplicity's sake, I'd make it the name of the category (minus any special characters/spaces)
+//The first string in each array should be the name of the category.
+
+//The more categories and words in each category you have, the better! But mind that anagrams can be mean. Also, be mindful of things that can scramble into profanity, etc.
+
+WordJumble.Category.SweetsFoods : array
+{
+	"Sweets and Foods"
+	
+	"Brownie"
+	"Cupcake"
+	"Donut"
+	"Chocolate"
+	"Cookie"
+	"Chicken"
+	"Porkchop"
+	"Lobster"
+	"Peanut"
+	"Honey"
+	"Sandwich"
+	"Pepper"
+}
+
+WordJumble.Category.Simpsons : array
+{
+	"Simpsons"
+	
+	"Homer"
+	"Marge"
+	"Lisa"
+	"Bart"
+	"Maggie"
+	"Abraham"
+	"Mona"
+}
+
+WordJumble.Category.Names : array
+{
+	"Simpsons-related Names"
+
+	"Pinchy"
+	"Plopper"
+	"Kavner"
+	"Barney"
+	"Quimby"
+	"Yeardley"
+	"Springfield"
+	"Waylon"
+	"Smithers"
+	"Burns"
+	"Flanders"
+	"Seymour"
+	"Skinner"
+}
+
+
+//——————————————— Game logic ———————————————
+OnWordJumble.Start
+{
+	//The maximum number of words that you want the user to have to guess before they win.
+	//Note that if there are not this many words in the category, it will simply use all the available words once.
+	_max_words = 5
+	
+	
+	//Picking a category
+	_categories = GETFUNCLIST("WordJumble.Category.")
+	_category = EVAL("%(ANY(_categories))")
+	_category_name = _category[0]
+	_category[0] = IARRAY
+	
+	_word_list = ""
+	for _i = 0; _i < _max_words && ARRAYSIZE(_category) > 0; _i++
+	{
+		if _i != 0; _word_list += C_BYTE1
+		_word_list += ANY(_category)
+		_category[LSO] = IARRAY
+	}
+	
+	"\![close,inputbox,OnWordJumble.Guess]\![raise,OnWordJumble.Display,start,,""%(_category_name)"",""%(_word_list)""]"
+}
+
+//Main game window
+OnWordJumble.Display : all
+{
+	_category_name = reference2
+	_word_list = SPLIT(reference3,C_BYTE1)
+	_correct_guesses = reference4
+	
+	if !(reference0 == "start"); _word_list[0] = IARRAY
+	if _word_list[0] == ""
+	{
+		"\C\![raise,OnWordJumble.Win,,,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]"
+		return
+	}
+	
+	_word = _word_list[0]
+	_scrambled = WordJumble.Scramble(_word)
+	
+	_word_list = WordJumble.MakeMultiArray(,_word_list)
+	
+	"\C\![lock,balloonrepaint]\c"
+	"\0\b[2]\_q\*\t"
+	"\![no-markdown]" //I'm silly and testing this in a ghost with markdown. But maybe I'll leave it? Shouldn't hurt
+	"\![open,inputbox,OnWordJumble.Guess,--reference=""%(_category_name)"",--reference=""%(_word_list)"",--reference=""%(_correct_guesses)"",--reference=""%(_scrambled)""]"
+	
+	"Unscramble the words!"
+	"\n"
+	"Category: %(_category_name)"
+	"\n\n"
+	"\![*]\__q[OnWordJumble.Quit,,,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]Give up\__q"
+	"\n\n"
+	
+	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
+	
+	"%(_scrambled)"
+	"\![unlock,balloonrepaint]"
+}
+
+OnWordJumble.Guess
+{
+	_category_name = reference2
+	_word_list = reference3
+	_word = SPLIT(_word_list,C_BYTE1)[0]
+	_word = SHIORI3FW.EscapeAllTags(_word)
+	_correct_guesses = reference4
+	_scrambled = reference5
+	
+	if reference0 == ""; "\C\![open,inputbox,OnWordJumble.Guess,--reference=""%(_category_name)"",--reference=""%(_word_list)"",--reference=""%(_correct_guesses)"",--reference=""%(_scrambled)""]"
+	elseif TOLOWER(reference0) == TOLOWER(_word) //Correct guess, game continues
+	{
+		if _correct_guesses != ""; _correct_guesses += WordJumble.Delimiter
+		_correct_guesses += "%(_word)%(C_BYTE1)%(_scrambled)"
+		
+		"\C\![raise,OnWordJumble.Display,,,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]"
+	}
+	else //Lose
+	{	
+		"\C\![raise,OnWordJumble.Lose,""%(reference0)"",,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]"
+	}
+}
+
+
+//——————————————— Utility functions ———————————————
+
+//If for some reason the double pipe doesn't work as a delimiter for you, you can pick something else here
+WordJumble.Delimiter
+{
+	"||"
+}
+
+//Scrambles whatever word is input
+WordJumble.Scramble
+{
+	_word = TOLOWER(_argv[0])
+	_output = ""
+	//Try up to 100 times to scramble the word without just outputting the original word again.
+	//There is a chance someone puts in a word that can't be scrambled, like if they just put "aaa". So this stops after 100 tries so as not to potentially crash SSP
+	for _i = 0; _i < 100; _i++
+	{
+		_output = ""
+		while STRLEN(_word) > 0
+		{
+			_n = RAND(STRLEN(_word))
+			_output += SUBSTR(_word,_n,1)
+			_word = ERASE(_word,_n,1)
+		}
+		
+		if _output != TOLOWER(_argv[0]); break
+	}
+	_output
+}
+
+//Make a general purpose array into a simple array
+//The first argument is the delimiter. YOU MUST INCLUDE THIS ARGUMENT.
+//If you want to use C_BYTE1, you may leave the argument blank. But it MUST exist, even if it's empty.
+//All other arguments are elements of the array that will be made into a simple array
+WordJumble.MakeMultiArray
+{
+	//I hate this
+	_delimiter = C_BYTE1
+	if _argv[0] != ""; _delimiter = _argv[0]
+	_argv[0] = IARRAY
+	
+	_output = ""
+	foreach _argv; _arg
+	{
+		if _output != ""; _output += _delimiter
+		_output += _arg
+	}
+	_output
+}
+
+WordJumble.MakeDisplay : all
+{
+	_correct_guesses = _argv[0]
+	_correct_guesses = SPLIT(_correct_guesses,WordJumble.Delimiter)
+	foreach _correct_guesses; _guess
+	{
+		_w = _guess[0,C_BYTE1]
+		_w = SHIORI3FW.EscapeAllTags(_w)
+		_s = _guess[1,C_BYTE1]
+		"\f[color,disable]%(_s)\n"
+		"\f[color,default.anchor]%(_w)\f[color,default]\n\n"
+	}
+}
+
+//Hangman
+//Written by Zichqec https://ukagaka.zichqec.com/index.html
+
+OnStartHangman //Sets up starting variables
+{
+	HMword = hangmanwords //Pulls the word to guess from a pool of words
+	HMlet = IARRAY //HMlet[0] is guessed letters, HMlet[1] is incorrect letters
+	OnHangman
+}
+
+OnHangman //Main game window
+{
+	_maxwrong = 6 //Maximum incorrect guesses - set to whatever you like
+	_word = ""
+	_left = 0
+	for _i = 0; _i < STRLEN(HMword); _i++
+	{
+		_let = TOLOWER(SUBSTR(HMword,_i,1)) //Get the current letter and make it lowercase
+		if _let _in_ HMlet[0] || _let == " "
+		{
+			_word += "%(SUBSTR(HMword,_i,1))"
+		}
+		else
+		{
+			_word += "_ "
+			_left++
+		}
+	}
+	--
+	if (STRLEN(HMlet[1]) / 2) >= _maxwrong //If the number of incorrect letters is equal to or greater than the number of max tries
+	{
+		"\0\s[0]Nope, you're all out of guesses! The word was %(HMword). Better luck next time!"
+	}
+	elseif _left > 0 //If there are still letters to guess
+	{
+		_mistakes = (_maxwrong - (STRLEN(HMlet[1]) / 2))
+		_marker = ""
+		
+		"\0\_q\*%(bb)\![set,balloontimeout,-1]\![set,autoscroll,disable]\![open,inputbox,OnGuessNormal,-1]"
+		--
+		"%(_word)\n\nGuessed so far: %(HMlet[1])\n\nTries left: "
+		--
+		for _i = 0; _i < _mistakes; _i++
+		{
+			_marker += "\![*]"
+		}
+		--
+		"%(_marker)"
+		--
+		if _left > 1
+		{
+			"\n\n\![*]\q[Guess the whole word,HangmanGuessWhole]"
+		}
+		--
+		"\n\![*]\q[Open the input box again,HangmanInput]\n\n\![*]\q[Give up,HangmanQuit]\e"
+	}
+	else //If _left is still 0, the user has guessed all letters correctly
+	{
+		HangmanWin
+		--
+		"\0\s[1]\![embed,OnWoohooSoundBite]Woohoo! It was %(HMword)."
+	}
+	--
+	HangmanBack
+}
+
+OnGuessNormal
+{
+	if TOSTR(reference0) == "0.0" || TOSTR(reference0) == "0.000000"; reference0 = "." //Unlikely to come up, but periods are handled strangely, and also differently between aya and yaya because screw you lol
+	if STRLEN(reference0) > 1 //The user has put in more than 1 letter
+	{
+		"\0\s[0]For some reason, according to Lisa who read the rules while I was asleep, you can only guess one letter at a time.\x"
+	}
+	elseif TOLOWER(reference0) _in_ TOLOWER(HMlet[0]) //The user has already guessed that letter
+	{
+		"\0\s[0]You already guessed %(reference0)! Don't worry, I also almost forgot, myself.\x"
+	}
+	elseif TOLOWER(reference0) _in_ TOLOWER(HMword) //The letter is in the word
+	{
+		HMlet[0] += reference0
+	}
+	else //The letter is not in the word
+	{
+		HMlet[0] += reference0
+		HMlet[1] += "%(TOLOWER(reference0)) "
+	}
+	--
+	OnHangman
+}
+
+Select.HangmanGuessWhole
+{
+	_word = ""
+	_left = 0
+	for _i = 0; _i < STRLEN(HMword); _i++
+	{
+		_let = TOLOWER(SUBSTR(HMword,_i,1)) //Get the current letter and make it lowercase
+		if _let _in_ HMlet[0] || _let == " "
+		{
+			_word += "%(SUBSTR(HMword,_i,1))"
+		}
+		else
+		{
+			_word += "_ "
+			_left++
+		}
+	}
+	"\0\*%(b)\![set,balloontimeout,-1]\![set,autoscroll,disable]\![close,inputbox,OnGuessNormal]\![open,inputbox,OnGuessWhole,-1]"
+	--
+	"\0\s[0]Ooh, trying to guess the whole word at once? Okay, the word so far is %(_word)\n\nYou've guessed these letters so far: %(HMlet[1])\n\nWhat do you think the word is?"
+	--
+	"\n\n\n\![*]\q[Open the input box again,WholeInput]\n\n\![*]\q[Give up,HangmanQuit]\e"
+}
+
+OnGuessWhole
+{
+	_word = ""
+	_left = 0
+	for _i = 0; _i < STRLEN(HMword); _i++
+	{
+		_let = TOLOWER(SUBSTR(HMword,_i,1)) //Get the current letter and make it lowercase
+		if _let _in_ HMlet[0] || _let == " "
+		{
+			_word += "%(SUBSTR(HMword,_i,1))"
+		}
+		else
+		{
+			_word += "_ "
+			_left++
+		}
+	}
+	if TOLOWER(reference0) == TOLOWER(HMword) //Correct guess, instant win
+	{
+		HangmanWin
+		--
+		"\0\s[1]\![embed,OnWoohooSoundBite]Woohoo! It was %(HMword)! You guessed it with %(_left) letters still blank! Wow!"
+	}
+	else //Incorrect guess, instant lose
+	{
+		"\0\s[3]Nope, it was %(HMword)! This is why I don't usually try and guess the whole word. It usually seems to trip me up!"
+	}
+	--
+	HangmanBack
+}
+
+Select.HangmanInput
+{
+	"\C\![close,inputbox,OnGuessNormal]\![open,inputbox,OnGuessNormal,-1]\_l[0,0] "
+}
+
+Select.WholeInput
+{
+	"\C\![close,inputbox,OnGuessWhole]\![open,inputbox,OnGuessWhole,-1]\_l[0,0] "
+}
+
+Select.HangmanQuit
+{
+	"\0\![close,inputbox,OnGuessNormal]\![close,inputbox,OnGuessWhole]%(b)"
+	--
+	"\0\s[3]Aw, OK then. It was %(HMword). This game isn't my favorite anyway..."
+	--
+	HangmanBack
+}
+
+HangmanBack
+{
+	"\n\n\![*]\q[Another!,OnStartHangman]\n\![*]\q[I'm done,cancelnodialogue]\e"
+}
+
+HangmanWin //This function is called every time the user wins hangman. You can use it to easily add friendship/money/whatever in one easy place. This does not include dialogue, it's just for variable changes. The ones I've left in here are examples.
+{
+	//friendship++
+	//money++
+}
+
+hangmanwords : nonoverlap //Words it can choose - add lots of these!
+{
+	"Brownie"
+	"Cake"
+	"Cupcake"
+	"Donut"
+	"Chocolate"
+	"Candy"
+	"Cookie"
+	"Cream"
+	"Beer"
+	"Chicken"
+	"Porkchop"
+	"Honey"
+	"Sandwich"
+	"Lollipop"
+	"Simpsons"
+	"Homer"
+	"Marge"
+	"Lisa"
+	"Bart"
+	"Maggie"
+	"Duff"
+	"Abraham"
+	"Mona"
+	"Yummy"
+	"Delicious"
+	"Lobster"
+	"Pinchy"
+	"Crayon"
+	"Plopper"
+	"Tulip"
+	"Peanut"
+	"Kavner"
+	"Barney"
+	"Quimby"
+	"Yeardley"
+	"Springfield"
+	"Waylon"
+	"Smithers"
+	"Burns"
+	"Flanders"
+	"Seymour"
+	"Skinner"
 }

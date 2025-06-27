@@ -43,21 +43,60 @@ Capitalize
 //Hotkeys
 OnKeyPress
 {
-	if reference0 == "f1"; "\![open,readme]"
+	if MusicPlayer.ChangingHotkeys; MusicPlayer.HotkeyChange
+	elseif reference0 == "f1"; "\![open,readme]"
 	elseif reference0 == "t"; OnAiTalk
 	elseif reference0 == "r"; OnLastTalk
+	else; MusicPlayer.OnKeyPress
+}
+
+OnSecondChange
+{
+	//This gets the time since the last dialogue ended, in seconds. SHIORI3FW.TalkEndTime is a variable that comes with YAYA as SHIORI
+	_since = GETSECCOUNT - SHIORI3FW.TalkEndTime
+	
+	//status is an inbuilt YAYA variable that has information on if the balloon is open, etc.
+	_balloonisopen = "balloon" _in_ status
+	
+	if _since % 15 == 0 && !_balloonisopen
+	{
+		//If you want to adjust how likely it is to change poses, change the number in the RAND. Higher numbers mean a lower chance for the pose to change.
+		if RAND(5) == 0; OnSurfaceRestore
+	}
+	//Counter for the music player
+	if MusicPlayer.Singing
+	{
+		MusicPlayer.Playtime++
+	}
 }
 
 //Happens about 30 seconds after a script ends, by default, to bring them back to normal poses
 OnSurfaceRestore
 {
+	if CurrentMode == "sleeping"
+	{
+	"\1\s[10]\0\s[5]"
+	"\1\s[10]\0\s[21]"
+	"\1\s[10]\0\s[22]"
+	"\1\s[10]\0\s[23]"
+	}
+	elseif MusicPlayer.Singing == 1
+	{
+	"\1\s[10]\0\s[25]"
+	}
+	else
+	{
 	"\1\s[10]\0\s[0]"
+	"\1\s[10]\0\s[1]"
+	"\1\s[10]\0\s[3]"
+	}
 }
 
 //Happens when the ghost is unminimized. You *can* include dialogue, but you don't *have* to. I have included this event because if you don't, it defaults to \0\s[0]\1\s[10], which you don't want in some cases, such as if your ghost uses different surfaces or has a different number of characters.
 OnWindowStateRestore
 {
-	"\1\s[10]\0\s[5]*snore*\w8\w8 \s[3]...Wha? What? What's goin' on?"
+	CurrentMode = "normal"
+	"\1\s[10]\0\s[5]*snore*\w8\w8\s[6] ...Wha? \s[3]What? What's goin' on?"
 }
 
 OnDressupChanged
@@ -73,6 +112,39 @@ if reference0 == 0 //Zarla: in OnDressupChanged, reference0 refers to the charac
 			else // This checks if you're taking it off.
 			{
 			"\0\s[4]Why did you remove my donut sticker?\e"
+			}
+		}
+	elseif reference1 == "Bowling"
+		{
+			if reference2 == 1
+			{
+			"\0\s[0]Ooh, a sticker! \s[7]*gasp* It's a bowling sticker! In space! \s[1]Thank you, %(username)!\e"
+			}
+			else // This checks if you're taking it off.
+			{
+			"\0\s[4]Why did you remove my bowling sticker? In space?\e"
+			}
+		}
+	elseif reference1 == "Office Tie"
+		{
+			if reference2 == 1
+			{
+			"\0\s[1]Thanks! \s[0]I forgot to put it on before going to work."
+			}
+			else
+			{
+			"\0\s[0]Phew! Now I don't have to be professional at work."
+			}
+		}
+	elseif reference1 == "Rainbow Tie"
+		{
+			if reference2 == 1
+			{
+			"\0\s[1]Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something snazzy."
+			}
+			else
+			{
+			"\0\s[4]Why did you take away my snazzy tie?"
 			}
 		}
 	}
@@ -94,7 +166,10 @@ On_homeurl
 	"https://raw.githubusercontent.com/AppleDog77/HomerSimpson/main/homer_od/"
 }
 
-
+ghostver
+{
+	"v1.1.0"
+}
 //—————————————————————————————— Right click menu links ——————————————————————————————
 
 //Takes an array of alternating names and urls, and formats them for use with the right click menu
@@ -108,10 +183,12 @@ FormatLinks : all
 		else; "%ASC(1)"
 	}
 }
+
 On_recommendrootbutton.caption
- {
+{
 	"Simpsons Sites"
 }
+
 On_sakura.recommendsites
 {
 	FormatLinks(recommendsites_sakura)
@@ -124,10 +201,12 @@ recommendsites_sakura : array
 	"The Simpsons Archive";	"https://simpsonsarchive.com/"
 	"No Homers Club"; "https://nohomers.net/forums/index.php"
 }
+
 On_portalrootbutton.caption
- {
+{
 	"My Favorite Sites"
- }
+}
+
 On_sakura.portalsites 
 {
 	FormatLinks(portalsites_sakura)
@@ -138,11 +217,14 @@ portalsites_sakura : array
 {
 	"The Homer Simpson Homepage";	"https://homy.tripod.com/index.html"
 	"The King Homer Simpson's Home Page";	"https://web.archive.org/web/20050223211055/http://www.geocities.com/Hollywood/Academy/3416/prototype.htm"
-	"Woo-hoo! It's Homer!"; "https://web.archive.org/web/19981207033646/http://home.eznet.net/%7Edavlin/homer.htm"
+	"Woo-hoo - It's Homer"; "https://web.archive.org/web/19981207033646/http://home.eznet.net/%7Edavlin/homer.htm"
 	"Homarge (Pogo)"; "https://www.youtube.com/watch?v=XKyop_elE6Y"
 	"Homerpalooza"; "https://web.archive.org/web/20041211223256/http://www.simpsoncrazy.com/homer/"
+	"Homer - A Tribute"; "https://web.archive.org/web/20020718075252/http://homer.kidmoe.com/"
 	"Homer Simpson"; "https://web.archive.org/web/20010429193008/http://www.homer.8k.com"
 	"Homerisms"; "https://web.archive.org/web/19990209113303/http://www.gti.net/iksrog/chris/hisms.htm"
+	"Homer Simpson Wisdom"; "https://web.archive.org/web/20050214094612/http://www.korpisworld.com/quotes/Homer%20Simpson.htm"
+	"Homer Club Dance"; "https://web.archive.org/web/20090830194634/http://geocities.com/abc0123bg/simpsons/homer/index.htm"
 	"Homer's Web Page"; "https://homer-web-page.netlify.app/"
 	"Homer's Web Page 2"; "https://randomnessahoy.nekoweb.org/homer.html"
 }
@@ -151,11 +233,13 @@ On_kero.recommendsites
 {
 	FormatLinks(recommendsites_kero)
 }
+
 On_kero.recommendbuttoncaption
- {
+{
 	"Fun Sites"
 	"Must-Visit Sites"
- }
+}
+
 //These are the websites linked in the first option of the kero's right click menu. Same as above
 recommendsites_kero : array
 {
@@ -163,10 +247,11 @@ recommendsites_kero : array
 	"Rubbercat.net/simpsons/";	"https://rubbercat.net/simpsons/"
 	"Allen Thompson's House of Donuts"; "https://web.archive.org/web/19981207025157/http://www.teleport.com/%7Eallent/donuts.html"
 }
+
 On_readmebutton.caption
- {
+{
 	"Nuclear Power Plant Manual"
- }
+}
 
 //Autopause written by Zichqec https://ukagaka.zichqec.com/
 /*

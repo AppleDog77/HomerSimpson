@@ -135,20 +135,28 @@ OnSNTPCorrect
 
 OnSNTPFailure
 {
-	"\0\s[4]\![sound,play,speech\doh.mp3,--volume=50]D'oh! [Could not correct the clock.]"
+	"\0\s[4]\![embed,OnDohSoundBite]D'oh! [Could not correct the clock.]"
 }
 
 //Other Stuff
 OnScreenSaverEnd
  {
+	 if CurrentMode == "sleeping"
+	 {
+		 CurrentMode = "normal"
+		"\0\s[4]Aww, I missed the screensaver!\e"
+	 }
+	 else
+	 {
 	"\0\s[4]Aww, I wanted to see what happens next!\e"
+	 }
  }
 
 OnShellScaling
 {
 	if reference0 >= 150 //this number is the percentage that you're scaling the ghost up to. In this case, it's 150%.
 	{
-		"\0\s[1]\![sound,play,speech\laugh.mp3,--volume=50]Hahaha! All Hail King Homer!\e"
+		"\0\s[1]\![embed,OnLaughSoundBite]Hahaha! All Hail King Homer!\e"
 	}
 	elseif reference0 == 100 //this is 100%
 	{
@@ -158,55 +166,4 @@ OnShellScaling
 	{
 		"\0\s[0]Ooh, I wonder if I can now get those pie pieces that fell into the mouse hole a while back...\e"
 	}
-}
-
-OnFileDrop2
-{
-	_filepath = SPLITPATH(reference0)
-	_filename = _filepath[2]
-	_fileext = TOLOWER(_filepath[3])
-	case _fileext
-	{
-		when ".jpg", ".jpeg", ".bmp", ".gif", ".png" //These are the formats your ghost will recognize as image files to set as the background.
-		{
-			Wallpaperfile = reference0
-
-			"\0\s[0]\![sound,play,speech\hmm.mp3,--volume=50]Ooh, what's this? %(_filename)%(_fileext)...\w8 A wallpaper, eh? How would you like me to set it?\n\n[half]/
-			\q[Centered,SetWallpaper_0]\n/
-			\q[Tiled,SetWallpaper_1]\n/
-			\q[Stretched,SetWallpaper_2]\n\n[half]/
-			\q[No thanks,SetWallpaper_Cancel]\e"
-		}
-		when ".mid", ".wav", ".mp3", ".wma", ".au" //Other file formats you might want to give your ghost a specific response to.
-		{
-			"\0\s[1]%(_filename)%(_fileext)! That's my current favorite song!\e"
-		}
-		when ".xcf", ".kra", ".psd", ".mdp"
-		{
-			"\0\s[0]I'm not a big art type guy, but this looks pretty cool!\e"
-		}
-		others //Any other file format. As a note here, if you drop something ghost-related on them that does not have an install.txt, then they won't install it and will just say this response. If you are testing your balloon or nar files and you get this response instead of a proper installation, you should check and make sure you have an install.txt in the file!
-		{
-			"\0\s[3]%(_filename)%(_fileext)... What do you want me to do with this?\e"
-		}
-	}
-}
-
-//This set of options sets the wallpaper up. You can replace the dialogue, but make sure to leave the \![set,wallpaper, etc.] tag at the beginning.
-
-Select.SetWallpaper_0
-{
-	"\![set,wallpaper,%(Wallpaperfile),center]\0\s[0]Center it!\e"
-}
-Select.SetWallpaper_1
-{
-	"\![set,wallpaper,%(Wallpaperfile),tile]\0\s[0]Tile it!\e"
-}
-Select.SetWallpaper_2
-{
-	"\![set,wallpaper,%(Wallpaperfile),stretch]\0\s[0]Stretch it!\e"
-}
-Select.SetWallpaper_Cancel
-{
-	"\0\s[0]Okay then. But why not? It's a really nice picture.\e"
 }

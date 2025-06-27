@@ -9,20 +9,33 @@ OnMouseDoubleClick
 		{
 				if reference4 == "mouth"
 				{
-				"\![sound,play,speech\Munch.mp3,--volume=50]\s[20]*NOM NOM NOM NOM NOM NOM*"
+				"\![embed,OnMunchSoundBite]\s[20]*NOM NOM NOM NOM NOM NOM NOM NOM NOM NOM*"
 				}
 				elseif reference4 == "head"
 				{
 				"\s[2]Hey! Quit buggin' me!"
 				"\s[4]Don't touch my hair! I styled it just right for any occasion!"
+				"\s[7]Hey! \s[3]Quit buggin' me!"
+				"\s[7]AAA! \s[4]Don't do that again!"
+				"\s[3]That's strange... What are you doing?"
+				"\s[3]What? You're weird..."
 				}
 				elseif reference4 == "eyes"
 				{
+					if CurrentMode == "sleeping"
+					{
+						CurrentMode = "normal"
+						"\s[2]Wha-\w8 Hey! \s[4]That's not a nice way to wake me up! I was having\s[8] such a wonderful dream about... %(food)... or TV... or Marge... or beer... \s[4]I can't remember! *sigh*"
+					}
+					else
+					{
 				"\s[5]Hey!\s[2] Quit buggin' me!"
 				"\s[5]Ow!\s[2] That hurts! Stop it!"
 				"\s[5]Ouch!\s[2] Don't poke my eyes! It hurts!"
+					}
 				}
-				else; OnSakuraMenu
+				elseif reference4 == ""; OnSakuraMenu
+				else; MusicPlayer.OnMouseDoubleClick
 		}
 		else
 		{
@@ -51,25 +64,51 @@ OnMouseMove.Sakura
 
 	if reference4 == "head"
 	{
-		if continuousstroke >= 120
-        {
-            if stroke >= 120
-            {
-                stroke = 0
-                totalpets++
-                currentpetstreak++
-                "\0\s[1]Ooh, that's a lotta pets!\e"
-                "\0\s[1]...\e"
-                "\0\s[1]Aww, thanks!\e"
-            }
-        }
-        elseif stroke >= 20
-        {
-		stroke = 0
-        totalpets++
-        currentpetstreak++
-		"\s[8]Mmm... pets..."
-		"\s[1]\![sound,play,speech\he-he.mp3,--volume=50]Heh heh"
+		if CurrentMode == "sleeping"
+		{
+			if continuousstroke >= 120
+			{
+				if stroke >= 120
+				{
+					stroke = 0
+					totalpets++
+					currentpetstreak++
+					"\0\s[22]Ooh, that's a lotta pets!\e"
+					"\0\s[21]...\e"
+					"\0\s[21]Aww, thanks!\e"
+				}
+			}
+			elseif stroke >= 20
+			{
+			stroke = 0
+			totalpets++
+			currentpetstreak++
+			"\s[21]Mmm... pets..."
+			"\s[22]\![embed,OnHeheSoundBite]Heh heh"
+			}
+		}
+		else
+		{
+			if continuousstroke >= 120
+			{
+				if stroke >= 120
+				{
+					stroke = 0
+					totalpets++
+					currentpetstreak++
+					"\0\s[1]Ooh, that's a lotta pets!\e"
+					"\0\s[1]...\e"
+					"\0\s[1]Aww, thanks!\e"
+				}
+			}
+			elseif stroke >= 20
+			{
+			stroke = 0
+			totalpets++
+			currentpetstreak++
+			"\s[8]Mmm... pets..."
+			"\s[1]\![embed,OnHeheSoundBite]Heh heh"
+			}
 		}
 	}
 }
@@ -81,33 +120,62 @@ OnMouseMove.Kero
 		//"\1\s[10]"
 	}
 }
+
 OnMouseWheel
 {
 	continuousstroke++
 
 	if reference4 == "head"
 	{
-		if continuousstroke >= 40
-        {
-            if stroke >= 40
-            {
-                stroke = 0
-                totalpets++
-                currentpetstreak++
-                "\0\s[1]Ooh, that's a lotta pets!\e"
-                "\0\s[1]...\e"
-                "\0\s[1]Aww, thanks!\e""
-            }
-        }
-        elseif stroke >= 20
-        {
-		stroke = 0
-        totalpets++
-        currentpetstreak++
-		"\s[8]Mmm... pets..."
-		"\s[1]\![sound,play,speech\he-he.mp3,--volume=50]Heh heh"
+		if CurrentMode == "sleeping"
+		{
+			if continuousstroke >= 120
+			{
+				if stroke >= 120
+				{
+					stroke = 0
+					totalpets++
+					currentpetstreak++
+					"\0\s[22]Ooh, that's a lotta pets!\e"
+					"\0\s[21]...\e"
+					"\0\s[21]Aww, thanks!\e"
+				}
+			}
+			elseif stroke >= 20
+			{
+			stroke = 0
+			totalpets++
+			currentpetstreak++
+			"\s[21]Mmm... pets..."
+			"\s[22]\![embed,OnHeheSoundBite]Heh heh"
+			}
+		}
+		else
+		{
+			if continuousstroke >= 120
+			{
+				if stroke >= 120
+				{
+					stroke = 0
+					totalpets++
+					currentpetstreak++
+					"\0\s[1]Ooh, that's a lotta pets!\e"
+					"\0\s[1]...\e"
+					"\0\s[1]Aww, thanks!\e"
+				}
+			}
+			elseif stroke >= 20
+			{
+			stroke = 0
+			totalpets++
+			currentpetstreak++
+			"\s[8]Mmm... pets..."
+			"\s[1]\![embed,OnHeheSoundBite]Heh heh"
+			}
 		}
 	}
+	elseif reference4 == ""; OnSakuraMenu
+	else; MusicPlayer.OnMouseWheel
 }
 
 OnMouseLeaveAll
@@ -115,13 +183,13 @@ OnMouseLeaveAll
     if continuousstroke > 40 && continuousstroke > pethighscore
     {
         pethighscore = continuousstroke
-        "\C\n\n\![sound,play,speech\woohoo.mp3,--volume=50]Woohoo, new petting high score! %(pethighscore)!\e"
+        "\C\n\n\s[1]\![embed,OnWoohooSoundBite]Woohoo, new petting high score! %(pethighscore)!\e"
     }
     --
     if currentpetstreak > toppetstreak
     {
         toppetstreak = currentpetstreak
-        //"\C\n\nWoohoo, new high score! (%(toppetstreak) pets!)\e"
+        //"\C\n\n\s[1]Woohoo, new high score! (%(toppetstreak) pets!)\e"
     }
     --
     stroke = 0

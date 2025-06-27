@@ -13,21 +13,10 @@ descript
 }
 
 //—————————————————————————————— Sakura surfaces ——————————————————————————————
-
+//Main Character Smiling pose
 surface0
 {
 element0,overlay,surface0.png,0,0
-}
-
-sakura.cursor
-{
-mousehover1,mouth,cursor.ani
-mouseup1,head,system:hand
-}
-
-sakura.tooltips
-{
-mouth,Mmm... cursor...
 }
 
 //Main Character Grinning pose
@@ -59,7 +48,7 @@ surface5
 {
 element0,overlay,surface1705.png,0,0
 }
-//Main Character Determined pose
+//Main Character Sleepy with Barely Open Eyes pose
 surface6
 {
 element0,overlay,surface1706.png,0,0
@@ -79,39 +68,92 @@ surface9
 {
 element0,overlay,surface1709.png,0,0
 }
+
 //Main Character Eating Pose
 surface20
 {
 	element0,overlay,surface1801.png,0,0
-	animation6.interval,talk,4
-	animation6.pattern0,overlay,1501,0,0,0
-	animation6.pattern1,overlay,1502,200,0,0
-	animation6.pattern2,overlay,1503,200,0,0
-	animation6.pattern3,overlay,-1,200,0,0
+	animation9.interval,talk,4
+	animation9.pattern0,overlay,1501,0,0,0
+	animation9.pattern1,overlay,1502,200,0,0
+	animation9.pattern2,overlay,1503,200,0,0
+	animation9.pattern3,overlay,-1,200,0,0
 }
-surface.append0-9,20
+
+//Main Character Sleeping Poses
+//Smiling
+surface21
+{
+	element0,overlay,surface1201.png,0,0
+}
+//Grinning
+surface22
+{
+	element0,overlay,surface1202.png,0,0
+}
+//Frowning
+surface23
+{
+	element0,overlay,surface1203.png,0,0
+}
+//Singing
+surface25
+{
+	element0,overlay,surface25.png,0,0
+}
+//Petting collisions and dressups
+surface.append0-9,20-23,25
 {
 collision0,41,11,213,86,head
 collision1,32,173,170,264,mouth
 collision2,36,100,144,150,eyes
-
+//music player
+//ear
+collision3,162,144,210,194,pause_resume_button
+//nose
+collision4,29,153,82,178,play_button
+//shoulder
+collision5,135,309,221,331,stop_button
+//Donut Sticker
 animation5.interval,bind
 animation5.pattern0,add,5001,0,0,0
+//Bowling Sticker
+animation6.interval,bind
+animation6.pattern0,add,5002,0,0,0
+//Office Tie
+animation7.interval,bind
+animation7.pattern0,add,6001,0,0,0
+//Rainbow Tie
+animation8.interval,bind
+animation8.pattern0,add,6002,0,0,0
+}
 
-}
-surface.append0-1,3,6
-{
-	animation0.interval,random,5
-	animation0.pattern0,overlay,1401,0,0,0
-	animation0.pattern1,overlay,1402,100,0,0
-	animation0.pattern2,overlay,-1,70,0,0
-}
-surface.append7-8
+//Blinking
+surface.append0-1,3,6-8,20
 {
 	animation0.interval,random,5
 	animation0.pattern0,overlay,1301,0,0,0
 	animation0.pattern1,overlay,1302,100,0,0
 	animation0.pattern2,overlay,-1,70,0,0
+}
+
+sakura.cursor
+{
+mousehover1,mouth,cursor.ani
+mouseup1,head,system:hand
+mouseup2,eyes,system:finger
+mouseup3,ear,system:hand
+mouseup4,nose,system:arrow
+mouseup5,hair,system:arrow
+mouseup6,shoulder,system:arrow
+}
+
+sakura.tooltips
+{
+mouth,Mmm... cursor...
+head,Ooh, pets!
+eyes,Don't poke 'em!
+ear,Don't shout in my ear!
 }
 //—————————————————————————————— Kero surfaces ——————————————————————————————
 

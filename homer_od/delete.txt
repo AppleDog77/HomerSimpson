@@ -1,0 +1,2 @@
+ghost/master/sakura_menu.dic
+ghost/master/kero_menu.dic

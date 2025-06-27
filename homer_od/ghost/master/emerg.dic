@@ -19,5 +19,5 @@ OnMouseDoubleClick
 OnEMERG.ErrorMessage
 {
 	ERASEVAR("EMERG.give_error_message")
-	"\_q\_v[speech\doh.mp3]\s[4]D'oh! [Check error log.]\x"
+	"\_q\0\s[4]\![embed,OnDohSoundBite]D'oh! [Error in dic files. Check the error log for details.]\x"
 }

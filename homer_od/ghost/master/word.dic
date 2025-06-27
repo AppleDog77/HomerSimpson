@@ -8,6 +8,7 @@ food
 	"chocolate"
 	"candy"
 	"cookies"
+	"%(flavour) ice cream"
 	"ice cream"
 	"ham"
 	"pink frosted donuts with sprinkles"
@@ -15,6 +16,11 @@ food
 	"chicken"
 	"pork chops"
 	"peanuts"
+	"hot chilli peppers"
+	"lollipops"
+	"honey"
+	"PB&J sandwiches"
+	"cotton candy"
 }
 
 ideas
@@ -22,13 +28,46 @@ ideas
 	"\s[8]eat 10 donuts in less than 10 minutes"
 	"break a world record, like the one for the longest ever sleep session"
 	"make some music by pressing random buttons on the console"
-	"watch the security cameras and see what funny stuff's happening"
-	"write a silly story about %(food) vs. %(food)"
-	"make up some silly words, like\s[1] %(wordgen1)%(wordgen2) or %(wordgen2)%(wordgen1)"
+	"watch the security cameras\s[1] and see what funny stuff's happening"
+	"write a silly story about\s[1] %(food) vs. %(food)"
+	"make up some silly words, like\s[1] %(wordgen1)%(wordgen2)\w8 or %(wordgen2)%(wordgen1)"
 	"...um...\w8\s[3] actually I can't think of anything right now...\w8 sorry! You should think of something"
-	"spin around in your chair, like this!\s[1]\![sound,play,speech\laugh.mp3,--volume=50] Weeeeeee"
-	"...um...\w8\s[3] actually I dunno what you could do right now...\w8 sorry!"
+	"spin around in your chair, like this!\s[1]\![embed,OnLaughSoundBite] Weeeeeee"
+	"...um...\w8\s[3] actually I dunno what you could do right now...\w8 sorry"
 	"dance around crazily, like no one's watching! And if you followed my tips, nobody will"
+	"draw a funny cartoon in your sketchbook"
+}
+
+yummy
+{
+"sweet"
+"tasty"
+"delicious"
+"yummy"
+"delectable"
+"savory"
+"good"
+"crunchy"
+}
+
+easyday
+{
+"bingewatch a new TV show"
+"sleep in all day"
+"put on some really loud music, and dance around crazily like no one's watching" 
+"find out how many %(food) I can eat in a day"
+"play with my Duffman action figure"
+}
+
+flavor
+{
+"strawberry"
+"chocolate"
+"banana"
+"lemon"
+"vanilla"
+"apple"
+"plum"
 }
 
 wordgen1
@@ -57,4 +96,97 @@ wordgen2
 	"mp"
 	"pi"
 	"nu"
+}
+
+//Thanks to Zi for helping me with the soundbite stuff!
+OnMunchSoundBite
+{
+    if SoundBiteToggle == "Off" //if user disables SoundBites, eat 'em all. Yum!
+	{
+	""
+	} 
+	else
+	{
+	IsSoundBite = 1
+    "\![sound,play,speech\Munch.mp3,--volume=%(SoundBiteVolume)]"
+	}
+}
+
+OnDohSoundBite
+{
+   	if SoundBiteToggle == "Off"
+	{
+	""
+	} 
+	else
+	{
+	IsSoundBite = 1
+    "\![sound,play,speech\doh.mp3,--volume=%(SoundBiteVolume)]"
+	}
+}
+
+OnWoohooSoundBite
+{
+   	if SoundBiteToggle == "Off"
+	{
+	""
+	} 
+	else
+	{
+	IsSoundBite = 1
+    "\![sound,play,speech\woohoo.mp3,--volume=%(SoundBiteVolume)]"
+	}
+}
+
+OnBurpSoundBite
+{
+   	if SoundBiteToggle == "Off"
+	{
+	""
+	} 
+	else
+	{
+	IsSoundBite = 1
+    "\![sound,play,speech\burp.mp3,--volume=%(SoundBiteVolume)]"
+	}
+}
+
+OnHeheSoundBite
+{
+    if SoundBiteToggle == "Off"
+	{
+	""
+	} 
+	else
+	{
+	IsSoundBite = 1
+    "\![sound,play,speech\he-he.mp3,--volume=%(SoundBiteVolume)]"
+	}
+}
+
+
+OnLaughSoundBite
+{
+   	if SoundBiteToggle == "Off"
+	{
+	""
+	} 
+	else
+	{
+	IsSoundBite = 1
+    "\![sound,play,speech\laugh.mp3,--volume=%(SoundBiteVolume)]"
+	}
+}
+
+OnHmmSoundBite
+{
+   	if SoundBiteToggle == "Off"
+	{
+	""
+	} 
+	else
+	{
+	IsSoundBite = 1
+    "\![sound,play,speech\hmm.mp3,--volume=%(SoundBiteVolume)]"
+	}
 }

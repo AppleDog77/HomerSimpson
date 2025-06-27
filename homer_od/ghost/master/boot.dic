@@ -4,9 +4,15 @@ OnFirstBoot
 	//Note - I haven't added anything about username or pronouns here because it's all handled by the SSP prefs
 	stroke = 0
 	continuousstroke = 0
+	CurrentMode = "normal"
+	SoundBiteToggle = "Off"
+	SoundBiteVolume = 50
+	MusicPlayer.SetDefaultSettings
 	LastTalk = ""
 	
-	"\1\s[10]\0\s[0]Hey there, %(username)!\s[1] I'm Homer Simpson. \s[3]Here are some top tips for making it through a day at the Power Plant:\w4 You need to look like you're busy at all times! Ask for help whenever you need it, which should be all the time! And most importantly, whenever you're bored,\w5\s[0] (and you will be, believe me),\w5\s[1] you can talk to me, or you can, um,\w5 %(ideas)! \s[0]I'll go back to work now,\w5\s[1] but we can talk or play games together anytime!"
+	"\t\1\s[10]\0\s[0]Hey there, %(username)!\s[1] I'm Homer Simpson.\s[3]Here are some top tips for making it through a day at the Power Plant:\w4 You need to look like you're busy at all times! Ask for help whenever you need it, which should be all the time! And most importantly, whenever you're bored,\w5\s[0] (and you will be, believe me),\w5\s[1] you can talk to me, or you can, um,\w5 %(ideas)! \s[0]I'll go back to work now,\w5\s[1] but we can talk or play games together anytime!\x"
+	
+	OnMusicPlayer.NotifySongInfo
 }
 
 OnInitialize
@@ -17,6 +23,12 @@ OnInitialize
 	//If you add new variables in updates, I recommend initializing them like so:
 	//if !ISVAR("NewVariable"); NewVariable = 0
 	//This means that it will only set the new variable if the user doesn't already have it, so that their variables don't get overwritten
+
+	if !ISVAR("CurrentMode"); CurrentMode = "normal"
+	if !ISVAR("SoundBiteToggle"); SoundBiteToggle = "Off"
+	if !ISVAR("SoundBiteVolume"); SoundBiteVolume = 50
+	OnMusicPlayer.NotifySongInfo
+	MusicPlayer.OnInitialize
 	
 	if reference0 != "reload" //For things you want to reset EXCEPT when just reloading; a convenience for you the dev, basically
 	{
@@ -37,7 +49,7 @@ OnBoot
 		"Hello, %(username)!"
 		"Hey, %(username)!"
 		"Oh hey there, %(username)!\s[1] How's it goin'?"
-		"Oh hey there, %(username)! How's it goin'? \w8\s[1]...I just realized, today's your birthday! Happy birthday, %(username)!"
+		"Oh hey there, %(username)! How's it goin'? \w8\s[1]...I just realized, today's your birthday! Happy birthday, %(username)! \s[1]\![embed,OnWoohooSoundBite]Woohoo! \s[3]You'd better share some cake with me though..."
 	}
 	elseif _today == "5/12" //You can add whatever cool dates you want with more elseifs here
 	{
@@ -50,12 +62,25 @@ OnBoot
 	"Hello, %(username)!"
 	"Hey, %(username)!"
 	}
+	OnMusicPlayer.NotifySongInfo
 }
 
 OnClose
 {
-	"\0\s[3]Oh, you need to go back to work?\s[0] Okay! I'll go back to my very...\w8 important...\w8 job here... \s[5] *snore*"
-	"\0\s[3]You need to leave, eh?\s[0] Okay then, bye!"
+	OnMusicPlayer.NotifySongInfo
+	if CurrentMode == "sleeping"
+	{
+	CurrentMode = "normal"
+	"\0\s[5]ZZZzzzz..."
+	"\0\s[5]Zzzzz... \s[6]Wha? You need to go? \s[0]...Okay then, bye... \s[5]zzz..."
+	--
+	"\w8\w8\-"
+	}
+	elseif CurrentMode == "normal"
+	{
+	"\0\s[3]Oh, you need to go back to work? \s[0]Okay! I'll go back to my very...\w8 important...\w8 job here... \s[5] *snore*"
+	"\0\s[3]You need to leave, eh? \s[0]Okay then, bye!"
 	--
 	"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
+	}
 }
