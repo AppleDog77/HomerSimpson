@@ -142,19 +142,21 @@ OnMovieEnd
 {
 MovieEnding = reference0
 
-"\0\s[7]That's how it ends?! %(MovieEnding)...\s[3] Well, at least I know the ending now, so I won't be haunted by that unfinished movie I watched on TV one night..."
+"\0\s[7]That's how it ends?! %(MovieEnding)...\w8\s[3] Well, at least I know the ending now, so I won't be haunted by that unfinished movie I watched on TV one night..."
 }
 
 OnSpilledBeer
 {
 SpilledBeer = reference0
 
-"\0\s[3]OK, I'll try that. %(SpilledBeer)...\s[4] Uh, it didn't work...\w5\s[3] but at least the beer's gone. Mostly."
+"\0\s[3]OK, I'll try that. %(SpilledBeer)...\w8\s[4] Uh, it didn't work...\w5\s[3] but at least the beer's gone. Mostly."
 }
 
 OnFunnyDrawing
 {
 FunnyDrawing = reference0
+
+	reference0 = TOLOWER(reference0) //makes it case-insensitive by changing it to lowercase
 
 	if "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "funny" _in_ reference0
 	{

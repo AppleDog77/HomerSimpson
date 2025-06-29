@@ -41,7 +41,7 @@ OnInstallFailure
 		when "artificial"; _reason = "canceled by user"
 	}
 
-	"\0\s[0][Could not complete installation: %(_reason).]"
+	"\0\s[4][Could not complete installation: %(_reason).]"
 }
 
 
@@ -53,7 +53,7 @@ OnNarCreated
 	//Makes a clickable link that'll open the location of the file they just made
 	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a"
 
-	"\0\s[0][Successfully created %(_nar).]"
+	"\0\s[1][Successfully created %(_nar).]"
 }
 
 OnNarLocation
@@ -88,11 +88,11 @@ OnUpdateComplete
 {
 	if reference0 == "none"
 	{
-		"\0\s[0][There are no new files.]"
+		"\0\s[4][There are no new files.]"
 	}
 	else
 	{
-		"\0\s[0][Update complete.]"
+		"\0\s[1][Update complete.]"
 	}
 }
 

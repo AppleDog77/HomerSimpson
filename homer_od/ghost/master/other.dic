@@ -54,13 +54,14 @@ OnSecondChange
 {
 	//This gets the time since the last dialogue ended, in seconds. SHIORI3FW.TalkEndTime is a variable that comes with YAYA as SHIORI
 	_since = GETSECCOUNT - SHIORI3FW.TalkEndTime
-	
+
 	//status is an inbuilt YAYA variable that has information on if the balloon is open, etc.
 	_balloonisopen = "balloon" _in_ status
-	
+
 	if _since % 15 == 0 && !_balloonisopen
 	{
 		//If you want to adjust how likely it is to change poses, change the number in the RAND. Higher numbers mean a lower chance for the pose to change.
+
 		if RAND(5) == 0; OnSurfaceRestore
 	}
 	//Counter for the music player
@@ -147,6 +148,50 @@ if reference0 == 0 //Zarla: in OnDressupChanged, reference0 refers to the charac
 			"\0\s[4]Why did you take away my snazzy tie?"
 			}
 		}
+	elseif reference1 == "Starry Tie"
+		{
+			if reference2 == 1
+			{
+			"\0\s[1]Aw, it has stars on it! Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something cool."
+			}
+			else
+			{
+			"\0\s[4]Why did you take away my cool tie?"
+			}
+		}
+	elseif reference1 == "Banana Tie"
+		{
+			if reference2 == 1
+			{
+			"\0\s[1]Ooh, it has bananas on it! Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something fun."
+			}
+			else
+			{
+			"\0\s[4]Why did you take away my fun tie?"
+			}
+		}
+	elseif reference1 == "Donut Tie"
+		{
+			if reference2 == 1
+			{
+			"\0\s[1]*gasp* This tie has donuts on it! Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something that... \s[8]makes me hungry..."
+			}
+			else
+			{
+			"\0\s[4]Why did you take away my yummy tie?"
+			}
+		}
+	elseif reference1 == "Summer Tie"
+		{
+			if reference2 == 1
+			{
+			"\0\s[0]Ooh, a summery tie! \s[1]Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something fun."
+			}
+			else
+			{
+			"\0\s[4]Why did you take away my fun summery tie?"
+			}
+		}
 	}
 else //if reference0 isn't the main character, then it has to be the side character.
 	{
@@ -168,7 +213,7 @@ On_homeurl
 
 ghostver
 {
-	"v1.1.0"
+	"v1.2.0"
 }
 //—————————————————————————————— Right click menu links ——————————————————————————————
 

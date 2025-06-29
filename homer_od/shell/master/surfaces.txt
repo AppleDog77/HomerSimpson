@@ -73,11 +73,11 @@ element0,overlay,surface1709.png,0,0
 surface20
 {
 	element0,overlay,surface1801.png,0,0
-	animation9.interval,talk,4
-	animation9.pattern0,overlay,1501,0,0,0
-	animation9.pattern1,overlay,1502,200,0,0
-	animation9.pattern2,overlay,1503,200,0,0
-	animation9.pattern3,overlay,-1,200,0,0
+	animation20.interval,talk,4
+	animation20.pattern0,overlay,1501,0,0,0
+	animation20.pattern1,overlay,1502,200,0,0
+	animation20.pattern2,overlay,1503,200,0,0
+	animation20.pattern3,overlay,-1,200,0,0
 }
 
 //Main Character Sleeping Poses
@@ -101,7 +101,7 @@ surface25
 {
 	element0,overlay,surface25.png,0,0
 }
-//Petting collisions and dressups
+//Collisions and dressups
 surface.append0-9,20-23,25
 {
 collision0,41,11,213,86,head
@@ -114,6 +114,7 @@ collision3,162,144,210,194,pause_resume_button
 collision4,29,153,82,178,play_button
 //shoulder
 collision5,135,309,221,331,stop_button
+//dressups
 //Donut Sticker
 animation5.interval,bind
 animation5.pattern0,add,5001,0,0,0
@@ -126,6 +127,18 @@ animation7.pattern0,add,6001,0,0,0
 //Rainbow Tie
 animation8.interval,bind
 animation8.pattern0,add,6002,0,0,0
+//Starry Tie
+animation9.interval,bind
+animation9.pattern0,add,6003,0,0,0
+//Banana Tie
+animation10.interval,bind
+animation10.pattern0,add,6004,0,0,0
+//Donut Tie
+animation11.interval,bind
+animation11.pattern0,add,6005,0,0,0
+//Summer Tie
+animation12.interval,bind
+animation12.pattern0,add,6006,0,0,0
 }
 
 //Blinking

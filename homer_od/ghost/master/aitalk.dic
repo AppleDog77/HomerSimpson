@@ -46,7 +46,7 @@ RandomTalk : nonoverlap_pool
 	"\0\s[0]I've always wondered whether zebras have black stripes, or white stripes. For that matter, do killer tomatoes really exist? Are they the cause of all the major problems of the world, like\w8\s[2] me missing a 90% off donut sale, or when there's a huge traffic jam, and\s[3] I end up late for work, and have to stay overtime to make up for it?\s[2] Damn you, killer tomatoes! DAMN YOU!!!"
 	"\0\s[0]Lenny (or was it Carl?)\w5 told me about some contest going on. I think it was called, Big Burping Contest! It was about burping really big, for a really long time! I was about to win the contest,\s[4] but some random guy who had never entered any contest before won it!\s[0] Just barely though."
 	"\0\s[0]Last night's dream was so boring, I fell asleep during it!\s[8] Then I dreamt of %(food)..."
-	"\0\s[3]Why did the chicken cross the road?\s[0] To let me eat it!\s[9]\![embed,OnLaughSoundBite] Heh heh heh heh heh."
+	"\0\s[3]Why did the chicken cross the road? \s[0]To let me eat it!\s[9]\![embed,OnLaughSoundBite] Heh heh heh heh heh."
 	"\0\s[1]I love donuts! They've saved my life so many times...\s[3] One time, I was starving, and the fridge was empty, but then\w4 I saw a donut just laying there on the street! I ran to grab it, but a huge truck ran over it. It could've run over me!\s[0] The donut heroically sacrificed its life to save mine..."	
 	"\0\s[3]I was watching the series finale of my current favorite show. But it got interrupted by some breaking news or something,\w5\s[4] and I never got to see the ending! *sigh*\s[3] I'll just have to find it on the Internet or something..."
 	"\0\s[4]\![embed,OnDohSoundBite]D'oh! I spilled Duff all over the console! \w8\s[3]...I guess I'll go and clean it up."
@@ -65,6 +65,8 @@ RandomTalk : nonoverlap_pool
 	"\0\s[3]I just found this interesting cartoon about %(food), but it looked like a slideshow instead of a real cartoon...\w8 What an odd cartoon."
 	"\0\s[0]\![embed,OnHmmSoundBite]Ooh, bubble wrap! \![embed,OnHeheSoundBite]Teehee, pop, pop, pop..."
 	"\0\s[0]Whenever I get a tummy ache from eating too much food, the one snack I miss is %(food).... Mmm..."
+	"\0\s[0]Did you know that most of the buttons on this console do nothing? At least, I don't think they do... \s[3]Hmm.."
+	"\0\s[3]Don't you hate it when you really need to grab a midnight snack, \s[7]only to find that you already ate all of 'em? \s[3]That happens to me quite a lot..."
 	}
 }
 

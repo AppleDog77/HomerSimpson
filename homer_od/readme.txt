@@ -31,5 +31,5 @@ Shell graphics by me
 
 Updates:
 Released on Mon, May 19, 2025.
-Ver 1.1 - Overhauled his shirt's appearance. Added Sleep Mode, Music Player (by Zichqec), Soundbite Toggle and Volume Settings, Idle between Dialogues function, new dressups, more minigames, more wordgroups and words, more clickpoints (ear, nose, and shoulder for Music Player controls), more favorite sites, and more dialogue. Homer will now react to what you say about his drawing (whether it's good or bad or synonyms thereof). Changed filenames of menu dics for sakura and kero. Updated YAYA to Tc571-11.
-
+Ver 1.1 - Overhauled his shirt's appearance. Added Sleep Mode, Music Player (by Zichqec), Soundbite Toggle and Volume Settings, Idle between Dialogues function, new dressups, more minigames, more wordgroups and words, more clickpoints (ear, nose, and shoulder for Music Player controls), more favorite sites, and more dialogue. Homer will now react to what you say about his drawing (whether it's good or bad or synonyms thereof). Changed filenames of menu dics for sakura and kero. (Fri, Jun 27, 2025)
+Ver 1.2 - Added new ties, new dialogue, new wordgroup words, a check for certain words in OnFileDrop2, TOLOWER to Drawing Reaction inputs, more expressions to meta stuff, and custom music player tooltips. Fixed the OnMusicPlayer.NotifySongInfo stuff in Boot.dic to be called at the correct times like the simplicity + music player bundle's implementation of it, to prevent issues with OnClose dialogue not working. (Sun, Jun 29, 2025)

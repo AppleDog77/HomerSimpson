@@ -9,7 +9,7 @@ OnMouseDoubleClick
 		{
 				if reference4 == "mouth"
 				{
-				"\![embed,OnMunchSoundBite]\s[20]*NOM NOM NOM NOM NOM NOM NOM NOM NOM NOM*"
+				"\![embed,OnMunchSoundBite]\s[20]*NOM NOM NOM NOM NOM NOM NOM NOM NOM NOM*\w9\s[0]"
 				}
 				elseif reference4 == "head"
 				{

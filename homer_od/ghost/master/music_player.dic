@@ -1863,11 +1863,32 @@ OnFileDrop2 : all
 		{
 			Wallpaperfile = reference0
 
+			reference0 = TOLOWER(reference0) //makes it case-insensitive by changing it to lowercase
+
+			if "donut" _in_ reference0
+			{
+			"\s[0]\![embed,OnHmmSoundBite]Ooh, what's this? %(_filename)%(_fileext)...\w8 A donut wallpaper, eh? \s[8]Mmm...\w9 donuts...\w9 \s[1]How would you like me to set it?\n\n[half]/
+			\q[Centered,OnSetWallpaper_0]\n/
+			\q[Tiled,OnSetWallpaper_1]\n/
+			\q[Stretched,OnSetWallpaper_2]\n\n[half]/
+			\q[No thanks,OnSetWallpaper_Cancel]\e"
+			}
+			elseif "homer" _in_ reference0
+			{
+			"\s[0]\![embed,OnHmmSoundBite]Ooh, what's this? %(_filename)%(_fileext)...\w8 A wallpaper of me, eh? \s[1]\![embed,OnWoohooSoundBite]Woohoo! That's a great choice for a wallpaper! How would you like me to set it?\n\n[half]/
+			\q[Centered,OnSetWallpaper_0]\n/
+			\q[Tiled,OnSetWallpaper_1]\n/
+			\q[Stretched,OnSetWallpaper_2]\n\n[half]/
+			\q[No thanks,OnSetWallpaper_Cancel]\e"
+			}
+			else
+			{
 			"\s[0]\![embed,OnHmmSoundBite]Ooh, what's this? %(_filename)%(_fileext)...\w8 A wallpaper, eh? How would you like me to set it?\n\n[half]/
-			\q[Centered,SetWallpaper_0]\n/
-			\q[Tiled,SetWallpaper_1]\n/
-			\q[Stretched,SetWallpaper_2]\n\n[half]/
-			\q[No thanks,SetWallpaper_Cancel]\e"
+			\q[Centered,OnSetWallpaper_0]\n/
+			\q[Tiled,OnSetWallpaper_1]\n/
+			\q[Stretched,OnSetWallpaper_2]\n\n[half]/
+			\q[No thanks,OnSetWallpaper_Cancel]\e"
+			}
 		}
 		elseif ".xcf", ".kra", ".psd", ".mdp"
 		{
@@ -1909,21 +1930,23 @@ OnFileDrop2 : all
 
 //This set of options sets the wallpaper up. You can replace the dialogue, but make sure to leave the \![set,wallpaper, etc.] tag at the beginning.
 
-Select.SetWallpaper_0
+OnSetWallpaper_0
 {
 	"\![set,wallpaper,%(Wallpaperfile),center]\0\s[0]Center it!\e"
 }
-Select.SetWallpaper_1
+OnSetWallpaper_1
 {
 	"\![set,wallpaper,%(Wallpaperfile),tile]\0\s[0]Tile it!\e"
 }
-Select.SetWallpaper_2
+OnSetWallpaper_2
 {
 	"\![set,wallpaper,%(Wallpaperfile),stretch]\0\s[0]Stretch it!\e"
 }
-Select.SetWallpaper_Cancel
+OnSetWallpaper_Cancel
 {
-	"\0\s[0]Okay then. But why not? It's a really nice picture.\e"
+	"\0\s[4]Aww...\w8 \s[0]Okay then. But why not? It's a really nice picture.\e"
+	"\0\s[4]\![embed,OnDohSoundBite]D'oh!\w8 I was hoping you'd put that great picture on your desktop. \s[8]Oh well...\e"
+	"\0\s[3]Oh... OK then. It's not a particularly good picture anyway..."
 }
 
 //CUSTOMIZE: Hotspots. If you already have OnMouseDoubleClick in your ghost, you'll need to make it direct here if an unknown hotspot is clicked. If you do not have OnMouseDoubleClick, just rename this one to OnMouseDoubleClick. If you rename this one, you may want to put in a check to open your main menu if the mouse is not over a hotspot.
@@ -2181,15 +2204,15 @@ On_tooltip
 	{
 		if reference4 == "play_button"
 		{
-			if MusicPlayer.Singing; "Play / Next"
-			else; "Play"
+			if MusicPlayer.Singing; "Play / Next Song, ooh!"
+			else; "Let's Play!"
 		}
 		elseif reference4 == "pause_resume_button"
 		{
-			if MusicPlayer.PlayState == 1; "Pause"
-			else; "Resume"
+			if MusicPlayer.PlayState == 1; "Pause for now"
+			else; "Resume!"
 		}
-		elseif reference4 == "stop_button"; "Stop"
+		elseif reference4 == "stop_button"; "Stop, please"
 		elseif reference4 == "next_button"; "Next song"
 		elseif reference4 == "previous_button"; "Previous song"
 		elseif reference4 == "music_menu_button"; "Music menu"
