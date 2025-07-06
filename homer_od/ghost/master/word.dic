@@ -1,14 +1,17 @@
-food
+foods
 {
 	"brownies"
 	"pies"
+	"%(flavor) pies"
 	"cakes"
+	"%(flavor) cakes"
 	"cupcakes"
+	"%(flavor) cupcakes"
 	"donuts"
 	"chocolate"
 	"candy"
 	"cookies"
-	"%(flavour) ice cream"
+	"%(flavor) ice cream"
 	"ice cream"
 	"ham"
 	"pink frosted donuts with sprinkles"
@@ -23,6 +26,7 @@ food
 	"cotton candy"
 	"sundaes"
 	"potato chips"
+	"gummies"
 }
 
 ideas
@@ -31,13 +35,14 @@ ideas
 	"break a world record, like the one for the longest ever sleep session"
 	"make some music by pressing random buttons on the console"
 	"watch the security cameras\s[1] and see what funny stuff's happening"
-	"write a silly story about\s[1] %(food) vs. %(food)"
+	"write a silly story about\s[1] %(foods) vs. %(foods)"
 	"make up some silly words, like\s[1] %(wordgen1)%(wordgen2)\w8 or %(wordgen2)%(wordgen1)"
 	"...um...\w8\s[3] actually I can't think of anything right now...\w8 sorry! You should think of something"
-	"spin around in your chair, like this!\s[1]\![embed,OnLaughSoundBite] Weeeeeee"
+	"spin around in your chair, like this! \s[1]\![embed,OnLaughSoundBite]Weeeeeee"
 	"...um...\w8\s[3] actually I dunno what you could do right now...\w8 sorry"
 	"dance around crazily, like no one's watching! And if you followed my tips, nobody will"
 	"draw a funny cartoon in your sketchbook"
+	"listen to %(musicgenre) music"
 }
 
 yummy
@@ -57,8 +62,33 @@ easyday
 "bingewatch a new TV show"
 "sleep in all day"
 "put on some really loud music, and dance around crazily like no one's watching" 
-"find out how many %(food) I can eat in a day"
+"find out how many %(foods) I can eat in a day"
 "play with my Duffman action figure"
+}
+
+musicgenre
+{
+"rock"
+"metal"
+"pop"
+"electronic"
+"elevator"
+"techno"
+"blues"
+", uh...\w8 jazz"
+", um...\w8 funk"
+}
+
+dreams
+{
+"\s[8]it was raining %(foods) and other goodies of all kinds"
+"I invented a new dessert that everyone feasted on, but at some point I couldn't make any more and people got mad"
+"there was nobody in the house and I could do whatever I wanted, \s[2]but then aliens showed up and I had to fight 'em off,\w5\s[4] but I failed"
+"\s[0]me and my family were cookies and I tried to eat myself"
+"Lisa's books came alive and tried to eat us"
+"\s[0]I was popping infinite bubble wrap"
+"\s[0]we were popping infinite bubbles that came from nowhere"
+"I found a black hole on the road and it sucked me in"
 }
 
 flavor

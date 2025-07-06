@@ -25,7 +25,7 @@ OnMouseDoubleClick
 					if CurrentMode == "sleeping"
 					{
 						CurrentMode = "normal"
-						"\s[2]Wha-\w8 Hey! \s[4]That's not a nice way to wake me up! I was having\s[8] such a wonderful dream about... %(food)... or TV... or Marge... or beer... \s[4]I can't remember! *sigh*"
+						"\s[2]Wha-\w8 Hey! \s[4]That's not a nice way to wake me up! I was having\s[8] such a wonderful dream about... %(foods)... or TV... or Marge... or beer... \s[4]I can't remember! *sigh*"
 					}
 					else
 					{

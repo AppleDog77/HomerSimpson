@@ -37,8 +37,10 @@ OnSakuraMenu : all
 	"\![*]\q[Music player,OnMusicPlayer.Menu]\n\n"
 	
 	"\![*]\q[Config,OnConfigMenu]\n\n"
-		
-	"\![*]\q[Nevermind,CANCEL]"
+	
+	"\![*]\q[Nevermind,CANCEL]\n\n"
+	
+	"%(ghostver)"
 }
 
 OnLastTalk
@@ -104,7 +106,7 @@ OnToggleSoundBites
 
 OnSoundBiteSettings
 {
-	"Volume: \__q[OnBiteVolumeUp]▲\__q\__q[OnBiteVolumeDown]▼\__q %(SoundBiteVolume)\n\n/
+	"Volume: \__q[OnBiteVolumeUp]\f[name,calibri]▲\__q\__q[OnBiteVolumeDown]▼\f[name,default]\__q %(SoundBiteVolume)\n\n/
 	\![*]\q[Back,OnConfigMenu]"
 }
 
@@ -136,7 +138,7 @@ OnAskStuff
 	CurrentMode = "normal"
 	"\0\s[3]I was watching a really cool movie on TV about, uh, something really cool. But it got interrupted by some breaking news or something,\s[4] and I never got to see the ending of the movie!\s[3] Could you tell me the ending of it?\![open,inputbox,OnMovieEnd,-1]"
 	"\0\s[4]\![embed,OnDohSoundBite]D'oh! I spilled Duff all over the console! What do I do?\![open,inputbox,OnSpilledBeer,-1]"
-	"\0\s[1]I just drew something on some paper! See? ...It's some %(food)! What do you think of it?\![open,inputbox,OnFunnyDrawing,-1]"
+	"\0\s[1]I just drew something on some paper! See? ...It's some %(foods)! What do you think of it?\![open,inputbox,OnFunnyDrawing,-1]"
 }
 OnMovieEnd
 {
@@ -146,6 +148,7 @@ MovieEnding = reference0
 }
 
 OnSpilledBeer
+//sleep on it
 {
 SpilledBeer = reference0
 
@@ -158,17 +161,17 @@ FunnyDrawing = reference0
 
 	reference0 = TOLOWER(reference0) //makes it case-insensitive by changing it to lowercase
 
-	if "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "funny" _in_ reference0
+	if "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "funny" _in_ reference0 || "hilarious" _in_ reference0 || "excellent" _in_ reference0 || "marvelous" _in_ reference0 || "cute" _in_ reference0 || "adorable" _in_ reference0 || "innocent" _in_ reference0 || "playful" _in_ reference0 || "super" _in_ reference0 || "nice" _in_ reference0 || "neat" _in_ reference0 || "rad" _in_ reference0 || "splendid" _in_ reference0 || "pleas" _in_ reference0 || "stunning" _in_ reference0 || "delight" _in_ reference0 || "darling" _in_ reference0 || "fascinating" _in_ reference0 || "enchanting" _in_ reference0 || "best" _in_ reference0 || "joy" _in_ reference0 || "lovable" _in_ reference0 || "love" _in_ reference0 || "wholesome" _in_ reference0 || "sweet" _in_ reference0 || "tasty" _in_ reference0 || "delicious" _in_ reference0 || "yummy" _in_ reference0 || "delectable"_in_ reference0
 	{
-	"\0\s[0]You really think it's %(FunnyDrawing)? \s[1]\![embed,OnWoohooSoundBite]Woohoo! Thanks."
+	"\0\s[0]You really think it's...\w5 %(FunnyDrawing)? \s[1]\![embed,OnWoohooSoundBite]Woohoo! Thanks."
 	}
-	elseif "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0
+	elseif "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "horrid" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0 || "gross" _in_ reference0 || "disgust" _in_ reference0 || "ugly" _in_ reference0 || "hideous" _in_ reference0 || "odious" _in_ reference0 || "revolting" _in_ reference0 || "nasty" _in_ reference0 || "annoying" _in_ reference0 || "obnoxious" _in_ reference0 || "unpleasant" _in_ reference0 || "abhorrent" _in_ reference0 || "loathsome" _in_ reference0 || "dreadful" _in_ reference0 || "off-putting" _in_ reference0 || "worst" _in_ reference0 || "nauseating" _in_ reference0 || "upsetting" _in_ reference0 || "stupid" _in_ reference0 || "idiotic" _in_ reference0 || "unlovable" _in_ reference0 || "dumb" _in_ reference0 || "buggy" _in_ reference0 || "poisonous" _in_ reference0
 	{
-	"\0\s[7]*gasp*\w8\s[2] How dare you! It's... \w8\s[4]Okay, I guess it's not my best work, but it's still not %(FunnyDrawing)! My next drawing will be better, you'll see!"
+	"\0\s[7]*gasp*\w8\s[2] How dare you! It's... \w8\s[4]Okay, I guess it's not my best work, but it's still not,\w5 '%(FunnyDrawing)'! My next doodle will be better, you'll see!"
 	}
 	else
 	{
-	"\0\s[0]You think it's %(FunnyDrawing)? ...Okay then."
+	"\0\s[0]You think it's, %(FunnyDrawing)? ...Okay then."
 	}
 }
 
@@ -177,8 +180,8 @@ OnHugHomer
 	if CurrentMode == "sleeping"
 	{
 	CurrentMode = "normal"
-	"\s[21]ZZZZZzzz... \s[6]Huh? ...Aw! \s[1]Thanks... What do you need?"
-	"\s[22]ZZZZ..... \s[6]Aw! \s[0]D'you need something?"
+	"\s[21]ZZZZZzzz... \s[6]Huh? ...Aw! \s[1]Thanks..."
+	"\s[22]ZZZZ..... \s[6]Aw! \s[0]Thanks..."
 	}
 	else
 	{
@@ -189,13 +192,13 @@ OnHugHomer
 OnSleepyHomer
 {
 CurrentMode = "sleeping"
-"\0\s[6]*yawn* I think I'll take a lil' nap... just for a bit... \s[5]*yawn*\w9 Zzzzz..."
+"\0\s[6]*yawn* I think I'll take a lil' nap...\w8 just for a bit...\w8 \s[5]*yawn*\w9 Zzzzz..."
 }
 
 OnAwakeHomer
 {
 CurrentMode = "normal"
-"\0\s[7]AAA! \w9\s[3]Sorry, I had a very strange dream, \w8\s[8]in which it was raining %(food) and desserts of all kinds..."
+"\0\s[7]AAA! \w9\s[3]Sorry, I had a very strange dream,\w8 in which %(dreams)"
 }
 
 Select.CANCEL

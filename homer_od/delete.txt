@@ -1,2 +1,4 @@
 ghost/master/sakura_menu.dic
 ghost/master/kero_menu.dic
+shell/master/surface1401.png
+shell/master/surface1402.png

@@ -2,13 +2,13 @@ KeroMenuGreetings : nonoverlap
 {
 	if CurrentMode == "sleeping"
 	{
-	"\1\s[10]\0\s[5]Mmm...\w8 %(food)..."
-	"\1\s[10]\0\s[21]Mmm...\w8 %(food)..."
-	"\1\s[10]\0\s[22]Mmm...\w8 %(food)..."
+	"\0\s[5]Mmm...\w8 %(foods)..."
+	"\0\s[21]Mmm...\w8 %(foods)..."
+	"\0\s[22]Mmm...\w8 %(foods)..."
 	}
 	else
 	{
-	"\0\s[8]Mmm...\w8 %(food)..."
+	"\0\s[8]Mmm...\w8 %(foods)..."
 	"\0\s[3]\![embed,OnBurpSoundBite]*BURP*\![no-autopause]"
 	}
 }
@@ -16,27 +16,27 @@ KeroMenuGreetings : nonoverlap
 //Because there is an all modifier here, you don't need to write -- between menu options
 OnKeroMenu : all
 {
-	"\1\b2\![set,autoscroll,disable]"
+	"\1\s[10]\0\b2\![set,autoscroll,disable]"
 	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; KeroMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
 	"\n\n\_q"
 	
 	//Put anything you want here, anything at all. For example, here's how you can add your own menu... You can make as many like this as you want! Uncomment if you want to test it out, or erase if you don't want it
 	"\![*]\q[Minigames,OnGamesMenu]\n\n"
 	
-	"\![*]\q[Nevermind,blank]"
+	"\![*]\q[Close Menu,OnRestoreDonut]"
 }
 
 OnGamesMenu : all
 {
-	CurrentMode == "normal"
-	"\0\s[0]Ooh, minigames! Which one do you wanna play?"
+	CurrentMode = "normal"
+	"\1\s[11]\0\s[1]Ooh, minigames! \s[0]Which one do you wanna play?"
 	"\n\n\_q"
 	
 	"\![*]\q[Word Search,OnStartWordSearch]\n"
 	"\![*]\q[Word Jumble,OnWordJumble.Start]\n"
 	"\![*]\q[Hangman,OnStartHangman]\n"
 	"\![*]\q[Back to main menu,OnKeroMenu]\n"
-	"\![*]\q[Nevermind,blank]"
+	"\![*]\q[Nevermind,OnRestoreDonut]"
 }
 
 //Written by Zichqec https://ukagaka.zichqec.com/index.html
@@ -70,10 +70,10 @@ OnStartWordSearch
 	_fontsize = 17
 	_maxwords = 10
 	_attempts_to_place = 15
-	if SHIORI3FW.BalloonName == _defaultballoon; _rightadjust = 0
+	if SHIORI3FW.BalloonName == _defaultballoon; _rightadjust = 20
 	_backwardsallowed = 0
 	_highlightinverted = 0
-	if SHIORI3FW.BalloonName == _defaultballoon; _highlightcolor = "255,255,255"
+	if SHIORI3FW.BalloonName == _defaultballoon; _highlightcolor = "100,0,160"
 	else; _highlightcolor = "default.anchor"
 	
 	//Don't touch these
@@ -106,9 +106,9 @@ WordSearchDialogue
 	}
 	elseif _argv[0] == "Finished Puzzle" //If the user completed the puzzle - _argv[1] is the last word the user found. Might be a good idea to add menu buttons here.
 	{
-		"\s[0]%(_argv[1]) was the last word!\w5 You found all the words! \w5\s[1]\![embed,OnWoohooSoundBite]Woohoo!"
+		"\1\s[10]\0\s[0]%(_argv[1]) was the last word!\w5 You found all the words! \w5\s[1]\![embed,OnWoohooSoundBite]Woohoo!"
 		--
-		"\_q\n\![*]\q[Play again,OnStartWordSearch]  \![*]\q[Play something else,OnGamesMenu]\n\![*]\q[I'm done,cancelnodialogue]\e"
+		"\_q\n\![*]\q[Play again,OnStartWordSearch]  \![*]\q[Play something else,OnGamesMenu]\n\![*]\q[I'm done,OnRestoreDonut]\e"
 		
 		ERASEVAR("WordSearch")
 		ERASEVAR("WordList")
@@ -119,7 +119,7 @@ WordSearchDialogue
 }
 OnWordSearchQuit
 {
-	"\0\s[0]Good idea! \s[3]That puzzle looked pretty tough..."
+	"\1\s[10]\0\s[0]Good idea! \s[3]That puzzle looked pretty tough..."
 }
 //Words you want to be placed in the puzzle go here. Be mindful of how long your words are! Make sure they're not too long to fit the grid. Probably don't make them too short, either. I'd recommend at least 4 letters. And have plenty of words available, the more the better! This has to be an array, so if you're using my other games, you won't be able to share a word pool between them. (Unless you get clever and have those word pools read from here using something like ANY(WordSearchWords)
 WordSearchWords : array
@@ -166,6 +166,7 @@ WordSearchWords : array
 	"Flanders"
 	"Seymour"
 	"Skinner"
+	"Milhouse"
 }
 
 OnWordSearch
@@ -786,11 +787,11 @@ OnWordJumble.Win : all
 	_correct_guesses = reference4
 	_scrambled = reference5
 	
-	"\0\b[2]\![set,autoscroll,disable]\_q"
+	"\1\s[10]\0\b[2]\![set,autoscroll,disable]\_q"
 	"\s[1]\![embed,OnWoohooSoundBite]Woohoo! You win!"
 	"\nCategory:\_w[] %(_category_name)"
 	"\n\n"
-	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
+	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnRestoreDonut]Done\__q"
 	"\n\n"
 	
 	WordJumble.MakeDisplay(_correct_guesses)
@@ -805,11 +806,11 @@ OnWordJumble.Lose : all
 	_correct_guesses = reference4
 	_scrambled = reference5
 	
-	"\0\b[2]\![set,autoscroll,disable]\_q"
+	"\1\s[10]\0\b[2]\![set,autoscroll,disable]\_q"
 	"\s[3]Game over! The correct word was %(_word). I guess you could try again, but..."
 	"\nCategory: %(_category_name)"
 	"\n\n"
-	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
+	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnRestoreDonut]Done\__q"
 	"\n\n"
 	
 	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
@@ -828,10 +829,10 @@ OnWordJumble.Quit : all
 	
 	"\0\b[2]\![set,autoscroll,disable]\_q"
 	"\![close,inputbox,OnWordJumble.Guess]"
-	"Good idea! \s[3]I was gettin' sorta bored anyway."
+	"\1\s[10]\0\s[0]Good idea! \s[3]I was gettin' sorta bored anyway."
 	"\nCategory: %(_category_name)"
 	"\n\n"
-	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
+	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnRestoreDonut]Done\__q"
 	"\n\n"
 	
 	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
@@ -896,6 +897,7 @@ WordJumble.Category.Names : array
 	"Flanders"
 	"Seymour"
 	"Skinner"
+	"Milhouse"
 }
 
 
@@ -921,7 +923,7 @@ OnWordJumble.Start
 		_category[LSO] = IARRAY
 	}
 	
-	"\![close,inputbox,OnWordJumble.Guess]\![raise,OnWordJumble.Display,start,,""%(_category_name)"",""%(_word_list)""]"
+	"\![close,inputbox,OnWordJumble.Guess]\1\s[11]\0\![raise,OnWordJumble.Display,start,,""%(_category_name)"",""%(_word_list)""]"
 }
 
 //Main game window
@@ -1109,7 +1111,7 @@ OnHangman //Main game window
 	{
 		HangmanWin
 		--
-		"\0\s[1]\![embed,OnWoohooSoundBite]Woohoo! It was %(HMword)."
+		"\1\s[10]\0\s[1]\![embed,OnWoohooSoundBite]Woohoo! It was %(HMword)."
 	}
 	--
 	HangmanBack
@@ -1184,11 +1186,11 @@ OnGuessWhole
 	{
 		HangmanWin
 		--
-		"\0\s[1]\![embed,OnWoohooSoundBite]Woohoo! It was %(HMword)! You guessed it with %(_left) letters still blank! Wow!"
+		"\1\s[10]\0\s[1]\![embed,OnWoohooSoundBite]Woohoo! It was %(HMword)! You guessed it with %(_left) letters still blank! Wow!"
 	}
 	else //Incorrect guess, instant lose
 	{
-		"\0\s[3]Nope, it was %(HMword)! This is why I don't usually try and guess the whole word. It usually seems to trip me up!"
+		"\1\s[10]\0\s[3]Nope, it was %(HMword)! This is why I don't usually try and guess the whole word. It usually seems to trip me up!"
 	}
 	--
 	HangmanBack
@@ -1208,14 +1210,14 @@ Select.HangmanQuit
 {
 	"\0\![close,inputbox,OnGuessNormal]\![close,inputbox,OnGuessWhole]%(b)"
 	--
-	"\0\s[3]Aw, OK then. It was %(HMword). This game isn't my favorite anyway..."
+	"\1\s[10]\0\s[3]Aw, OK then. It was %(HMword). This game isn't my favorite anyway..."
 	--
 	HangmanBack
 }
 
 HangmanBack
 {
-	"\n\n\![*]\q[Another!,OnStartHangman]\n\![*]\q[I'm done,cancelnodialogue]\e"
+	"\n\n\![*]\q[Another!,OnStartHangman]\n\![*]\q[I'm done,OnRestoreDonut]\e"
 }
 
 HangmanWin //This function is called every time the user wins hangman. You can use it to easily add friendship/money/whatever in one easy place. This does not include dialogue, it's just for variable changes. The ones I've left in here are examples.
@@ -1268,4 +1270,9 @@ hangmanwords : nonoverlap //Words it can choose - add lots of these!
 	"Flanders"
 	"Seymour"
 	"Skinner"
+	"Milhouse"
+}
+OnRestoreDonut
+{
+"\1\s[10]\0"
 }

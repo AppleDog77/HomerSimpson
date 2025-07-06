@@ -43,3 +43,7 @@ sakura.menuitem8,12
 //Layering
 sakura.bindoption0.group,Stickers,multiple
 sakura.bindoption1.group,Ties
+
+menu.background.alignment,top+repeaty
+menu.foreground.alignment,top+repeaty
+menu.sidebar.alignment,bottom

@@ -1446,7 +1446,7 @@ OnMusicPlayer.PlaylistLoaded : all
 	if ARRAYSIZE(_new_playlist) == 0
 	{
 		//DIALOGUE: The playlist could not be loaded at all
-		"\![quicksection,1]\![embed,OnDohSoundBite]D'oh! No compatible songs were found in this playlist. Loading canceled.\x"
+		"\s[4]\![quicksection,1]\![embed,OnDohSoundBite]D'oh! No compatible songs were found in this playlist. Loading canceled.\x"
 	}
 	else
 	{
@@ -1844,7 +1844,7 @@ OnFileDrop2 : all
 				"%(MusicPlayer.Scope)%(MusicPlayer.SmallBalloon)\![no-autopause]\![set,autoscroll,disable]\![quicksection,1]"
 
 				//DIALOGUE: The user dropped a folder on the ghost, but nothing inside was a compatible music file
-				"\![embed,OnDohSoundBite]D'oh! None of the files in ""\_?%(_folder)\_?"" are compatible music files."
+				"\s[4]\![embed,OnDohSoundBite]D'oh! None of the files in ""\_?%(_folder)\_?"" are compatible music files."
 			}
 			else //If there are compatible songs
 			{
@@ -2155,12 +2155,12 @@ OnSoundError : all
 	"%(MusicPlayer.Scope)\![unlock,balloonrepaint]\c%(MusicPlayer.SmallBalloon)\![no-autopause]\![quicksection,1]"
 	
 	//DIALOGUE: If there is an error, it will tell the user and try to play the next song. reference3 is the error message, reference2 is the file name. Below is dialogue for attempting to play the next song
-	"\![embed,OnDohSoundBite]D'oh! For some reason I can't play the file ""\f[color,default.anchor]\_?%(reference2)\_?\f[color,default]""\n\n""%(reference3)"""
+	"\s[3]\![embed,OnDohSoundBite]D'oh! For some reason I can't play the file ""\f[color,default.anchor]\_?%(reference2)\_?\f[color,default]""\n\n""%(reference3)"""
 	
 	//If it's able to play another song
 	if _playnext
 	{
-		"\n\nStarting next song..."
+		"\n\n\s[0]Starting next song..."
 		
 		"\_w[5000]\![raise,OnSoundStop]"
 	}

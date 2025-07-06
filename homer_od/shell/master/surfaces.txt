@@ -102,18 +102,19 @@ surface25
 	element0,overlay,surface25.png,0,0
 }
 //Collisions and dressups
+//Coords created with the help of GIMP and Image Coordinate Clicker - https://jcmiller11.github.io/diceSim/coords.html
 surface.append0-9,20-23,25
 {
-collision0,41,11,213,86,head
-collision1,32,173,170,264,mouth
+collisionex0,head,polygon,60,75,90,36,90,10,123,1,168,10,170,35,200,75
+collisionex1,mouth,polygon,49,181,110,184,151,199,160,214,135,242,102,253,75,245,14,220
 collision2,36,100,144,150,eyes
 //music player
 //ear
-collision3,162,144,210,194,pause_resume_button
+collisionex3,pause_resume_button,polygon,175,156,195,156,206,168,195,185,176,185,166,166
 //nose
-collision4,29,153,82,178,play_button
+collisionex4,play_button,polygon,25,156,79,153,85,176,28,181
 //shoulder
-collision5,135,309,221,331,stop_button
+collisionex5,stop_button,polygon,140,312,172,303,208,309,222,330,133,329
 //dressups
 //Donut Sticker
 animation5.interval,bind
@@ -166,11 +167,13 @@ sakura.tooltips
 mouth,Mmm... cursor...
 head,Ooh, pets!
 eyes,Don't poke 'em!
-ear,Don't shout in my ear!
 }
 //—————————————————————————————— Kero surfaces ——————————————————————————————
 
 surface10
 {
-	//collision0,0,0,130,65,head
+}
+
+surface11
+{
 }

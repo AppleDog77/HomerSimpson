@@ -10,7 +10,7 @@ OnFirstBoot
 	MusicPlayer.SetDefaultSettings
 	LastTalk = ""
 	
-	"\t\1\s[10]\0\s[0]Hey there, %(username)!\s[1] I'm Homer Simpson.\s[3]Here are some top tips for making it through a day at the Power Plant:\w4 You need to look like you're busy at all times! Ask for help whenever you need it, which should be all the time! And most importantly, whenever you're bored,\w5\s[0] (and you will be, believe me),\w5\s[1] you can talk to me, or you can, um,\w5 %(ideas)! \s[0]I'll go back to work now,\w5\s[1] but we can talk or play games together anytime!\x"
+	"\t\1\s[10]\0\s[0]Hey there, %(username)!\s[1] I'm Homer Simpson.\s[3] Here are some top tips for making it through a day at the Power Plant:\w4 You need to look like you're busy at all times! Ask for help whenever you need it, which should be all the time! And most importantly, whenever you're bored,\w5\s[0] (and you will be, believe me),\w5\s[1] you can talk to me, or you can, um,\w5 %(ideas)! \s[0]I'll go back to work now,\w5\s[1] but we can talk or play games together anytime!\x"
 }
 
 OnInitialize
@@ -48,9 +48,9 @@ OnBoot
 		"Hello, %(username)!"
 		"Hey, %(username)!"
 		"Oh hey there, %(username)!\s[1] How's it goin'?"
-		"Oh hey there, %(username)! How's it goin'? \w8\s[1]...I just realized, today's your birthday! Happy birthday, %(username)! \s[1]\![embed,OnWoohooSoundBite]Woohoo! \s[3]You'd better share some cake with me though..."
+		"Oh hey there, %(username)! How's it goin'? \w8\s[1]...I just realized, today's your birthday! Happy birthday, %(username)! \s[1]\![embed,OnWoohooSoundBite]Woohoo! \s[3]You'd better share some %(foods) with me though..."
 	}
-	elseif _today == "5/12" //You can add whatever cool dates you want with more elseifs here
+	elseif _today == "5/12" //Homer's birthday!
 	{
 		"Oh hey there, %(username)!\s[1] Today's a very special day..."
 		"Hey, %(username)!\s[1] Somehow, I feel like today's gonna be a really great day..."
