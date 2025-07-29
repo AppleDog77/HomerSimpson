@@ -7,12 +7,15 @@ foods
 	"%(flavor) cakes"
 	"cupcakes"
 	"%(flavor) cupcakes"
+	"%(flavor) shortcakes"
+	"shortcakes"
 	"donuts"
 	"chocolate"
 	"candy"
 	"cookies"
 	"%(flavor) ice cream"
 	"ice cream"
+	"eggs"
 	"ham"
 	"pink frosted donuts with sprinkles"
 	"beer"
@@ -20,6 +23,8 @@ foods
 	"pork chops"
 	"peanuts"
 	"hot chilli peppers"
+	"hot sauce"
+	"hotdogs"
 	"lollipops"
 	"honey"
 	"PB&J sandwiches"
@@ -27,6 +32,9 @@ foods
 	"sundaes"
 	"potato chips"
 	"gummies"
+	"spaghetti"
+	"waffles"
+	"toast"
 }
 
 ideas
@@ -43,6 +51,9 @@ ideas
 	"dance around crazily, like no one's watching! And if you followed my tips, nobody will"
 	"draw a funny cartoon in your sketchbook"
 	"listen to %(musicgenre) music"
+	"watch \_a[https://www.youtube.com/watch?v=fMnIpIMuBJI]this funny video\_a that Bart showed me"
+	"order %(foods) with %(foods)"
+	"watch a boring movie and see how long you can last without falling asleep"
 }
 
 yummy
@@ -64,6 +75,8 @@ easyday
 "put on some really loud music, and dance around crazily like no one's watching" 
 "find out how many %(foods) I can eat in a day"
 "play with my Duffman action figure"
+"order %(foods) with %(foods)"
+"go outside and find the coziest place to sleep"
 }
 
 musicgenre
@@ -83,12 +96,15 @@ dreams
 {
 "\s[8]it was raining %(foods) and other goodies of all kinds"
 "I invented a new dessert that everyone feasted on, but at some point I couldn't make any more and people got mad"
-"there was nobody in the house and I could do whatever I wanted, \s[2]but then aliens showed up and I had to fight 'em off,\w5\s[4] but I failed"
+"\s[0]there was nobody in the house and I could do whatever I wanted, \s[2]but then aliens showed up and I had to fight 'em off,\w5\s[4] but I failed"
 "\s[0]me and my family were cookies and I tried to eat myself"
 "Lisa's books came alive and tried to eat us"
 "\s[0]I was popping infinite bubble wrap"
 "\s[0]we were popping infinite bubbles that came from nowhere"
 "I found a black hole on the road and it sucked me in"
+"I was lost in a weird purple forest and it kept changing, so I couldn't escape"
+"\s[4]I ate all the food in the world and there was nothing left...\w8 What a horrible nightmare..."
+"I was watching TV, but I got sucked into the TV and had to run from dinosaurs and horrible beasts, and man-eating mammoths"
 }
 
 flavor
@@ -100,6 +116,9 @@ flavor
 "vanilla"
 "apple"
 "plum"
+"coconut"
+"orange"
+"mango"
 }
 
 wordgen1
@@ -114,6 +133,8 @@ wordgen1
 	"oit"
 	"bo"
 	"we"
+	"fi"
+	"cre"
 }
 
 wordgen2
@@ -128,6 +149,8 @@ wordgen2
 	"mp"
 	"pi"
 	"nu"
+	"sa"
+	"tot"
 }
 
 //Thanks to Zi for helping me with the soundbite stuff!

@@ -45,15 +45,16 @@ OnBoot
 	--
 	if _today == _user_birthday
 	{
-		"Hello, %(username)!"
-		"Hey, %(username)!"
+		"Hello, %(username)! Somehow, I feel like today's gonna be a really great day for you..."
+		"Hey, %(username)! I heard it's a special day today."
 		"Oh hey there, %(username)!\s[1] How's it goin'?"
-		"Oh hey there, %(username)! How's it goin'? \w8\s[1]...I just realized, today's your birthday! Happy birthday, %(username)! \s[1]\![embed,OnWoohooSoundBite]Woohoo! \s[3]You'd better share some %(foods) with me though..."
+		"Oh hey there, %(username)! How's it goin'? \w9\w9\s[1]...I just realized, today's your birthday! Happy birthday, %(username)! \s[1]\![embed,OnWoohooSoundBite]Woohoo! \s[3]You'd better share some %(foods) with me though..."
 	}
 	elseif _today == "5/12" //Homer's birthday!
 	{
 		"Oh hey there, %(username)!\s[1] Today's a very special day..."
 		"Hey, %(username)!\s[1] Somehow, I feel like today's gonna be a really great day..."
+		"Hello, %(username)!\s[1] Got any %(foods) for me?"
 	}
 	else //Normal boot
 	{
@@ -73,14 +74,16 @@ OnClose
 	{
 	CurrentMode = "normal"
 	"\0\s[5]ZZZzzzz..."
-	"\0\s[5]Zzzzz... \s[6]Wha? You need to go? \s[0]...Okay then, bye... \s[5]zzz..."
+	"\0\s[23]Zzzzz...."
+	"\0\s[5]Zzzzz...\w8 \s[6]Wha? You need to go? \s[0]...Okay then, bye... \s[5]zzz..."
 	--
 	"\w8\w8\-"
 	}
 	elseif CurrentMode == "normal"
 	{
-	"\0\s[3]Oh, you need to go back to work? \s[0]Okay! I'll go back to my very...\w8 important...\w8 job here... \s[5] *snore*"
+	"\0\s[3]Oh, you need to go back to work? \s[0]Okay! I'll go back to my very...\w8\s[6] important...\w8 job here...\w8 \s[5]*snore*"
 	"\0\s[3]You need to leave, eh? \s[0]Okay then, bye!"
+	"\0\s[3]You need to leave, eh?\w8 \s[4]Okay, bye!\s[0] Hope to see you soon!"
 	--
 	"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
 	}

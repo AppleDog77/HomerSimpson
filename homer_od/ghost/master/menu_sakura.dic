@@ -128,31 +128,30 @@ OnBiteVolumeDown
 
 OnIdeaGen
 {
-CurrentMode = "normal"
-"\0\s[0]You look bored. Maybe you should %(ideas)!"
-"\0\s[0]Oh, you need ideas? Hmm, how about you %(ideas)!"
-"\0\s[0]Maybe you could %(ideas)!"
+	CurrentMode = "normal"
+	"\0\s[0]You look bored.\w8 Maybe you should %(ideas)!"
+	"\0\s[0]Oh, you need ideas? Hmm,\w8 how about you %(ideas)!"
+	"\0\s[0]Maybe you could\w8 %(ideas)!"
 }
 OnAskStuff
 {
 	CurrentMode = "normal"
-	"\0\s[3]I was watching a really cool movie on TV about, uh, something really cool. But it got interrupted by some breaking news or something,\s[4] and I never got to see the ending of the movie!\s[3] Could you tell me the ending of it?\![open,inputbox,OnMovieEnd,-1]"
+	"\0\s[3]I was watching a really cool movie on TV about, uh, something really cool. But it got interrupted by some breaking news or something,\w4\s[4] and I never got to see the ending of the movie!\s[3] Could you tell me the ending of it?\![open,inputbox,OnMovieEnd,-1]"
 	"\0\s[4]\![embed,OnDohSoundBite]D'oh! I spilled Duff all over the console! What do I do?\![open,inputbox,OnSpilledBeer,-1]"
 	"\0\s[1]I just drew something on some paper! See? ...It's some %(foods)! What do you think of it?\![open,inputbox,OnFunnyDrawing,-1]"
 }
 OnMovieEnd
 {
-MovieEnding = reference0
+	MovieEnding = reference0
 
-"\0\s[7]That's how it ends?! %(MovieEnding)...\w8\s[3] Well, at least I know the ending now, so I won't be haunted by that unfinished movie I watched on TV one night..."
+	"\0\s[7]That's how it ends?! %(MovieEnding)...\w8\s[3] Well, at least I know the ending now, so I won't be haunted by that unfinished movie I watched on TV one night..."
 }
 
 OnSpilledBeer
-//sleep on it
 {
-SpilledBeer = reference0
+	SpilledBeer = reference0
 
-"\0\s[3]OK, I'll try that. %(SpilledBeer)...\w8\s[4] Uh, it didn't work...\w5\s[3] but at least the beer's gone. Mostly."
+	"\0\s[3]OK, I'll try that. %(SpilledBeer)...\w8\s[4] Uh, it didn't work...\w5\s[3] but at least the beer's gone. Mostly."
 }
 
 OnFunnyDrawing
@@ -180,25 +179,29 @@ OnHugHomer
 	if CurrentMode == "sleeping"
 	{
 	CurrentMode = "normal"
-	"\s[21]ZZZZZzzz... \s[6]Huh? ...Aw! \s[1]Thanks..."
-	"\s[22]ZZZZ..... \s[6]Aw! \s[0]Thanks..."
+	"\s[21]ZZZZZzzz...\w8 \s[6]Huh? ...Aw! \s[1]Thanks..."
+	"\s[22]ZZZZ.....\w8 \s[6]Aw! \s[0]Thanks..."
 	}
 	else
 	{
 	"\0\s[1]...Aw! Thanks..."
+	"\0\s[1]...Thanks..."
+	"\0\s[1]..."
+	"\0\s[1]...so nice..."
+	"\0\s[1]...mmm...hugs..."
 	}
 }
 
 OnSleepyHomer
 {
-CurrentMode = "sleeping"
-"\0\s[6]*yawn* I think I'll take a lil' nap...\w8 just for a bit...\w8 \s[5]*yawn*\w9 Zzzzz..."
+	CurrentMode = "sleeping"
+	"\0\s[6]*yawn* I think I'll take a lil' nap...\w8 just for a bit...\w8 \s[5]*yawn*\w9 Zzzzz..."
 }
 
 OnAwakeHomer
 {
-CurrentMode = "normal"
-"\0\s[7]AAA! \w9\s[3]Sorry, I had a very strange dream,\w8 in which %(dreams)"
+	CurrentMode = "normal"
+	"\0\s[7]AAA! \w9\s[3]Sorry, I had a very strange dream,\w8 in which %(dreams)!"
 }
 
 Select.CANCEL

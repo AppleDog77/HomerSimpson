@@ -10,7 +10,8 @@ OnAiTalk
 	}
 	LastTalk
 }
-//Surfaces: 0 = smiling, 1 = grinning, 2 = angry, 3 = neutral, 4 = sad, 5 = sleeping, 6 = sleepy, 7 = shocked, 8 = drooling, 9 = winking
+
+//Surfaces: 0 = smiling, 1 = grinning, 2 = angry, 3 = neutral, 4 = sad, 5 = sleeping, 6 = sleepy, 7 = shocked, 8 = drooling, 9 = winking, 21 = sleep smile, 22 = sleep grin, 23 = sleep frown
 RandomTalk : nonoverlap_pool
 {
 	if CurrentMode == "sleeping"
@@ -19,26 +20,29 @@ RandomTalk : nonoverlap_pool
 	"\0\s[21]...Why yes, you may crawl directly into my mouth, fellow %(foods)..."
 	"\0\s[5]*snore*"
 	"\0\s[5]zzzzz"
-	"\0\s[21]pop... pop... pop!"
+	"\0\s[21]pop...\w8 pop...\w8 pop!"
 	"\0\s[5]...%(foods)..."
 	"\0\s[5]\w8\s[6]\w8\w9\s[5]ZZZZZZ"
-	"\0\s[5]Mmm... %(foods)..."
+	"\0\s[5]Mmm...\w8 %(foods)..."
 	"\0\s[5]...%(foods)... %(foods)..."
+	"\0\s[23]...Where...am I?"
+	"\0\s[5]What's happenin'...\w8 here?"
+	"\0\s[23]Back off...\w8you're mean..."
 	"\0\s[21]...Marge..."
-	"\0\s[21]...TV... best... friend..."
-	"\0\s[23]Marge... what's goin' on...? ..."
-	"\0\s[22]All.. Hail... King... Homer..."
+	"\0\s[21]...TV...\w8 best...\w8 friend..."
+	"\0\s[23]Marge...\w8 what's goin' on...? ..."
+	"\0\s[22]All...\w8 Hail...\w8 King...\w8 Homer..."
 	"\0\s[23]...Weird..."
-	"\0\s[23]...Bart...c'mere..."
+	"\0\s[23]...Bart...\w8 c'mere..."
 	"\0\s[5]Maggie... why're you here...?"
-	"\0\s[23]...Lisa... your book... it's...\e:chain=wakey"
+	"\0\s[23]...Lisa... your book...\w8 it's...\e:chain=wakey"
 	}
 	elseif CurrentMode == "normal"
 	{
 	"\0\s[0]I read a strange book about some guy flying over a cuckoo's nest, but the guy was actually -\w4 get this -\w4\s[7] crazy!\w4 Or was he pretending to be crazy?\s[0] I have no idea! I'd read it again, but\w4\s[3] it got lost,\w5 somehow."
 	"\0\s[3]Y'know, I just realized: Maybe the reason why the alarm keeps ringing\w5 is just to try to keep me from falling asleep on the job!\s[6] I'd better do something about that...\s[5] *snore*"
 	"\0\s[3]I saw this SCARY movie where GIANT cookies were taking over the world! \s[0]But luckily, the hero ate all of the cookies! Then, he started eating all the cakes, pies, chips, donuts, candies...\w8\s[8]\w9 chocolates...\w8\w9\w9\s[0]\n What was I saying?\w8 Oh yeah, the movie where cookies were trying to take over the world, but the hero ate all of 'em, then\w5 he ate everything else,\w5\s[4] and the world ran out of sweets,\w5 so the hero became the villain,\w5\s[0] and a new hero had to step up and defeat the villain so everybody could eat %(yummy) food again!\w5 What a crazy movie!"
-	"\0\s[3]Thought I needed to do something...\w8 Hmm...\w5 What was it?\w8\s[0] Oh yeah, I was gonna go over to Moe's -\w5 he announced a new drink available for a limited time only!\s[3] He said it was sorta strange though..."
+	"\0\s[3]Thought I needed to do something...\w8 Hmm...\w5 What was it?\w8\s[0] Oh yeah, I was gonna go over to Moe's -\w5 he announced a new drink available for a limited time only! \s[3]He said it was sorta strange though..."
 	"\0\s[8]Mmm... %(foods)..."
 	"\0\s[0]So I was eating this huge %(flavor) cake that my lovely wife Marge baked for me,\s[7] and suddenly some cake pieces tried to escape and fell from my chin before I could lick them up! Then,\w5\s[4] the dog ran towards me and pounced on my belly to lick off all the pieces! I was so surprised that I accidentally knocked over the cake! It was a horrible tragedy...\w8 Its guts splattered all over the walls!\w8\s[2]\n I chased the stupid mutt away so that I could mourn the loss of my beloved in peace.\s[0] When Marge came home I'd already eaten the remains of the %(yummy)...\w8\w8\s[8] %(yummy)...\w9\w9 cake..."
 	"\0\s[3]I feel like I've forgotten something...\w8\s[0] Nevermind, it's probably not important."
@@ -52,12 +56,12 @@ RandomTalk : nonoverlap_pool
 	"\0\s[4]\![embed,OnDohSoundBite]D'oh! I spilled Duff all over the console! \w8\s[3]...I guess I'll go and clean it up."
 	"\0\s[0]I just finished reading this weird story about some %(foods) who go on an epic adventure to slay the Mighty Meatdragon, but it turns out to be a dream, but then it turns out to be a dream within a dream within a dream..."
 	"\0\s[1]\![embed,OnBurpSoundBite]*BURP*"
-	"\0\s[3]Occasionally I can't fall asleep for some reason, so I watch the most boring movies ever, like, 'Revenge of the %(Capitalize(foods))', or Cosmic Wars XII, or some boring documentary about some guy from the past,\s[0] and tada! I drift off into...\w8 dreamland.\w4.\w4.\w8\w8\s[5] *snore*"
+	"\0\s[3]Occasionally I can't fall asleep for some reason, so I watch the most boring movies ever, like, 'Revenge of the %(Capitalize(foods))', or Cosmic Wars XII, or some boring documentary about some guy from the past,\s[0] and tada! I drift off into...\w8\s[6] dreamland.\w4.\w4.\w8\w8\s[5] *snore*"
 	"\0\s[0]Y'know, sometimes I feel so lucky to have met Marge and started a wonderful family with her,\s[3] but other times I don't wanna go to work.\w4\s[4] Or I don't wanna deal with Bart's shenanigans, or Lisa's confusing homework. I just wanna do literally nothing for an entire day\w4\s[0] and maybe %(easyday) or something instead. But every day I get up anyway, 'cuz\w4 I love my family so much,\w3 even the boy!"
 	"\0\s[1]\![embed,OnHeheSoundBite]Heh heh heh, that guy's funny."
 	"\0\s[7]Why's the clock not moving?! \w8\s[0]...Oh, right, it's working again. I guess it's just a weird trick by my eyes, or something."
 	"\0\s[0]Did'ya know that donuts come from...\w9 uh...\w8 Europe?"
-	"\0\s[0]\![raise,OnSleepyHomer]"
+	"\0\s[6]\![raise,OnSleepyHomer]"
 	"\0\s[1]I love very loud music, 'cuz then I can't hear anything other than the music! It means I don't have to do any chores, and can just enjoy the music."
 	"\0\s[3]I saw the weirdest album cover the other day... It had %(foods) on top of %(foods)! \w8\s[0]Can you believe it?"
 	"\0\s[0]I just can't get enough of food that is so hot that my tongue burns, for some reason.\s[1] It tastes so good, even though it hurts my tongue! \s[3]Although sometimes I get hallucinations..."
@@ -74,6 +78,12 @@ RandomTalk : nonoverlap_pool
 	"\0\s[0]Bart and I pranked the Flanders' with an unsolvable puzzle months ago, and now every time I ask Flanders about it he says he's almost done with it! \s[1]\![embed,OnHeheSoundBite]Heh heh...\w8\s[0] I wonder if he'll somehow mysteriously solve it though..."
 	"\0\s[0]I love putting lots of fun stickers on the console, \s[4]but sometimes Smithers orders me to remove them, \s[3]and I don't get why! I mean, it's not like they get in the way of important work or anything. Nothing happens 'round here! \nI temporarily remove 'em, \s[0]but I always put 'em back later."
 	"\0\s[3]I dunno why I get dreams about bad endings for TV shows a lot...\w8\s[0] I love the actual endings for the shows, \s[4]so why is my brain coming up with the most horrible endings that I don't like?! \s[3]At least I know they're not the real endings, but they're still so scary while I'm dreaming..."
+	"\0\s[3]Bart forced me to watch a scary movie so I could get back my music CDs! \s[7]I kept jumping out of my seat, \s[2]and Bart was laughing! \s[3]He claimed it was at the movie though, not me. I'm not sure that's true, but I couldn't give him the punishment he deserved 'cuz Lisa dragged me away and asked me for help with a school project."
+	"\0\s[0]Hey, here's one of my craziest bowling stories...\w8 My ball kept knocking over a smaller number of pins every time until it stopped hitting any of the pins! \s[4]I almost thought I'd lost my touch! \s[0]The next day I kept almost getting a really high score, but it never seemed to work out...\w8\s[7] until the very final round before quitting time, when I got a full 300! \s[1]Wow!"
+	"\0\s[0]I always thought the moon kept chasing the sun because he was stalking her, but I watched this late-night TV cartoon that claimed it was out of love...\w8\s[3] But I dunno, it sure seems like stalking to me.\w5\s[0] Maybe I'll camp out on some night and watch it happen in realtime...\w8\s[6]\w8\s[5] Zzzzz..."
+	"\0\s[3]Y'know, it can get pretty boring 'round here sometimes. \w8\s[0]But it's way less boring with someone else around."
+	"\0\s[7]So this crazy plot twist happened in '%(Capitalize(wordgen1))%(wordgen2) vs. %(Capitalize((foods))', and I just have to tell somebody! \s[3]But don't tell anyone, please! \w8\s[0]...It turned out that the big giant hero was actually a bunch of %(foods) the whole time! That's why he was destroying all the other foods! The way he was defeated was kinda funny though, \![embed,OnHeheSoundBite]heh heh."
+	"\0\s[3]The other day, Marge kept telling me to walk around the block and buy groceries, but I was busy watching a strange show about two roommates who're trying to kill each other, but they get along somehow. I tried to show it to Marge, but she just got weirded out and changed the channel to some boring talk show..."
 	}
 }
 

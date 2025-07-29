@@ -14,23 +14,25 @@ Homer has a music player! You can drag music files (mp3, wav, midi, etc., and yo
 
 If you double-click the donut, you'll find minigames: Word Search, Word Jumble, and Hangman. Homer wakes up to play these minigames with you. There is also a continuous petting minigame, so you may be able to find out how long you can pet Homer.
 
+Homer has dressups: various neat ties and stickers you can add to him. He also has the Idle between Dialogues function by Zi, so his expressions will change every now and then when his balloon isn't open.
+
 Hope you enjoy!
---
+=--=
 Terms of Use:
 
 This ghost is redistributable, but don't delete anything! You can fix minor errors (typos, etc.), but be sure to add a notice that you did so in this Readme. You don't have to give me credit, but if you want to, just put this somewhere in the readme, or the page where you have it for download: Created by Odie Dog at Ladybug Lane. You can copy this as a template to make your own ghost for some reason, though, instead of the amazing one at: http://www.ashido.com/ukagaka/walkthrough.html, by Zarla, or one of the templates by Zichqec, which I recommend you use instead. :P The shell graphics can be used for anything (no credit needed, but don't make freeshells out of it), especially non-ukagaka stuff like games (I'd love to see that)! :D
---
+=--=
 Credits:
 
 Based on Simplicity Template by Zichqec (https://ukagaka.zichqec.com/) and has other code from Zi like the Music Player and Idle between Dialogues functions
 Soundbites from the show
 Donut icon and kero by Sea.icon
 Shell graphics by me
-
---
-
+Thanks to everybody on the UDT Discord who submitted bug reports and generally helped with the ghost!
+=--=
 Updates:
 Released on Mon, May 19, 2025.
 Ver 1.1 - Overhauled his shirt's appearance. Added Sleep Mode, Music Player (by Zichqec), Soundbite Toggle and Volume Settings, Idle between Dialogues function, new dressups, more minigames, more wordgroups and words, more clickpoints (ear, nose, and shoulder for Music Player controls), more favorite sites, and more dialogue. Homer will now react to what you say about his drawing (whether it's good or bad or synonyms thereof). Changed filenames of menu dics for sakura and kero. (Fri, Jun 27, 2025)
 Ver 1.2 - Added new ties, new dialogue, new wordgroup words, a check for certain words in OnFileDrop2, TOLOWER to Drawing Reaction inputs, more expressions to meta stuff, and custom music player tooltips. Fixed the OnMusicPlayer.NotifySongInfo stuff in Boot.dic to be called at the correct times like the simplicity + music player bundle's implementation of it, to prevent issues with OnClose dialogue not working. (Sun, Jun 29, 2025)
 Ver 1.3 - Fixed missing space in boot dialogue (and a couple other typos), fixed a sleep surface image, made collisions more precise, improved description, jazzed up the right click menu, removed extra surface files that weren't being used, made the Minigames menu not switch to the kero when pressing back button in it, added a special surface to the kero for Minigames, and added more Drawing Responses, dialogue, wordgroups, and words to wordgroups (as well as changing the name of a wordgroup from food to foods). Bundled my Sky Balloon with installation, as while it was not meant for a particular ghost originally, it fits perfectly for Homer; it can still be used by other ghosts being made in the future though. (Sun, Jul 6, 2025)
+Ver 1.4 - Added Sleep Mode checks to Dressup reactions and some meta stuff, uninstall reactions, OnScreensaverStart response, SurfaceTable file, more hugging and petting reactions, dialogue, words, wordgroups, and Spectre custom calibration and responses. Customized more Music Player dialogue. (Tue, Jul 29, 2025)

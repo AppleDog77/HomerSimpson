@@ -108,88 +108,200 @@ if reference0 == 0 //Zarla: in OnDressupChanged, reference0 refers to the charac
 		{
 			if reference2 == 1
 			{
-			"\0\s[0]Ooh, a sticker! \s[7]*gasp* It's a donut sticker! \s[1]Thank you, %(username)!\e"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[5]Mmm...\w8 donuts..."
+				}
+				else
+				{
+				"\0\s[0]Ooh, a sticker! \s[7]*gasp* It's a donut sticker! \s[1]Thank you, %(username)!"
+				}
 			}
 			else // This checks if you're taking it off.
 			{
-			"\0\s[4]Why did you remove my donut sticker?\e"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you remove my donut sticker?"
+				}
 			}
 		}
 	elseif reference1 == "Bowling"
 		{
 			if reference2 == 1
 			{
-			"\0\s[0]Ooh, a sticker! \s[7]*gasp* It's a bowling sticker! In space! \s[1]Thank you, %(username)!\e"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[0]Ooh, a sticker! \s[7]*gasp* It's a bowling sticker! In space! \s[1]Thank you, %(username)!"
+				}
 			}
 			else // This checks if you're taking it off.
 			{
-			"\0\s[4]Why did you remove my bowling sticker? In space?\e"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you remove my bowling sticker? In space?"
+				}
 			}
 		}
 	elseif reference1 == "Office Tie"
 		{
 			if reference2 == 1
 			{
-			"\0\s[1]Thanks! \s[0]I forgot to put it on before going to work."
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[1]Thanks! \s[0]I forgot to put it on before going to work."
+				}
 			}
-			else
+			else // This checks if you're taking it off.
 			{
-			"\0\s[0]Phew! Now I don't have to be professional at work."
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[22]"
+				}
+				else
+				{
+				"\0\s[0]Phew! Now I don't have to be professional at work."
+				}
 			}
 		}
 	elseif reference1 == "Rainbow Tie"
 		{
 			if reference2 == 1
 			{
-			"\0\s[1]Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something snazzy."
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[1]Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something snazzy."
+				}
 			}
-			else
+			else // This checks if you're taking it off.
 			{
-			"\0\s[4]Why did you take away my snazzy tie?"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my snazzy tie?"
+				}
 			}
 		}
 	elseif reference1 == "Starry Tie"
 		{
 			if reference2 == 1
 			{
-			"\0\s[1]Aw, it has stars on it! Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something cool."
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[1]Aw, it has stars on it! Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something cool."
+				}
 			}
-			else
+			else // This checks if you're taking it off.
 			{
-			"\0\s[4]Why did you take away my cool tie?"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my cool tie?"
+				}
 			}
 		}
 	elseif reference1 == "Banana Tie"
 		{
 			if reference2 == 1
 			{
-			"\0\s[1]Ooh, it has bananas on it! Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something fun."
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[1]Ooh, it has bananas on it! Thanks! \s[0]Now I don't have to be professional at work, but I can still wear something fun."
+				}
 			}
-			else
+			else // This checks if you're taking it off.
 			{
-			"\0\s[4]Why did you take away my fun tie?"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my fun tie?"
+				}
 			}
 		}
 	elseif reference1 == "Donut Tie"
 		{
 			if reference2 == 1
 			{
-			"\0\s[1]*gasp* This tie has donuts on it! Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something that... \s[8]makes me hungry..."
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[5]Mmm...\w8 donuts..."
+				}
+				else
+				{
+				"\0\s[1]*gasp* This tie has donuts on it! Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something that... \s[8]makes me hungry..."
+				}
 			}
-			else
+			else // This checks if you're taking it off.
 			{
-			"\0\s[4]Why did you take away my yummy tie?"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my yummy tie?"
+				}
 			}
 		}
 	elseif reference1 == "Summer Tie"
 		{
 			if reference2 == 1
 			{
-			"\0\s[0]Ooh, a summery tie! \s[1]Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something fun."
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[0]Ooh, a summery tie! \s[1]Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something fun."
+				}
 			}
-			else
+			else // This checks if you're taking it off.
 			{
-			"\0\s[4]Why did you take away my fun summery tie?"
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my fun summery tie?"
+				}
 			}
 		}
 	}
@@ -197,6 +309,51 @@ else //if reference0 isn't the main character, then it has to be the side charac
 	{
 	}
 }
+
+
+OnSpectrePlugin.Surface
+{
+	if reference0 == "normal"; "\s[0]"
+	elseif reference0 == "surprised"; "\s[7]"
+	elseif reference0 == "discouraged"; "\s[4]"
+	elseif reference0 == "smile"; "\s[1]"
+	elseif reference0 == "angry"; "\s[2]"
+}
+
+OnSpectrePlugin.ConfirmCalibration
+{
+	"\![raiseplugin,Spectre,OnCustomCalibrationConfirm,–option=include,normal,surprised,discouraged,smile,angry]"
+}
+
+OnSpectrePlugin.Possession
+{
+	if RAND(5) == 0
+	{
+		if reference0 == "cheerful"
+		{
+			if CurrentMode == "sleeping"
+			{
+			"\0\s[22]...Hehe, that tickles..."
+			}
+			else
+			{
+			"\0\s[3]For some reason I keep thinking someone else is in the room with us, \w5\s[7]but I can't find them! \s[0]Oh well, the room feels nicer now, somehow."
+			}
+		}
+		else
+		{
+			if CurrentMode == "sleeping"
+			{
+			"\0\s[23]Brrrr...\w8hug...me..."
+			}
+			else
+			{
+			"\0\s[3]For some reason I have a strong feeling someone else is in the room with us, \w4\s[7]but I can't see them! \s[4]And I'm starting to feel chilly too! What's going on? Could you, maybe...\w8 hug me or something to make me warm?"
+			}
+		}
+	}
+}
+
 //Network update url. Make sure you have a / on the end of the url or it will give a warning every time users try to update! If you don't plan to use network updates you can remove this
 //IF YOU'RE USING GITHUB FOR NETWORK UPDATES: DO NOT USE github.io URLS! It will cause you pain and suffering. USE raw.githubusercontent!!!
 //To get the raw.githubusercontent link super easy:
@@ -213,7 +370,7 @@ On_homeurl
 
 ghostver
 {
-	"v1.3.0"
+	"v1.4.0"
 }
 //—————————————————————————————— Right click menu links ——————————————————————————————
 

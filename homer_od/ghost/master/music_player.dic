@@ -527,7 +527,7 @@ OnMusicPlayer.JumpToPlaylistPage : all
 	"\![open,inputbox,OnMusicPlayer.JumpIndex,-1]"
 	
 	//DIALOGUE: Typing in a page number to jump to manually in the playlist
-	"Write a page number to jump to, from 1 to %(MusicPlayer.MaxPages + 1)"
+	"Put a page number to jump to, from 1 to %(MusicPlayer.MaxPages + 1)"
 	"\n\n"
 	"\![*]\__q[OnMusicPlayer.JumpToCurrent]Jump to location of current song\__q"
 	"\n\n"
@@ -549,7 +549,7 @@ OnMusicPlayer.JumpIndex : all
 	{
 		//DIALOGUE: Putting in an invalid number, or something that isn't a number
 		"%(MusicPlayer.Scope)%(MusicPlayer.LargeBalloon)\![quicksection,1]\![set,autoscroll,disable]\![no-autopause]"
-		"Invalid input.\x\![raise,OnMusicPlayer.JumpToPlaylistPage]"
+		"Huh?! I've never heard of that number! Please put a real number.\x\![raise,OnMusicPlayer.JumpToPlaylistPage]"
 	}
 }
 
@@ -1735,7 +1735,7 @@ MusicPlayer.HotkeyChange : all
 	if ASEARCH(_key,_reserved_keys) != -1 //If it's reserved
 	{
 		//DIALOGUE: If the user tries to put in a hotkey that is reserved
-		"That hotkey's reserved, please choose another.\x"
+		"Looks like that hotkey's reserved... Maybe choose another?\x"
 	}
 	elseif _key == MusicPlayer.Hotkeys[_changing] //Same option as was already entered
 	{
@@ -1745,7 +1745,7 @@ MusicPlayer.HotkeyChange : all
 	elseif ASEARCH(_key,MusicPlayer.Hotkeys) != -1 //If this hotkey is already selected for something else
 	{
 		//DIALOGUE: If the user tries to enter a hotkey that is already being used
-		"That hotkey's already in use, please clear it before assigning it to another option.\x"
+		"Uh, that hotkey's already in use, you've gotta clear it before assigning it to another option.\x"
 	}
 	else //If it's a valid key
 	{
@@ -1921,7 +1921,7 @@ OnFileDrop2 : all
 			"%(MusicPlayer.Scope)%(MusicPlayer.SmallBalloon)\![no-autopause]\![set,autoscroll,disable]\![quicksection,1]"
 
 			//DIALOGUE: Multiple files were dragged on the ghost, and some of them were music files. %(_s) can be used to add an s if the number of compatible files is plural, and %(_num) can be used to list the number of files.
-			"%(_num) compatible song%(_s) added to the playlist."
+			"%(_num) compatible song%(_s) added to the playlist. They sound cool!"
 
 			"\n\n\![*]\q[Open music player,OnMusicPlayer.Menu]\n\![*]\q[Close,blank]"
 		}

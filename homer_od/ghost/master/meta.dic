@@ -3,7 +3,7 @@
 
 OnInstallComplete
 {
-	"\0\s[0][Installed %(reference1) (%(reference0)).]"
+	"\0\s[1]Hi there!\s[0][Installed %(reference1) (%(reference0)).]"
 	--
 	//A little menu to open or change to the ghost that was installed immediately
 	if "ghost" _in_ reference0
@@ -53,7 +53,14 @@ OnNarCreated
 	//Makes a clickable link that'll open the location of the file they just made
 	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a"
 
-	"\0\s[1][Successfully created %(_nar).]"
+	if CurrentMode == "sleeping"
+			 {
+			"\0\s[21][Successfully created %(_nar).]"
+			 }
+	else
+			 {
+			"\0\s[1][Successfully created %(_nar).]"
+			 }
 }
 
 OnNarLocation
@@ -67,7 +74,7 @@ OnNarLocation
 
 OnUpdateBegin
 {
-	"\0\s[0][Checking for updates.]\w8"
+	"\0[Checking for updates.]\w8"
 }
 
 //reference0 is the number of new files, starting from 0
@@ -79,7 +86,7 @@ OnUpdateReady
 	_s = ""; _are = "is"
 	if reference0 != 1; {_s = "s"; _are = "are"}
 	
-	"\0\s[0][There %(_are) %(reference0) new file%(_s).]\w8"
+	"\0[There %(_are) %(reference0) new file%(_s).]\w8"
 }
 
 //When the update finishes. Don't forget to initialize any new variables you've created! I highly highly recommend using OnInitialize for this (it's in boot.dic), in case the user updates via the ghost explorer or some other means.
@@ -88,11 +95,25 @@ OnUpdateComplete
 {
 	if reference0 == "none"
 	{
-		"\0\s[4][There are no new files.]"
+		 if CurrentMode == "sleeping"
+			 {
+			"\0\s[22][There are no new files.]"
+			 }
+			 else
+			 {
+			"\0\s[4][There are no new files.]"
+			 }
 	}
 	else
 	{
-		"\0\s[1][Update complete.]"
+		 if CurrentMode == "sleeping"
+			 {
+			"\0\s[22][Update complete.]"
+			 }
+			 else
+			 {
+			"\0\s[1][Update complete.]"
+			 }
 	}
 }
 
@@ -118,19 +139,19 @@ OnSNTPCompare
 	{
 		_s = ""; if reference3 != 1; _s = "s"
 
-		"\0\s[3][The clock is off by %(reference3) second%(_s).]\n\n"
+		"\0[The clock is off by %(reference3) second%(_s).]\n\n"
 		--
 		"\![*]\q[Fix it,script:\6]  \![*]\q[Leave it,blank]"
 	}
 	else
 	{
-		"\0\s[0][The clock is accurate.]"
+		"\0[The clock is accurate.]"
 	}
 }
 
 OnSNTPCorrect
 {
-	"\0\s[0][The clock has been corrected.]"
+	"\0[The clock has been corrected.]"
 }
 
 OnSNTPFailure
@@ -138,13 +159,25 @@ OnSNTPFailure
 	"\0\s[4]\![embed,OnDohSoundBite]D'oh! [Could not correct the clock.]"
 }
 
-//Other Stuff
+//Other Stuff, gotten from GT Ghost Template by Zarla
+OnScreenSaverStart
+ {
+	 if CurrentMode == "sleeping"
+	 {
+		"\0\s[21]Zzz... toast...\e"
+	 }
+	 else
+	 {
+	"\0\s[1]Ooh, a screensaver!\e"
+	 }
+ }
+ 
 OnScreenSaverEnd
  {
 	 if CurrentMode == "sleeping"
 	 {
 		 CurrentMode = "normal"
-		"\0\s[4]Aww, I missed the screensaver!\e"
+		"\0\s[4]Aww, I missed the screensaver! \s[3]I guess I'll wake up now, \s[4]so I don't miss the next one...\e"
 	 }
 	 else
 	 {
@@ -156,14 +189,50 @@ OnShellScaling
 {
 	if reference0 >= 150 //this number is the percentage that you're scaling the ghost up to. In this case, it's 150%.
 	{
-		"\0\s[1]\![embed,OnLaughSoundBite]Hahaha! All Hail King Homer!\e"
+			 if CurrentMode == "sleeping"
+			 {
+			"\0\s[22]\![embed,OnLaughSoundBite]Hahaha! All...\w8 Hail...\w8 King...\w8 Homer...\e"
+			 }
+			 else
+			 {
+			"\0\s[1]\![embed,OnLaughSoundBite]Hahaha! All Hail King Homer!\e"
+			 }
 	}
 	elseif reference0 == 100 //this is 100%
 	{
-		"\0\s[3]Aw, I'm back to normal!\e"
+			 if CurrentMode == "sleeping"
+			 {
+			"\0\s[23]Aw... I'm back to normal...\e"
+			 }
+			 else
+			 {
+			"\0\s[3]Aw, I'm back to normal!\e"
+			 }
 	}
-	elseif reference0 == 50 //this is 50%. You can add any percentage that's listed under shell scaling if you want using more elseifs.
+	elseif reference0 <= 50 //this is 50%. You can add any percentage that's listed under shell scaling if you want using more elseifs. Odie: I made it 50% and lower.
 	{
-		"\0\s[0]Ooh, I wonder if I can now get those pie pieces that fell into the mouse hole a while back...\e"
+			if CurrentMode == "sleeping"
+			 {
+			"\0\s[21]...That %(yummy) %(foods) made me smaller...\w8 I wonder if I can go through that strange door now...\e"
+			 }
+			 else
+			 {
+			"\0\s[0]Ooh, I wonder if I can now get those pie pieces that fell into the mouse hole a while back...\e"
+			 }
 	}
+}
+
+OnVanishSelecting
+{
+	"\0\s[3]What's going on? ... \w8\s[7]*gasp* Did you get fired and have to leave?"
+}
+
+OnVanishSelected
+{
+	"\0\s[4]Oh, you got fired? Aw, ok, guess I won't be seeing you around anymore...\w8 Bye...\w8\w8\w8 Hope we can meet again someday...\w9\w9\_w[5000]\e"
+}
+
+OnVanishCancel
+{
+	"\0\s[1]Woohoo! You didn't get fired after all! Maybe you could %(ideas)! \s[1]Let's celebrate!"
 }

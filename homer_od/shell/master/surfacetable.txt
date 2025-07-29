@@ -1,0 +1,29 @@
+charset,UTF-8
+version,1
+option,DisableNoDefineSurfaces
+
+group,Main
+{
+scope,0
+
+0,Default
+1,Grin
+2,Angry
+3,Neutral
+4,Sad
+5,Sleeping
+6,Sleepy
+7,Shocked
+8,Drool
+9,Wink
+10,Donut
+11,Donut Crunch
+}
+
+group,Other
+{
+21,Sleeping Smile
+22,Sleeping Grin
+23,Sleeping Frown
+25,Singing
+}
