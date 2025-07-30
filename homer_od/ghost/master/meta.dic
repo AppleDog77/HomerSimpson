@@ -160,17 +160,6 @@ OnSNTPFailure
 }
 
 //Other Stuff, gotten from GT Ghost Template by Zarla
-OnScreenSaverStart
- {
-	 if CurrentMode == "sleeping"
-	 {
-		"\0\s[21]Zzz... toast...\e"
-	 }
-	 else
-	 {
-	"\0\s[1]Ooh, a screensaver!\e"
-	 }
- }
  
 OnScreenSaverEnd
  {

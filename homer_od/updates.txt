@@ -2,9 +2,9 @@ charset,OSNative
 file,delete.txtef093f372c2d14255cf3fc5ad30492e6size=114date=2025-06-30T17:19:24
 file,developer_options.txt219de9022572144ca08408c8fa70c6f4size=109date=2025-06-27T18:43:50
 file,install.txt1134dccc80920a49c9a41de69aa4c0c2size=105date=2025-05-08T02:34:39
-file,readme.txt5785cbb232eba7b7cf7687b8044feb90size=5859date=2025-07-30T03:33:01
+file,readme.txtb68188bbd51e4a46192ab74b5b578db1size=6000date=2025-07-30T23:18:03
 file,thumbnail.png2008073dde16eed27155b2db83de8158size=4118date=2025-05-19T13:15:26
-file,ghost/master/aitalk.dice245cfd0c2a04788210e0ceb1764b966size=12433date=2025-07-30T01:30:33
+file,ghost/master/aitalk.dic4cc3eb4f5fdc8192110113a6da6fc713size=12432date=2025-07-30T23:11:46
 file,ghost/master/boot.dica70b57c429b337a5b9f9bcfddc797a1csize=3774date=2025-07-27T18:57:20
 file,ghost/master/cursor.ani1a56bea6dcd6f186b8d69b52d580d010size=34460date=2015-05-01T01:22:02
 file,ghost/master/descript.txt3090094610db226236bfd6d8e7f47bd1size=374date=2025-05-08T02:49:58
@@ -12,10 +12,10 @@ file,ghost/master/emerg.dic60532ec8dd2cca05b7f64e02d6ce4a17size=375date=2025-
 file,ghost/master/icon.ico03b046fd804b5bea70c1f72c2a51da55size=5430date=2025-05-18T04:55:11
 file,ghost/master/menu_kero.dic05ca395bc9e9306c365125230f19ae6esize=39307date=2025-07-06T18:05:05
 file,ghost/master/menu_sakura.dic2c012f39f01ec82251e1b98c6e184206size=7634date=2025-07-30T01:33:24
-file,ghost/master/meta.dic33c8d1629e1574eed1eb77f640cd0758size=6641date=2025-07-29T07:25:22
+file,ghost/master/meta.dice859e93d606bbce190ea83b51b744316size=6489date=2025-07-30T23:13:02
 file,ghost/master/mouse.dicccc02e0d3ef3f9dcd270e01e22607baesize=4295date=2025-07-27T19:07:24
 file,ghost/master/music_player.dic0641ed18d95766f68df4716b30327c6fsize=100948date=2025-07-27T18:06:56
-file,ghost/master/other.dic6c48c29c648ab030a81cd4748d6141bcsize=18589date=2025-07-28T01:44:20
+file,ghost/master/other.diccece32dc8fc1d17d190ffc27bb5fda00size=18589date=2025-07-31T00:27:18
 file,ghost/master/word.dic4355ef7351bd968518da39b5b4a908dfsize=4727date=2025-07-30T01:36:15
 file,ghost/master/yaya.dll7ca71c0691df0379655530fcf6d0fa7csize=884736date=2025-01-16T05:08:02
 file,ghost/master/yaya.txt911709d35a0e98ae25c95914eedb8c0fsize=752date=2025-06-27T18:43:58
