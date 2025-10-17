@@ -29,12 +29,16 @@ RandomTalk : nonoverlap_pool
 	"\0\s[5]What's happenin'...\w8 here?"
 	"\0\s[23]Back off...\w8you're mean..."
 	"\0\s[21]...Marge..."
+	"\0\s[23]Grr..."
+	"\0\s[23]No...\w8\s[21]yes...\w8\s[23]no..."
+	"\0\s[21]Yes...\w8\s[23]no...\w8\s[21]yes..."
 	"\0\s[21]...TV...\w8 best...\w8 friend..."
 	"\0\s[23]Marge...\w8 what's goin' on...? ..."
 	"\0\s[22]All...\w8 Hail...\w8 King...\w8 Homer..."
 	"\0\s[23]...Weird..."
 	"\0\s[23]...Bart...\w8 c'mere..."
 	"\0\s[5]Maggie... why're you here...?"
+	"\0\s[22]...feed...me..."
 	"\0\s[23]...Lisa... your book...\w8 it's...\e:chain=wakey"
 	}
 	elseif CurrentMode == "normal"
@@ -67,7 +71,7 @@ RandomTalk : nonoverlap_pool
 	"\0\s[0]I just can't get enough of food that is so hot that my tongue burns, for some reason.\s[1] It tastes so good, even though it hurts my tongue! \s[3]Although sometimes I get hallucinations..."
 	"\0\s[3]There are a few foods I actually hate, believe it or not! \s[2]I don't like bland dishes that taste like nothing, and food that actively attacks me, like pufferfish or something. \s[8]But I love all %(yummy), %(yummy) food..."
 	"\0\s[3]I just found this interesting cartoon about %(foods), but it looked like a slideshow instead of a real cartoon...\w8 What an odd cartoon."
-	"\0\s[0]\![embed,OnHmmSoundBite]Ooh, bubble wrap! \![embed,OnHeheSoundBite]Teehee, pop, pop, pop..."
+	"\0\s[0]Ooh, bubble wrap! \w8\![embed,OnHeheSoundBite]Teehee, pop, pop, pop..."
 	"\0\s[0]Whenever I get a tummy ache from eating too much food, the one snack I miss is %(foods)...\w8\![embed,OnHmmSoundBite] Mmm..."
 	"\0\s[0]Did you know that most of the buttons on this console do nothing? At least, I don't think they do...\w8\s[3] Hmm...\e:chain=buttons"
 	"\0\s[3]Don't you hate it when you really need to grab a midnight snack, \s[7]only to find that you already ate all of 'em? \s[3]That happens to me quite a lot..."
@@ -83,7 +87,13 @@ RandomTalk : nonoverlap_pool
 	"\0\s[0]I always thought the moon kept chasing the sun because he was stalking her, but I watched this late-night TV cartoon that claimed it was out of love...\w8\s[3] But I dunno, it sure seems like stalking to me.\w5\s[0] Maybe I'll camp out on some night and watch it happen in realtime...\w8\s[6]\w8\s[5] Zzzzz..."
 	"\0\s[3]Y'know, it can get pretty boring 'round here sometimes. \w8\s[0]But it's way less boring with someone else around."
 	"\0\s[7]So this crazy plot twist happened in '%(Capitalize(wordgen1))%(wordgen2) vs. %(Capitalize(foods))', and I just have to tell somebody! \s[3]But don't tell anyone, please! \w8\s[0]...It turned out that the big giant hero was actually a bunch of %(foods) the whole time! That's why he was destroying all the other foods! The way he was defeated was kinda funny though, \![embed,OnHeheSoundBite]heh heh."
-	"\0\s[3]The other day, Marge kept telling me to walk around the block and buy groceries, but I was busy watching a strange show about two roommates who're trying to kill each other, but they get along somehow. I tried to show it to Marge, but she just got weirded out and changed the channel to some boring talk show..."
+	"\0\s[3]The other day, Marge kept telling me to walk around the block and buy groceries, but I was busy watching a strange show about two roommates who're trying to kill each other, but they get along somehow. I tried to show it to Marge, but she just got weirded out and changed the channel to some boring talk show...\e:chain=buystuff"
+	"\0\s[3]Smithers told me about a new rule forbidding employees from having fun. I just figured I'd have to hide my cool toys like \w5\s[1]my weird ball thingy that goes back and forth, and my special plushie named Tracy, \w5\s[3]but then Smithers said that he was gonna go to every sector and \s[7]take away all our stuff! \s[3]I went straight to Burns' office and showed him my presentation. I had hoped the cool transitions and informative slides would convince Burns to leave our toys alone, \s[2]but Burns threw me out! \s[3]Smithers at least says now he won't take away our stuff, but I still have to hide it...\w8\s[0] I did find a clever way to though."
+	"\0\s[7]AH! Who turned out the lights? ...\w8\s[3]Oh, phew,\w5 they're back now. But what caused 'em to turn off in the first place?"
+	"\0\s[3]One time, the kids were arguing over something, I forget what. I think it was about which ice cream flavor is the best, but it doesn't matter. \s[8]All of 'em are the best...\w8\s[3] Anyway, I couldn't hear my show, so I stopped the argument by...\w8\s[8]\w8\s[3] uh...\w8 well, what I did was I put the kids outside, but they continued arguing and Marge let them back in saying they were annoying her, but they were annoying me first! So we kept tossing 'em back and forth, and in the process\w5\s[0] the kids forgot all about their argument! \s[1]\![embed,OnHeheSoundBite]Heh heh."
+	"\0\s[0]If aliens exist, do you think they're, like, green men, or grey guys, or evil spiders with lots of legs and they can fly? \s[7]Or all three somehow?"
+	"\0\s[0]I saw the biggest fireworks ever last 4th of July! \s[7]But I also saw the biggest spider ever...\w8 On my shirt! The fireworks landed on my shirt and I freaked out and threw it away! \s[0]But the spider was gone! Marge thought it was killed by the fireworks. \s[3]But Bart saved it...\w8\s[2] He showed it to me and I screamed louder than the fireworks! \s[0]Thankfully, Marge saved me from the spider and gave me %(foods)."
+	"\0\s[0]My favorite drawing of mine is the one in which %(favdrawings)!"
 	}
 }
 
@@ -97,4 +107,11 @@ buttons
 "\0\s[1]Let me push all the buttons on the console and see what happens...\w9\w9\s[3] Huh, nothing happened...\w8 Nothing that I can see from here, anyway."
 
 "\0\s[3]I'll try pushing each button one by one...\w9\w9 I thought I heard an explosion, but I'm not sure.\w9\w9 Nothing's happening...\w8 I'd have thought someone would've come over by now...\w8 Nevermind, I'm bored of pushing the buttons.\e:chain=end"
+}}CHAIN
+
+buystuff
+{{CHAIN
+"\0\s[0]I changed it back to my show and after it was over, I went to the Kwik-E-Mart to buy various stuff like donuts\w2 and %(foods)\w2 and fireworks\w2 and stuff like that, \w3\s[7]but there was a huge line in front of the Mart! \s[4]And it was very sunny out, so I had to wait for a really long time to buy anything, and I was sweatin' like a pig. \w8\s[3]I forget what happened next..."
+
+"\0\s[0]Oh yeah, I remember! \s[3]I had to wait in line in the burning hot sun, for what felt like hours before I made it to the counter! \s[4]When I finally got there, most of the stuff was sold out! I almost fainted when I saw it...\w8\s[2] I ended up buying a couple vegetables and leaving. Not even any donuts! \s[3]Marge said if I had just gone there earlier like she told me to, none of this would've happened. \s[7]But I needed to know what the secret was, first! \s[3]Oh well...\e:chain=end"
 }}CHAIN

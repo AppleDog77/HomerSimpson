@@ -34,7 +34,7 @@ foods
 	"gummies"
 	"spaghetti"
 	"waffles"
-	"toast"
+	"toast with %(flavor)"
 }
 
 ideas
@@ -99,12 +99,24 @@ dreams
 "\s[0]there was nobody in the house and I could do whatever I wanted, \s[2]but then aliens showed up and I had to fight 'em off,\w5\s[4] but I failed"
 "\s[0]me and my family were cookies and I tried to eat myself"
 "Lisa's books came alive and tried to eat us"
-"\s[0]I was popping infinite bubble wrap"
-"\s[0]we were popping infinite bubbles that came from nowhere"
+"\s[1]I was popping infinite bubble wrap"
+"\s[1]we were popping infinite bubbles that came from nowhere"
 "I found a black hole on the road and it sucked me in"
 "I was lost in a weird purple forest and it kept changing, so I couldn't escape"
 "\s[4]I ate all the food in the world and there was nothing left...\w8 What a horrible nightmare..."
-"I was watching TV, but I got sucked into the TV and had to run from dinosaurs and horrible beasts, and man-eating mammoths"
+"I was watching TV, but I got sucked into the TV and had to run from a stampede of dinosaurs and horrible beasts, and man-eating mammoths"
+"I was a balloon floating through the sky, but a bunch of birds came and pecked me and I fell down and landed in the town of %(Capitalize(wordgen1))%(wordgen2)"
+"\s[0]I became the prettiest fairy ever, \w5\s[4]but I lost my wings after tripping and falling down a hole...\w8 \s[1]At least there were lots of %(foods) in the hole"
+"\s[0]I was a merman \w5\s[1]and had a cool battle with a shark, which I then ate"
+"some guy found me eating %(foods) in the desert and took me to a strange town where everybody stole my dessert"
+"Marge's hair became huge and took over the world"
+"I was a goldfish trapped in a fishbowl, and I escaped and went on many adventures with a green fish named Goldie, but when I asked him why he was called that, \w4\s[7]he slapped me and the dream ended"
+"Springfield was inside a snowglobe"
+"\s[0]I was eating a cake but it kept growing bigger and bigger and I could never eat it all"
+"I was trapped in somebody's computer and they kept poking me with a needle"
+"whenever I tried to eat something, it shrunk down and vanished before I could eat it"
+"I was about to win a race, but I was in Candyland so I got distracted and didn't win"
+"I was a yellow tiger having trouble finding food, but \w4\s[0]I swam underwater and found Atlantis, \w5\s[1]and ate all the fish and eel people there"
 }
 
 flavor
@@ -135,6 +147,7 @@ wordgen1
 	"we"
 	"fi"
 	"cre"
+	"vi"
 }
 
 wordgen2
@@ -151,6 +164,19 @@ wordgen2
 	"nu"
 	"sa"
 	"tot"
+	"ti"
+	"noff"
+}
+
+favdrawings
+{
+"I punch a spider in the face"
+"I dance in a chocolate fountain"
+"I'm swimming in a huge sundae"
+"there's a bunch of stuff with cool shades on them, like a cactus and traffic cone"
+"there's a spinning snail named Percy"
+"there's a grazing giraffe named Gracie"
+"there's an alien named %(Capitalize(wordgen2))%(wordgen1) floating in space"
 }
 
 //Thanks to Zi for helping me with the soundbite stuff!

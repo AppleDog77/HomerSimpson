@@ -139,6 +139,8 @@ OnAskStuff
 	"\0\s[3]I was watching a really cool movie on TV about, uh, something really cool. But it got interrupted by some breaking news or something,\w4\s[4] and I never got to see the ending of the movie!\s[3] Could you tell me the ending of it?\![open,inputbox,OnMovieEnd,-1]"
 	"\0\s[4]\![embed,OnDohSoundBite]D'oh! I spilled Duff all over the console! What do I do?\![open,inputbox,OnSpilledBeer,-1]"
 	"\0\s[1]I just drew something on some paper! See? ...It's some %(foods)! What do you think of it?\![open,inputbox,OnFunnyDrawing,-1]"
+	"\0\s[1]I just doodled something neat! See? ...It's a cool creature called the %(Capitalize(wordgen2))%(wordgen1)! What do you think of it?\![open,inputbox,OnFunnyDrawing,-1]"
+	"\0\s[1]I love donuts! \s[0]But do you like donuts, %(username)?\![open,inputbox,OnDonutThoughts,-1]"
 }
 OnMovieEnd
 {
@@ -160,17 +162,39 @@ FunnyDrawing = reference0
 
 	reference0 = TOLOWER(reference0) //makes it case-insensitive by changing it to lowercase
 
-	if "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "funny" _in_ reference0 || "hilarious" _in_ reference0 || "excellent" _in_ reference0 || "marvelous" _in_ reference0 || "cute" _in_ reference0 || "adorable" _in_ reference0 || "innocent" _in_ reference0 || "playful" _in_ reference0 || "super" _in_ reference0 || "nice" _in_ reference0 || "neat" _in_ reference0 || "rad" _in_ reference0 || "splendid" _in_ reference0 || "pleas" _in_ reference0 || "stunning" _in_ reference0 || "delight" _in_ reference0 || "darling" _in_ reference0 || "fascinating" _in_ reference0 || "enchanting" _in_ reference0 || "best" _in_ reference0 || "joy" _in_ reference0 || "lovable" _in_ reference0 || "love" _in_ reference0 || "wholesome" _in_ reference0 || "sweet" _in_ reference0 || "tasty" _in_ reference0 || "delicious" _in_ reference0 || "yummy" _in_ reference0 || "delectable"_in_ reference0
+	if "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "funny" _in_ reference0 || "hilarious" _in_ reference0 || "excellent" _in_ reference0 || "marvelous" _in_ reference0 || "cute" _in_ reference0 || "adorable" _in_ reference0 || "innocent" _in_ reference0 || "playful" _in_ reference0 || "super" _in_ reference0 || "nice" _in_ reference0 || "neat" _in_ reference0 || "rad" _in_ reference0 || "cool" _in_ reference0 || "splendid" _in_ reference0 || "pleas" _in_ reference0 || "stunning" _in_ reference0 || "delight" _in_ reference0 || "darling" _in_ reference0 || "fascinating" _in_ reference0 || "enchanting" _in_ reference0 || "best" _in_ reference0 || "joy" _in_ reference0 || "lovable" _in_ reference0 || "love" _in_ reference0 || "likable" _in_ reference0 || "like" _in_ reference0 || "wholesome" _in_ reference0 || "sweet" _in_ reference0 || "tasty" _in_ reference0 || "delicious" _in_ reference0 || "yummy" _in_ reference0 || "delectable"_in_ reference0
 	{
 	"\0\s[0]You really think it's...\w5 %(FunnyDrawing)? \s[1]\![embed,OnWoohooSoundBite]Woohoo! Thanks."
 	}
-	elseif "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "horrid" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0 || "gross" _in_ reference0 || "disgust" _in_ reference0 || "ugly" _in_ reference0 || "hideous" _in_ reference0 || "odious" _in_ reference0 || "revolting" _in_ reference0 || "nasty" _in_ reference0 || "annoying" _in_ reference0 || "obnoxious" _in_ reference0 || "unpleasant" _in_ reference0 || "abhorrent" _in_ reference0 || "loathsome" _in_ reference0 || "dreadful" _in_ reference0 || "off-putting" _in_ reference0 || "worst" _in_ reference0 || "nauseating" _in_ reference0 || "upsetting" _in_ reference0 || "stupid" _in_ reference0 || "idiotic" _in_ reference0 || "unlovable" _in_ reference0 || "dumb" _in_ reference0 || "buggy" _in_ reference0 || "poisonous" _in_ reference0
+	elseif "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "horrid" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0 || "gross" _in_ reference0 || "disgust" _in_ reference0 || "ugly" _in_ reference0 || "hideous" _in_ reference0 || "odious" _in_ reference0 || "revolting" _in_ reference0 || "nasty" _in_ reference0 || "annoying" _in_ reference0 || "obnoxious" _in_ reference0 || "unpleasant" _in_ reference0 || "abhorrent" _in_ reference0 || "loathsome" _in_ reference0 || "dreadful" _in_ reference0 || "off-putting" _in_ reference0 || "worst" _in_ reference0 || "nauseating" _in_ reference0 || "upsetting" _in_ reference0 || "stupid" _in_ reference0 || "idiotic" _in_ reference0 || "unlovable" _in_ reference0 || "unlikable" _in_ reference0 || "dumb" _in_ reference0 || "buggy" _in_ reference0 || "poisonous" _in_ reference0
 	{
 	"\0\s[7]*gasp*\w8\s[2] How dare you! It's... \w8\s[4]Okay, I guess it's not my best work, but it's still not,\w5 '%(FunnyDrawing)'! My next doodle will be better, you'll see!"
 	}
 	else
 	{
 	"\0\s[0]You think it's, %(FunnyDrawing)? ...Okay then."
+	}
+}
+
+OnDonutThoughts
+{
+DonutThoughts = reference0
+
+	reference0 = TOLOWER(reference0) //makes it case-insensitive by changing it to lowercase
+
+	if "sweet" _in_ reference0 || "tasty" _in_ reference0 || "delicious" _in_ reference0 || "yummy" _in_ reference0 || "delectable"_in_ reference0 || "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "excellent" _in_ reference0 || "marvelous" _in_ reference0 || "nice" _in_ reference0 || "neat" _in_ reference0 || "rad" _in_ reference0 || "cool" _in_ reference0 || "splendid" _in_ reference0 || "pleas" _in_ reference0 || "stunning" _in_ reference0 || "delight" _in_ reference0 || "best" _in_ reference0 || "joy" _in_ reference0 || "likable" _in_ reference0 || "like" _in_ reference0 || "lovable" _in_ reference0 || "love" _in_ reference0
+	{
+	"\0\s[0]You like donuts too? \s[1]\![embed,OnWoohooSoundBite]Woohoo! We can have some on our next lunch break."
+	"\0\s[0]You think donuts are,\w5 %(DonutThoughts)? \s[1]That's great!"
+	"\0\s[1]Ooh, a fellow lover of donuts! \![embed,OnHeheSoundBite]Heh heh."
+	}
+	elseif "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "horrid" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0 || "gross" _in_ reference0 || "disgust" _in_ reference0 || "ugly" _in_ reference0 || "hideous" _in_ reference0 || "odious" _in_ reference0 || "revolting" _in_ reference0 || "nasty" _in_ reference0 || "unpleasant" _in_ reference0 || "abhorrent" _in_ reference0 || "loathsome" _in_ reference0 || "dreadful" _in_ reference0 || "off-putting" _in_ reference0 || "worst" _in_ reference0 || "nauseating" _in_ reference0 || "upsetting" _in_ reference0
+	{
+	"\0\s[7]*gasp*\w8\s[2] You don't like donuts?! ... \w8\s[3]How's that possible? \w8\s[4]Donuts aren't,\w5 '%(DonutThoughts)'! Oh well, I guess it's fine to not like donuts... \w5\s[0]More for me!"
+	}
+	else
+	{
+	"\0\s[0]You think they're, %(DonutThoughts)? \w8...Okay then."
 	}
 }
 
@@ -189,6 +213,8 @@ OnHugHomer
 	"\0\s[1]..."
 	"\0\s[1]...so nice..."
 	"\0\s[1]...mmm...hugs..."
+	"\0\s[1]\![embed,OnHeheSoundBite]Hehe, thanks..."
+	"\0\s[1]\![embed,OnHeheSoundBite]...Hehe..."
 	}
 }
 

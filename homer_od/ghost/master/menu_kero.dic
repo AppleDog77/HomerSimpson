@@ -167,6 +167,12 @@ WordSearchWords : array
 	"Seymour"
 	"Skinner"
 	"Milhouse"
+	"Chalmers"
+	"Beach"
+	"Sweet"
+	"Cool"
+	"Pool"
+	"Mall"
 }
 
 OnWordSearch
@@ -898,6 +904,7 @@ WordJumble.Category.Names : array
 	"Seymour"
 	"Skinner"
 	"Milhouse"
+	"Chalmers"
 }
 
 
@@ -1271,6 +1278,11 @@ hangmanwords : nonoverlap //Words it can choose - add lots of these!
 	"Seymour"
 	"Skinner"
 	"Milhouse"
+	"Chalmers"
+	"Beach"
+	"Sweet"
+	"Mall"
+	"Pool"
 }
 OnRestoreDonut
 {
