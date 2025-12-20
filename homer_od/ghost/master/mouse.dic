@@ -11,7 +11,7 @@ OnMouseDoubleClick
 				{
 						if CurrentMode == "sleeping"
 						{
-							"\s[5]Mmm...\w8\s[6]\w8 %(flavor) donuts...\w8\![embed,OnMunchSoundBite]\s[20]*NOM NOM NOM NOM NOM NOM NOM NOM NOM NOM*\w9\s[0]\w8\w8\w8\w8\w8\w8\w8\s[6]\w8\s[5]"
+							"\s[5]Mmm...\w8\s[6]\w8 %(flavor) donuts...\w8 \![embed,OnMunchSoundBite]\s[20]*NOM NOM NOM NOM NOM NOM NOM NOM NOM NOM*\w9\s[0]\w8\w8\w8\w8\w8\w8\w8\s[6]\w8\s[5]"
 						}
 						else
 						{

@@ -304,6 +304,81 @@ if reference0 == 0 //Zarla: in OnDressupChanged, reference0 refers to the charac
 				}
 			}
 		}
+		elseif reference1 == "Meadow Tie"
+		{
+			if reference2 == 1
+			{
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[0]Ooh, a meadow tie! \s[1]Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something neat."
+				}
+			}
+			else // This checks if you're taking it off.
+			{
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my nice tie?"
+				}
+			}
+		}
+		elseif reference1 == "Ocean Tie"
+		{
+			if reference2 == 1
+			{
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[0]Ooh, an ocean tie! \s[1]Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something snazzy."
+				}
+			}
+			else // This checks if you're taking it off.
+			{
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my cool tie?"
+				}
+			}
+		}
+		elseif reference1 == "Sunset Tie"
+		{
+			if reference2 == 1
+			{
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[21]"
+				}
+				else
+				{
+				"\0\s[0]Ooh, a sunset tie! \s[1]Thank you! \s[0]Now I don't have to be professional at work, but I can still wear something fun."
+				}
+			}
+			else // This checks if you're taking it off.
+			{
+				if CurrentMode == "sleeping"
+				{
+				"\0\s[23]"
+				}
+				else
+				{
+				"\0\s[4]Why did you take away my fun tie?"
+				}
+			}
+		}
 	}
 else //if reference0 isn't the main character, then it has to be the side character.
 	{
@@ -422,7 +497,30 @@ OnNeedlePoke
 	}
 	elseif reference0 == 1 //Kero
 	{
-		""
+		if reference1 == "Eggdle"
+		{
+			"\0\s[8]Mmm...\w8 donut with eggs..."
+		}				
+		elseif reference1 == "Birthday Needle"
+		{
+			"\0\s[8]Mmm...\w8 donut and cake..."
+		}		
+		elseif reference1 == "Syringe"
+		{
+			"\0\s[3]Are you tryin' to mutate the donut?\s[7] It'd better not grow tentacles, and get slimy!"
+		}
+		elseif reference1 == "Moneydle"
+		{
+			"\0\s[0]\![embed,OnHmmSoundBite]Ooh, money! Thanks."
+			"\0\s[1]\![embed,OnHmmSoundBite]Ooh, I can buy some more donuts with this! \s[0]Thanks."
+			"\0\s[0]\![embed,OnHmmSoundBite]Ooh, money! Thanks. I think I'll buy some %(foods) to go with my donut."
+		}		
+		else
+		{
+		"\0\s[2]Don't poke my donut!"
+		"\0\s[4]Don't mess with my donut..."
+		"\0\s[7]Hey! \s[2]That's my donut!"
+		}
 	}
 }
 //Network update url. Make sure you have a / on the end of the url or it will give a warning every time users try to update! If you don't plan to use network updates you can remove this
@@ -441,7 +539,7 @@ On_homeurl
 
 ghostver
 {
-	"v1.5.0"
+	"v1.6.0"
 }
 
 //—————————————————————————————— Right click menu links ——————————————————————————————

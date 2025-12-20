@@ -31,6 +31,13 @@ OnSakuraMenu : all
 	"\![*]\q[Ask me something,OnAskStuff]\n\n"
 	
 	"\![*]\q[You look sleepy,OnSleepyHomer]\n" //Turn on Sleep Mode
+		
+	switch CurrentMode == "normal" //Turn off Sleep Mode if it's on, otherwise disable this option
+	{
+		"\![*]\q[Wake up,OnAwakeHomer]"
+		"\![*]\f[color,disable]Wake up\f[color,default]"
+	}
+	"\n\n"
 	
 	"\![*]\q[Hug Homer,OnHugHomer]\n\n"
 	
@@ -182,13 +189,13 @@ DonutThoughts = reference0
 
 	reference0 = TOLOWER(reference0) //makes it case-insensitive by changing it to lowercase
 
-	if "sweet" _in_ reference0 || "tasty" _in_ reference0 || "delicious" _in_ reference0 || "yummy" _in_ reference0 || "delectable"_in_ reference0 || "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "excellent" _in_ reference0 || "marvelous" _in_ reference0 || "nice" _in_ reference0 || "neat" _in_ reference0 || "rad" _in_ reference0 || "cool" _in_ reference0 || "splendid" _in_ reference0 || "pleas" _in_ reference0 || "stunning" _in_ reference0 || "delight" _in_ reference0 || "best" _in_ reference0 || "joy" _in_ reference0 || "likable" _in_ reference0 || "like" _in_ reference0 || "lovable" _in_ reference0 || "love" _in_ reference0
+	if "yes" _in_ reference0 || "yep" _in_ reference0 || "yup" _in_ reference0 || "yeah" _in_ reference0 || "sweet" _in_ reference0 || "tasty" _in_ reference0 || "delicious" _in_ reference0 || "yummy" _in_ reference0 || "delectable"_in_ reference0 || "good" _in_ reference0 || "great" _in_ reference0 || "awesome" _in_ reference0 || "amazing" _in_ reference0 || "beautiful" _in_ reference0 || "wonderful" _in_ reference0 || "excellent" _in_ reference0 || "marvelous" _in_ reference0 || "nice" _in_ reference0 || "neat" _in_ reference0 || "rad" _in_ reference0 || "cool" _in_ reference0 || "splendid" _in_ reference0 || "pleas" _in_ reference0 || "stunning" _in_ reference0 || "delight" _in_ reference0 || "best" _in_ reference0 || "joy" _in_ reference0 || "likable" _in_ reference0 || "like" _in_ reference0 || "lovable" _in_ reference0 || "love" _in_ reference0
 	{
 	"\0\s[0]You like donuts too? \s[1]\![embed,OnWoohooSoundBite]Woohoo! We can have some on our next lunch break."
 	"\0\s[0]You think donuts are,\w5 %(DonutThoughts)? \s[1]That's great!"
 	"\0\s[1]Ooh, a fellow lover of donuts! \![embed,OnHeheSoundBite]Heh heh."
 	}
-	elseif "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "horrid" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0 || "gross" _in_ reference0 || "disgust" _in_ reference0 || "ugly" _in_ reference0 || "hideous" _in_ reference0 || "odious" _in_ reference0 || "revolting" _in_ reference0 || "nasty" _in_ reference0 || "unpleasant" _in_ reference0 || "abhorrent" _in_ reference0 || "loathsome" _in_ reference0 || "dreadful" _in_ reference0 || "off-putting" _in_ reference0 || "worst" _in_ reference0 || "nauseating" _in_ reference0 || "upsetting" _in_ reference0
+	elseif "no" _in_ reference0 || "nah" _in_ reference0 || "bad" _in_ reference0 || "terrible" _in_ reference0 || "horrible" _in_ reference0 || "horrid" _in_ reference0 || "awful" _in_ reference0 || "garbage" _in_ reference0 || "trash" _in_ reference0 || "rubbish" _in_ reference0 || "gross" _in_ reference0 || "disgust" _in_ reference0 || "ugly" _in_ reference0 || "hideous" _in_ reference0 || "odious" _in_ reference0 || "revolting" _in_ reference0 || "nasty" _in_ reference0 || "unpleasant" _in_ reference0 || "abhorrent" _in_ reference0 || "loathsome" _in_ reference0 || "dreadful" _in_ reference0 || "off-putting" _in_ reference0 || "worst" _in_ reference0 || "nauseating" _in_ reference0 || "upsetting" _in_ reference0
 	{
 	"\0\s[7]*gasp*\w8\s[2] You don't like donuts?! ... \w8\s[3]How's that possible? \w8\s[4]Donuts aren't,\w5 '%(DonutThoughts)'! Oh well, I guess it's fine to not like donuts... \w5\s[0]More for me!"
 	}

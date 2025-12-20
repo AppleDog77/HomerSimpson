@@ -6,7 +6,7 @@ I started watching The Simpsons in November 2024, and became obsessed with it. I
 
 In this ghost, you meet Homer at the Springfield Nuclear Power Plant, where he talks about random stuff to pass the time at work. You can feed Homer donuts by double-clicking his mouth, and pet his head by moving your mouse or scrolling the mouse wheel over it. But don't double-click his top strands of hair or his eyes...
 
-Homer's menu has ideas to combat boredom, a feature to let him ask you questions, an option to hug him, an option to tell him to sleep, a Config Menu, and Music Player settings. You can wake him up by selecting anything from the menu or playing minigames with him by double-clicking the donut.
+Homer's menu has ideas to combat boredom, a feature to let him ask you questions, an option to hug him, an option to tell him to sleep and another to wake him up, a Config Menu, and Music Player settings. You can wake him up by selecting anything from the menu or playing minigames with him by double-clicking the donut.
 
 Homer has soundbites! They're off by default, but I highly recommend toggling 'em on by going to the Config Menu for the full experience. You can also change the volume of the soundbites there, and the talk rate as well.
 
@@ -42,3 +42,4 @@ Ver 1.3 - Fixed missing space in boot dialogue (and a couple other typos), fixed
 Ver 1.4 - Added Sleep Mode checks to Dressup reactions and some meta stuff, uninstall reactions, OnScreensaverStart response, SurfaceTable file, more hugging and petting reactions, dialogue, words, wordgroups, and Spectre custom calibration and responses. Customized more Music Player dialogue. (Tue, Jul 29, 2025)
 Ver 1.4.1 - Fixed a stray bracket and removed OnScreenSaverStart, as it's a NOTIFY event which doesn't support dialogue. (Wed, Jul 30, 2025)
 Ver 1.5 - Streamlined Readme as most of its info is already available on my site, added credit for cursor in Readme, and added dialogue, a new wordgroup, more silly words, more dreams, more questions from Homer, more hugging reactions, more words to the minigames, empty space to the end of the soundbites so they play fully under Wine/Proton (or else they get cut off), Needle Poke reactions, and Sleep Mode check for feeding him. (Fri, Oct 17, 2025)
+Ver 1.6 - Added dialogue, new ties, more words to wordgroups, reactions to Needle poking Homer's donut, and a Wake Up option that makes Homer automatically wake up and talk about his dream. Fixed a bug where trying to repeat Homer's random dream dialogue that he says after he has woken up during RandomTalk makes him talk about a different dream, as well as a minor graphical glitch. (Sat, Dec 20, 2025)

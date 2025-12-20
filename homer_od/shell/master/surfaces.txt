@@ -140,6 +140,15 @@ animation11.pattern0,add,6005,0,0,0
 //Summer Tie
 animation12.interval,bind
 animation12.pattern0,add,6006,0,0,0
+//Meadow Tie
+animation13.interval,bind
+animation13.pattern0,add,6007,0,0,0
+//Ocean Tie
+animation14.interval,bind
+animation14.pattern0,add,6008,0,0,0
+//Sunset Tie
+animation15.interval,bind
+animation15.pattern0,add,6009,0,0,0
 }
 
 //Blinking

@@ -92,6 +92,13 @@ musicgenre
 ", um...\w8 funk"
 }
 
+AwakeHomer
+{
+CurrentMode = "normal"
+
+"\0\s[7]AAA! \w9\s[3]Sorry, I had a very strange dream,\w8 in which %(dreams)"
+}
+
 dreams
 {
 "\s[8]it was raining %(foods) and other goodies of all kinds"
@@ -148,6 +155,7 @@ wordgen1
 	"fi"
 	"cre"
 	"vi"
+	"gem"
 }
 
 wordgen2
@@ -177,6 +185,10 @@ favdrawings
 "there's a spinning snail named Percy"
 "there's a grazing giraffe named Gracie"
 "there's an alien named %(Capitalize(wordgen2))%(wordgen1) floating in space"
+"there's a shark with clownfish stripes"
+"I punch a shark in the face"
+"I'm a giant towering over the city"
+"I'm drawing me, drawing me sleeping"
 }
 
 //Thanks to Zi for helping me with the soundbite stuff!

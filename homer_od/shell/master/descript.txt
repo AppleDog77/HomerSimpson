@@ -28,6 +28,12 @@ sakura.bindgroup11.name,Ties,Donut Tie
 sakura.bindgroup11.default,0
 sakura.bindgroup12.name,Ties,Summer Tie
 sakura.bindgroup12.default,0
+sakura.bindgroup13.name,Ties,Meadow Tie
+sakura.bindgroup13.default,0
+sakura.bindgroup14.name,Ties,Ocean Tie
+sakura.bindgroup14.default,0
+sakura.bindgroup15.name,Ties,Sunset Tie
+sakura.bindgroup15.default,0
 
 //Menu
 sakura.menuitem0,5
@@ -39,6 +45,9 @@ sakura.menuitem5,9
 sakura.menuitem6,10
 sakura.menuitem7,11
 sakura.menuitem8,12
+sakura.menuitem9,13
+sakura.menuitem10,14
+sakura.menuitem11,15
 
 //Layering
 sakura.bindoption0.group,Stickers,multiple

@@ -94,12 +94,13 @@ RandomTalk : nonoverlap_pool
 	"\0\s[0]If aliens exist, do you think they're, like, green men, or grey guys, or evil spiders with lots of legs and they can fly? \s[7]Or all three somehow?"
 	"\0\s[0]I saw the biggest fireworks ever last 4th of July! \s[7]But I also saw the biggest spider ever...\w8 On my shirt! The fireworks landed on my shirt and I freaked out and threw it away! \s[0]But the spider was gone! Marge thought it was killed by the fireworks. \s[3]But Bart saved it...\w8\s[2] He showed it to me and I screamed louder than the fireworks! \s[0]Thankfully, Marge saved me from the spider and gave me %(foods)."
 	"\0\s[0]My favorite drawing of mine is the one in which %(favdrawings)!"
+	"\0\s[7]Sharks are scary! \s[3]But they look kinda cool. I wish sharks weren't so scary...\w8 I guess baby sharks can be cute..."
 	}
 }
 
 wakey
 {{CHAIN
-"\0\s[7]\![raise,OnAwakeHomer]\e:chain=end"
+"\0\s[7]%(AwakeHomer)\e:chain=end"
 }}CHAIN
 
 buttons
