@@ -16,7 +16,9 @@ foods
 	"%(flavor) ice cream"
 	"ice cream"
 	"eggs"
+	"burgers"
 	"ham"
+	"hamburgers"
 	"pink frosted donuts with sprinkles"
 	"beer"
 	"chicken"
@@ -88,6 +90,7 @@ musicgenre
 "elevator"
 "techno"
 "blues"
+"vaporwave"
 ", uh...\w8 jazz"
 ", um...\w8 funk"
 }

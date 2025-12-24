@@ -2,9 +2,9 @@ charset,OSNative
 file,delete.txtef093f372c2d14255cf3fc5ad30492e6size=114date=2025-06-30T17:19:24
 file,developer_options.txt219de9022572144ca08408c8fa70c6f4size=109date=2025-06-27T18:43:50
 file,install.txt1134dccc80920a49c9a41de69aa4c0c2size=105date=2025-05-08T02:34:39
-file,readme.txt0efce8be47961d295bb57e9f492176e3size=6171date=2025-12-20T15:06:31
+file,readme.txt4756fc395fd6c7785544a6b90c3f59cesize=6329date=2025-12-24T19:08:32
 file,thumbnail.png2008073dde16eed27155b2db83de8158size=4118date=2025-05-19T13:15:26
-file,ghost/master/aitalk.dic2401754da2089360308e03993f5e3b35size=15683date=2025-12-18T19:04:18
+file,ghost/master/aitalk.dic2401754da2089360308e03993f5e3b35size=15683date=2025-12-24T14:13:43
 file,ghost/master/boot.dicc8680b4a3cbce32f6247ced64fe9ade6size=3859date=2025-09-24T22:20:31
 file,ghost/master/cursor.ani1a56bea6dcd6f186b8d69b52d580d010size=34460date=2015-05-01T01:22:02
 file,ghost/master/descript.txt3090094610db226236bfd6d8e7f47bd1size=374date=2025-05-08T02:49:58
@@ -15,8 +15,8 @@ file,ghost/master/menu_sakura.dic4cb920530c3929ccf82947e754ce2a6fsize=10623da
 file,ghost/master/meta.dic08684433ffdf8e54ec019f9a6ae7c649size=6490date=2025-09-24T22:19:39
 file,ghost/master/mouse.dicf4fd809c252a813553b35037703f52aasize=4554date=2025-12-18T12:15:48
 file,ghost/master/music_player.dic0641ed18d95766f68df4716b30327c6fsize=100948date=2025-07-27T18:06:56
-file,ghost/master/other.dic61a6ae16a135f82fc23b84fb6afa86b5size=23263date=2025-12-18T21:10:23
-file,ghost/master/word.dicf19e7a4a2db4b87338c0abf60cd74215size=6756date=2025-12-18T16:53:55
+file,ghost/master/other.dic2a3035b309ed7e59c496d4e5e664b249size=25101date=2025-12-24T17:24:14
+file,ghost/master/word.dic905c473cdaee64fd861b82731f7c3357size=6796date=2025-12-24T18:10:11
 file,ghost/master/yaya.dll7ca71c0691df0379655530fcf6d0fa7csize=884736date=2025-01-16T05:08:02
 file,ghost/master/yaya.txt911709d35a0e98ae25c95914eedb8c0fsize=752date=2025-06-27T18:43:58
 file,ghost/master/yaya_emerg.txt9e43b4696366a536ecc69e45d80e392csize=607date=2023-04-15T01:14:19

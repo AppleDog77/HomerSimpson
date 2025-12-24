@@ -485,6 +485,22 @@ OnNeedlePoke
 			"\0\s[4]Ouch! \s[2]Stop poking me!"
 			"\0\s[4]Ow! \s[2]It hurts! Stop, you..."
 			"\0\s[4]Ouch! \s[2]It hurts!"
+		}		
+		elseif reference1 == "Glitterdle"
+		{
+			"\0\s[7]Ooh, glittery- \w4\s[4]Ow!"
+			"\0\s[4]Ow! \s[2]That hurts! \s[3]It looks kinda pretty though..."
+			"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again, \w5\s[3]even with this glittery needle!"
+			"\0\s[7]Ooh, pretty- \w4\s[4]Ow!"
+			"\0\s[4]Ouch! \s[2]It hurts!"
+		}		
+		elseif reference1 == "mosqueedle"
+		{
+			"\0\s[4]Ow! \s[7]AAA! \s[4]I don't like large mosquito-needle thingies..."
+			"\0\s[4]Ow! \s[2]That hurts! And it's annoying!"
+			"\0\s[4]Ouch! \s[2]Don't suck my blood! It's MINE!"
+			"\0\s[4]Ow! \s[2]It hurts, and it's itchy! Stop it!"
+			"\0\s[4]Ouch! \s[2]Get rid of it now! It's trying to suck my blood!"
 		}
 		else
 		{
@@ -515,11 +531,41 @@ OnNeedlePoke
 			"\0\s[1]\![embed,OnHmmSoundBite]Ooh, I can buy some more donuts with this! \s[0]Thanks."
 			"\0\s[0]\![embed,OnHmmSoundBite]Ooh, money! Thanks. I think I'll buy some %(foods) to go with my donut."
 		}		
+		elseif reference1 == "Glitterdle"
+		{
+			"\0\s[7]Ooh, glittery... \w5\s[2]But don't mess up my donut!"
+			"\0\s[2]Hey, don't mess with my donut! \s[3]The needle looks kinda pretty though..."
+			"\0\s[2]Don't ruin my donut, \w5\s[3]even with this glittery needle!"
+			"\0\s[7]Ooh, pretty... \w5\s[2]But don't mess up my donut!"
+			"\0\s[0]Are you trying to make my donut glittery? \s[3]Be careful not to mess up my donut!"
+		}		
+		elseif reference1 == "mosqueedle"
+		{
+			"\0\s[7]Shoo! \s[2]Get away from my donut!"
+			"\0\s[2]Don't eat my donut!"
+			"\0\s[7]Hey! \s[2]That's my donut! Don't eat it!"
+			"\0\s[2]Stop, you little..."
+			"\0\s[2]No, don't eat it! It's MINE!"
+		}				
+		elseif reference1 == "Hands Included"
+		{
+			"\0\s[2]Don't steal my donut!"
+			"\0\s[4]Don't you dare mess with my donut..."
+			"\0\s[7]Hey! \s[2]That's my donut! Back off!"
+		}		
+		elseif reference1 == "Needle Dog"
+		{
+			"\0\s[4]Nice doggy...\w8 don't eat my donut..."
+			"\0\s[2]Bad dog! Bad!"
+			"\0\s[7]Hey! \s[2]That's my donut! Bad dog!"
+			"\0\s[2]Stop, you little..."
+			"\0\s[2]No, don't eat it! It's MINE!"
+		}		
 		else
 		{
-		"\0\s[2]Don't poke my donut!"
-		"\0\s[4]Don't mess with my donut..."
-		"\0\s[7]Hey! \s[2]That's my donut!"
+			"\0\s[2]Don't poke my donut!"
+			"\0\s[4]Don't mess with my donut..."
+			"\0\s[7]Hey! \s[2]That's my donut!"
 		}
 	}
 }
@@ -539,7 +585,7 @@ On_homeurl
 
 ghostver
 {
-	"v1.6.0"
+	"v1.6.1"
 }
 
 //—————————————————————————————— Right click menu links ——————————————————————————————
