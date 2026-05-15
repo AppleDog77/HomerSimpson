@@ -1,0 +1,124 @@
+//---------------------------Communication------------------------
+//--OnCommunicate
+
+OnCommunicate
+ {
+	if reference0 == "user" || reference0 == "User"
+ 	{
+ 		ReplyToUser
+	}
+ 	else
+	{
+		ReplyToGhost
+ 	}
+}
+
+ReplyToUser
+{
+	TalkToUser
+}
+
+
+//This uses the SAKURA NAME
+GhostIsOpen
+{
+	ASEARCH(_argv[0],ActiveGhosts) != -1
+}
+
+//This uses the GHOST NAME
+GhostIsInstalled
+{
+	ASEARCH(_argv[0],installedghostlist) != -1
+}
+
+On_otherghostname
+{
+	ActiveGhosts = IARRAY
+	foreach reference.raw; _ref
+	{
+		ActiveGhosts ,= _ref[0,C_BYTE1]
+	}
+}
+
+OnStartTalking
+{
+	AlreadyResponded = 1 
+
+	if ARRAYSIZE(ActiveGhosts) > 0
+	{
+		_randghost = ANY(ActiveGhosts)
+
+		   case _randghost
+		   {
+			 when "Pinkie Pie"
+			  {
+					res_reference0 = "Pinkie Pie" //first
+
+					"\0\s[3]%(username), why did you put your toy ponies on the control panel? ...\w8\s[7]*GASP* They're moving! Don't let them eat my donuts!"
+			   }
+				when "Narrator"
+				{
+						res_reference0 = "Narrator" //first ever times
+						
+						"\0\s[0]Hey there, old computer that nobody uses anymore except for maybe, nerds. \s[1]\![embed,OnHeheSoundBite]Heh heh.\e"
+				}
+				when "ButtonToy"
+				{
+						res_reference0 = "ButtonToy" //buttons!
+						
+						"\0\s[0]Ooh, buttons! \s[1]\![embed,OnHeheSoundBite]Hehe, I love pushing random buttons."
+				}
+				when "Stranger on the Ground"
+				{
+					res_reference0 = "Stranger on the Ground" //bubbles!
+						
+							"\0\s[1]Ooh, bubble wrap! \w8\![embed,OnHeheSoundBite]Teehee, pop, pop, pop...\w8 ...I feel strangely loving towards it for some reason..."
+				}
+				others
+				{
+				res_reference0 = _randghost
+
+				"\0\s[0]Hey there, %(_randghost)!\w8\w8\e"
+				"\0\s[0]What's up, %(_randghost)?\w8\w8\e"
+				}
+		   }
+		}
+       else //If no ghosts are open.
+       {
+       "\0\s[3]...Uh, I don't see anybody else here...\w8 Are you having hallucinations or something?\e"
+       }
+}
+
+ReplyToGhost
+{
+       if AlreadyResponded == 1 //checking the status of the flag
+       {
+        AlreadyResponded = 0
+
+        res_reference0 = ""
+
+        "Nice to see you."
+       }
+	   elseif reference0 == "The Narrator"
+		{
+		res_reference0 = ""
+		
+		"\0\s[7]Where's that disembodied voice coming from?"
+		}
+		elseif reference0 == "Homer Simpson"
+		{
+		res_reference0 = ""
+		
+		"\0\s[7]Huh? \w8\s[3]...What are these colorful ponies doing on the control panel? \s[2]Hey, don't eat my donuts!\e"
+		}
+		else
+		{
+        res_reference0 = reference0
+			 
+        AlreadyResponded = 1 
+
+        "\0\s[0]Hey there, %(res_reference0).\e"
+
+        "\0\s[0]Hey, %(res_reference0)! \s[1]Great to see a friend of yours, %(username).\e"
+        }
+}

@@ -13,18 +13,24 @@ Homer has soundbites! They're off by default, but I highly recommend toggling 'e
 Homer has dressups: various neat ties and stickers you can add to him. He also has the Idle between Dialogues function by Zi, so his expressions will change every now and then when his balloon isn't open.
 
 Hope you enjoy!
+
 =--=
+
 Music Player Hotspots & Info:
 To use the music player, you drag music files (mp3, wav, midi, etc., and you can install LAV-Filters [https://github.com/Nevcairiel/LAVFilters] to support more formats) onto him.
 Boop (double-click) his nose to make him play the music.
 Double-click on his shoulder to stop the music.
 Double-click on his ear to pause and resume the music.
 Soundbites work fine alongside music playing.
+
 =--=
+
 Terms of Use:
 
-This ghost is redistributable, but don't delete anything! You can fix minor errors (typos, etc.), but be sure to add a notice that you did so in this Readme. You don't have to give me credit, but if you want to, just put this somewhere in the readme, or the page where you have it for download: Created by Odie Dog at Ladybug Lane. You can copy this as a template to make your own ghost for some reason, though, instead of the amazing one at: http://www.ashido.com/ukagaka/walkthrough.html, by Zarla, or one of the templates by Zichqec, which I recommend you use instead. :P The shell graphics can be used for anything (no credit needed, but don't make freeshells out of it), especially non-ukagaka stuff like games (I'd love to see that)! :D
+This ghost is redistributable, but don't delete anything! You can fix minor errors (typos, etc.), but be sure to add a notice that you did so in the Readme. You don't have to give me credit, but if you want to, just put this somewhere in the Readme, or the page where you have it for download: Created by Odie Dog at Ladybug Lane. You can copy it as a template to make your own ghost for some reason, though, instead of the amazing Simplicity Template (https://ukagaka.zichqec.com/template/simplicity_template) by Zichqec, or the awesome GT Template (http://www.ashido.com/ukagaka/walkthrough.html) by Zarla, which I recommend you use instead. :P The shell graphics can be used for anything (no credit needed, but don't make freeshells out of it), especially non-ukagaka stuff like games (I'd love to see that)! :D You can also study the code; I highly encourage it! I also welcome fanwork of my ghosts of any kind, I love it! :D
+
 =--=
+
 Credits:
 
 Based on Simplicity Template by Zichqec (https://ukagaka.zichqec.com/) and has other code from Zi like the Music Player and Idle between Dialogues functions
@@ -33,7 +39,9 @@ Donut icon and kero by Sea.icon
 Donut cursor by sosogirl123 (https://www.deviantart.com/sosogirl123/art/Yummy-Donut-Cursor-532195098)
 Shell graphics by me
 Thanks to everybody on the UDT Discord who submitted bug reports and generally helped with the ghost!
+
 =--=
+
 Updates:
 Released on Mon, May 19, 2025.
 Ver 1.1 - Overhauled his shirt's appearance. Added Sleep Mode, Music Player (by Zichqec), Soundbite Toggle and Volume Settings, Idle between Dialogues function, new dressups, more minigames, more wordgroups and words, more clickpoints (ear, nose, and shoulder for Music Player controls), more favorite sites, and more dialogue. Homer will now react to what you say about his drawing (whether it's good or bad or synonyms thereof). Changed filenames of menu dics for sakura and kero. (Fri, Jun 27, 2025)
@@ -44,3 +52,4 @@ Ver 1.4.1 - Fixed a stray bracket and removed OnScreenSaverStart, as it's a NOTI
 Ver 1.5 - Streamlined Readme as most of its info is already available on my site, added credit for cursor in Readme, and added dialogue, a new wordgroup, more silly words, more dreams, more questions from Homer, more hugging reactions, more words to the minigames, empty space to the end of the soundbites so they play fully under Wine/Proton (or else they get cut off), Needle Poke reactions, and Sleep Mode check for feeding him. (Fri, Oct 17, 2025)
 Ver 1.6 - Added dialogue, new ties, more words to wordgroups, reactions to Needle poking Homer's donut, and a Wake Up option that makes Homer automatically wake up and talk about his dream. Fixed a bug where trying to repeat Homer's random dream dialogue that he says after he has woken up during RandomTalk makes him talk about a different dream, as well as a minor graphical glitch. (Sat, Dec 20, 2025)
 Ver 1.6.1 - Fixed MD5 error, added more Needle reactions, and added a couple of words to wordgroups. (Wed, Dec 24, 2025)
+Ver 1.7.0 - Added Repeated Needle Poking interaction by Zichqec, Commu functions, boot-up & closing dialogue for nighttime, more Simpsons Sites, more dialogue, and more stuff to wordgroups. Disabled uninstall depending on user settings in SSP, and also added a workaround for a bug that can occur if SSP is not shut down properly, where Homer is stuck sleeping unless you wake him up manually. (Fri, May 15, 2026)

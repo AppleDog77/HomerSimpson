@@ -49,7 +49,7 @@ ideas
 	"make up some silly words, like\s[1] %(wordgen1)%(wordgen2)\w8 or %(wordgen2)%(wordgen1)"
 	"...um...\w8\s[3] actually I can't think of anything right now...\w8 sorry! You should think of something"
 	"spin around in your chair, like this! \s[1]\![embed,OnLaughSoundBite]Weeeeeee"
-	"...um...\w8\s[3] actually I dunno what you could do right now...\w8 sorry"
+	"...uh...\w8\s[3] actually I dunno what you could do right now...\w8 sorry"
 	"dance around crazily, like no one's watching! And if you followed my tips, nobody will"
 	"draw a funny cartoon in your sketchbook"
 	"listen to %(musicgenre) music"
@@ -91,8 +91,8 @@ musicgenre
 "techno"
 "blues"
 "vaporwave"
-", uh...\w8 jazz"
-", um...\w8 funk"
+"jazz"
+"funk"
 }
 
 AwakeHomer
@@ -127,6 +127,11 @@ dreams
 "whenever I tried to eat something, it shrunk down and vanished before I could eat it"
 "I was about to win a race, but I was in Candyland so I got distracted and didn't win"
 "I was a yellow tiger having trouble finding food, but \w4\s[0]I swam underwater and found Atlantis, \w5\s[1]and ate all the fish and eel people there"
+"I was pushing buttons and I couldn't stop no matter what, and my family vanished"
+"I was driving somewhere but I couldn't find the place and I forgot what I was looking for"
+"there were lots of Maggies in the house and they were crawling all over me"
+"I was trapped in an arcade and I had to beat games to escape, but I kept losing at Pac-Man"
+"I burped so loud that everybody fainted"
 }
 
 flavor
@@ -193,7 +198,6 @@ favdrawings
 "I'm a giant towering over the city"
 "I'm drawing me, drawing me sleeping"
 }
-
 //Thanks to Zi for helping me with the soundbite stuff!
 OnMunchSoundBite
 {

@@ -56,6 +56,19 @@ OnBoot
 		"Hey, %(username)!\s[1] Somehow, I feel like today's gonna be a really great day..."
 		"Hello, %(username)!\s[1] Got any %(foods) for me?"
 	}
+	elseif hour >= 18 && hour <= 24
+	{
+	"\0\s[5]ZZZzzzz...\w8 \s[6]Huh? \s[0]Oh hey there, %(username)!\s[1] How's it goin'?"
+	"\0\s[21]Zzzzz....\w8 \s[6]Wha? \s[0]Oh, hey, %(username)!"
+	"\0\s[23]Zzzzz...\w8 \s[6]What? ...\w8\s[3]Hi, \s[0]%(username)!"
+	}
+	elseif CurrentMode == "sleeping"
+	{
+	CurrentMode = "normal"
+	"\0\s[5]ZZZzzzz...\w8 \s[6]Huh? \s[0]Oh hey there, %(username)!\s[1] How's it goin'?"
+	"\0\s[21]Zzzzz....\w8 \s[6]Wha? \s[0]Oh, hey, %(username)!"
+	"\0\s[23]Zzzzz...\w8 \s[6]What? ...\w8\s[3]Hi, \s[0]%(username)!"
+	}
 	else //Normal boot
 	{
 	"Oh hey there, %(username)!\s[1] How's it goin'?"
@@ -81,11 +94,23 @@ OnClose
 	}
 	elseif CurrentMode == "normal"
 	{
-	"\0\s[3]Oh, you need to go back to work? \s[0]Okay! I'll go back to my very...\w8\s[6] important...\w8 job here...\w8 \s[5]*snore*"
-	"\0\s[3]You need to leave, eh? \s[0]Okay then, bye!"
-	"\0\s[3]You need to leave, eh? \s[4]Okay, bye!\w8\w8\s[0] Hope to see you soon!"
-	"\0\s[3]You need to leave? \s[4]Okay, bye!\w8\w8\s[3] Hope to see you soon."
-	--
-	"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
+		if hour >= 18 && hour <= 24
+		{
+		"\0\s[3]Oh, you need to go back to work? \s[0]Okay! I'll go back to my very...\w8\s[6] important...\w8 job here...\w8 \s[5]*snore*"
+		"\0\s[3]You need to leave, eh? \s[0]Okay then, bye! \s[6]*yawn* ...\s[5]*snore*"
+		"\0\s[3]You need to leave, eh? \s[4]Okay, bye!\w8\w8\s[0] Hope to see you soon! \s[6]*yawn* \s[5]ZZZzzz..."
+		"\0\s[3]You need to leave? \s[4]Okay, bye!\w8\w8\s[3] Hope to see you soon. \s[6]*yawn*"
+		--
+		"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
+		}
+		else
+		{
+		"\0\s[3]Oh, you need to go back to work? \s[0]Okay! I'll go back to my very...\w8\s[6] important...\w8 job here...\w8 \s[5]*snore*"
+		"\0\s[3]You need to leave, eh? \s[0]Okay then, bye!"
+		"\0\s[3]You need to leave, eh? \s[4]Okay, bye!\w8\w8\s[0] Hope to see you soon!"
+		"\0\s[3]You need to leave? \s[4]Okay, bye!\w8\w8\s[3] Hope to see you soon."
+		--
+		"\w8\w8\-"
+		}
 	}
 }

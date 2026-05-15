@@ -25,6 +25,18 @@ OnChoiceSelect
     EVAL("Select.%(reference0)")
 }
 
+On_vanishbutton.visible
+ {
+ 	if deleteshitai == "ON"
+ 	{
+	"1"
+	}
+	else
+	{
+	"0"
+	}
+}
+
 //Written by Zichqec https://ukagaka.zichqec.com/
 
 //To call the function, you can either call the function in your code like this:
@@ -433,82 +445,120 @@ OnNeedlePoke
 {
 	if reference0 == 0 //Sakura
 	{
-		//An example of an optional check, to have a special comment if Needle is in the Syringe shell
-		if reference1 == "Syringe"
+		_time = 120 //Time in seconds that you want it to take between pokes for this counter to reset. Default 3 min
+		
+		if GETSECCOUNT > NeedlePoke.LastPokeTime + _time || !ISVAR("NeedlePoke.RecentPokes")
 		{
-			"\0\s[4]Ow! \s[2]Are you tryin' to inject me with some kind of weird mutation potion or something?!"
-			"\0\s[4]Ow! \s[2]I already got vaccinated, don't poke me!"
-			"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again!"
-			"\0\s[4]Ow! \s[2]It hurts! Stop it!"
-			"\0\s[4]Ouch! \s[2]It hurts!"
+			NeedlePoke.RecentPokes = 0
 		}
-		elseif reference1 == "Eggdle"
+		
+		NeedlePoke.LastPokeTime = GETSECCOUNT
+		NeedlePoke.RecentPokes++
+		
+		if NeedlePoke.RecentPokes >= 10 //How many times you want them to be poked within the timeframe before they react to it. You could add multiple stages here if you like, by checking for different amounts of pokes.
 		{
-			"\0\s[8]Mmm...\w8 eggs..."
-		}				
-		elseif reference1 == "Birthday Needle"
-		{
-			"\0\s[8]Mmm...\w8 cake..."
-		}		
-		elseif reference1 == "X-ray"
-		{
-			"\0\s[4]Ow! That looks creepy..."
-			"\0\s[4]Ow! \s[2]That hurts! Don't do it again!"
-			"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again!"
-			"\0\s[4]Ow! \s[2]It hurts! \s[4]And it looks kinda creepy..."
-			"\0\s[4]Ouch! \s[2]It hurts!"
-		}		
-		elseif reference1 == "Moneydle"
-		{
-			"\0\s[0]\![embed,OnHmmSoundBite]Ooh, money! Thanks."
-			"\0\s[1]\![embed,OnHmmSoundBite]Ooh, I can buy some %(foods) with this! \s[0]Thanks."
-			"\0\s[0]\![embed,OnHmmSoundBite]Ooh, money! Thanks. I think I'll buy some %(foods)."
-		}		
-		elseif reference1 == "Safety Needle"
-		{
-			"\0\s[3]Why are you poking me with that?"
-			"\0\s[7]Huh? \s[3]Why're you poking me?"
-			"\0\s[3]That doesn't hurt, but it is kinda annoying."
-		}
-		elseif reference1 == "Hands Included"
-		{
-			"\0\s[1]\![embed,OnHeheSoundBite]Hehe, it tickles!"
-			"\0\s[1]\![embed,OnHeheSoundBite]Heh heh, that tickles!"
-			"\0\s[1]\![embed,OnLaughSoundBite]Hehehe, stop tickling me!"
-			"\0\s[1]\![embed,OnHeheSoundBite]Hehe, STOP"
-			"\0\s[0]\![embed,OnHeheSoundBite]Hehe, heh, stop that!"
-		}		
-		elseif reference1 == "Needle Dog"
-		{
-			"\0\s[4]Ow! Nice doggy...\w8 don't poke me..."
-			"\0\s[4]Ow! \s[2]Bad dog! Bad!"
-			"\0\s[4]Ouch! \s[2]Stop poking me!"
-			"\0\s[4]Ow! \s[2]It hurts! Stop, you..."
-			"\0\s[4]Ouch! \s[2]It hurts!"
-		}		
-		elseif reference1 == "Glitterdle"
-		{
-			"\0\s[7]Ooh, glittery- \w4\s[4]Ow!"
-			"\0\s[4]Ow! \s[2]That hurts! \s[3]It looks kinda pretty though..."
-			"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again, \w5\s[3]even with this glittery needle!"
-			"\0\s[7]Ooh, pretty- \w4\s[4]Ow!"
-			"\0\s[4]Ouch! \s[2]It hurts!"
-		}		
-		elseif reference1 == "mosqueedle"
-		{
-			"\0\s[4]Ow! \s[7]AAA! \s[4]I don't like large mosquito-needle thingies..."
-			"\0\s[4]Ow! \s[2]That hurts! And it's annoying!"
-			"\0\s[4]Ouch! \s[2]Don't suck my blood! It's MINE!"
-			"\0\s[4]Ow! \s[2]It hurts, and it's itchy! Stop it!"
-			"\0\s[4]Ouch! \s[2]Get rid of it now! It's trying to suck my blood!"
+			if reference1 == "Eggdle"
+			{
+				"\0\s[8]MMM...\w8 eggs..."
+			}				
+			elseif reference1 == "Birthday Needle"
+			{
+				"\0\s[8]MMM...\w8 cake..."
+			}		
+			elseif reference1 == "Moneydle"
+			{
+				"\0\s[1]\![embed,OnWoohooSoundBite]WOOHOO! I'm rich! I can buy all the cool stuff that my heart desires, like %(foods), or %(foods), or even %(foods)! Thank you so much!"
+				"\0\s[1]\![embed,OnWoohooSoundBite]WOOHOO! I'm finally rich! Thank you so much!"
+				"\0\s[1]\![embed,OnWoohooSoundBite]WOOHOO! I'm rich! I can buy all the cool stuff that my heart desires, like a hundred %(musicgenre) CDs, or lots of cars, or even %(yummy) %(foods)! Thank you so much!"
+			}		
+			else
+			{			
+				"\0\s[2]I already told you to stop. Stop NOW or I'll... uh..."
+				"\0\s[4]Ow! \s[2]STOP"
+				"\0\s[4]Ouch! \s[2]Stop NOW or else..."
+				"\0\s[4]Ow! \s[2]Stop NOW or I'll...\w8 do something..."
+				"\0\s[4]Ouch! \s[2]STOP, YOU..."
+			}
 		}
 		else
 		{
-			"\0\s[4]Ow!"
-			"\0\s[4]Ow! \s[2]That hurts! Don't do it again!"
-			"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again!"
-			"\0\s[4]Ow! \s[2]It hurts! Stop it!"
-			"\0\s[4]Ouch! \s[2]Stop that! It hurts!"
+			//An example of an optional check, to have a special comment if Needle is in the Syringe shell
+			if reference1 == "Syringe"
+			{
+				"\0\s[4]Ow! \s[2]Are you tryin' to inject me with some kind of weird mutation potion or something?!"
+				"\0\s[4]Ow! \s[2]I already got vaccinated, don't poke me!"
+				"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again!"
+				"\0\s[4]Ow! \s[2]It hurts! Stop it!"
+				"\0\s[4]Ouch! \s[2]It hurts!"
+			}
+			elseif reference1 == "Eggdle"
+			{
+				"\0\s[8]Mmm...\w8 eggs..."
+			}				
+			elseif reference1 == "Birthday Needle"
+			{
+				"\0\s[8]Mmm...\w8 cake..."
+			}		
+			elseif reference1 == "X-ray"
+			{
+				"\0\s[4]Ow! That looks creepy..."
+				"\0\s[4]Ow! \s[2]That hurts! Don't do it again!"
+				"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again!"
+				"\0\s[4]Ow! \s[2]It hurts! \s[4]And it looks kinda creepy..."
+				"\0\s[4]Ouch! \s[2]It hurts!"
+			}		
+			elseif reference1 == "Moneydle"
+			{
+				"\0\s[0]\![embed,OnHmmSoundBite]Ooh, money! Thanks."
+				"\0\s[1]\![embed,OnHmmSoundBite]Ooh, I can buy some %(foods) with this! \s[0]Thanks."
+				"\0\s[0]\![embed,OnHmmSoundBite]Ooh, money! Thanks. I think I'll buy some %(foods)."
+			}		
+			elseif reference1 == "Safety Needle"
+			{
+				"\0\s[3]Why are you poking me with that?"
+				"\0\s[7]Huh? \s[3]Why're you poking me?"
+				"\0\s[3]That doesn't hurt, but it is kinda annoying."
+			}
+			elseif reference1 == "Hands Included"
+			{
+				"\0\s[1]\![embed,OnHeheSoundBite]Hehe, it tickles!"
+				"\0\s[1]\![embed,OnHeheSoundBite]Heh heh, that tickles!"
+				"\0\s[1]\![embed,OnLaughSoundBite]Hehehe, stop tickling me!"
+				"\0\s[1]\![embed,OnHeheSoundBite]Hehe, STOP"
+				"\0\s[0]\![embed,OnHeheSoundBite]Hehe, heh, stop that!"
+			}		
+			elseif reference1 == "Needle Dog"
+			{
+				"\0\s[4]Ow! Nice doggy...\w8 don't poke me..."
+				"\0\s[4]Ow! \s[2]Bad dog! Bad!"
+				"\0\s[4]Ouch! \s[2]Stop poking me!"
+				"\0\s[4]Ow! \s[2]It hurts! Stop, you..."
+				"\0\s[4]Ouch! \s[2]It hurts!"
+			}		
+			elseif reference1 == "Glitterdle"
+			{
+				"\0\s[7]Ooh, glittery- \w4\s[4]Ow!"
+				"\0\s[4]Ow! \s[2]That hurts! \s[3]It looks kinda pretty though..."
+				"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again, \w5\s[3]even with this glittery needle!"
+				"\0\s[7]Ooh, pretty- \w4\s[4]Ow!"
+				"\0\s[4]Ouch! \s[2]It hurts!"
+			}		
+			elseif reference1 == "mosqueedle"
+			{
+				"\0\s[4]Ow! \s[7]AAA! \s[4]I don't like large mosquito-needle thingies..."
+				"\0\s[4]Ow! \s[2]That hurts! And it's annoying!"
+				"\0\s[4]Ouch! \s[2]Don't suck my blood! It's MINE!"
+				"\0\s[4]Ow! \s[2]It hurts, and it's itchy! Stop it!"
+				"\0\s[4]Ouch! \s[2]Get rid of it now! It's trying to suck my blood!"
+			}
+			else
+			{
+				"\0\s[4]Ow!"
+				"\0\s[4]Ow! \s[2]That hurts! Don't do it again!"
+				"\0\s[4]Ouch! \s[2]That hurts! Don't poke me again!"
+				"\0\s[4]Ow! \s[2]It hurts! Stop it!"
+				"\0\s[4]Ouch! \s[2]Stop that! It hurts!"
+			}
 		}
 	}
 	elseif reference0 == 1 //Kero
@@ -585,7 +635,7 @@ On_homeurl
 
 ghostver
 {
-	"v1.6.1"
+	"v1.7.0"
 }
 
 //—————————————————————————————— Right click menu links ——————————————————————————————
@@ -617,7 +667,9 @@ recommendsites_sakura : array
 {
 	"The Simpsons Official Site";	"https://www.fox.com/the-simpsons/"
 	"The Simpsons Archive";	"https://simpsonsarchive.com/"
+	"Last Exit to Springfield"; "https://lardlad.com/"
 	"No Homers Club"; "https://nohomers.net/forums/index.php"
+	"TSTO Addicts"; "https://tstoaddicts.com/"
 }
 
 On_portalrootbutton.caption
@@ -633,7 +685,7 @@ On_sakura.portalsites
 //These are the websites linked in the second option of the sakura's right click menu. Same as above
 portalsites_sakura : array
 {
-	"The Homer Simpson Homepage";	"https://homy.tripod.com/index.html"
+	"The Homer Simpson Homepage";	"https://web.archive.org/web/20240712161704/https://homy.tripod.com/index.html"
 	"The King Homer Simpson's Home Page";	"https://web.archive.org/web/20050223211055/http://www.geocities.com/Hollywood/Academy/3416/prototype.htm"
 	"Woo-hoo - It's Homer"; "https://web.archive.org/web/19981207033646/http://home.eznet.net/%7Edavlin/homer.htm"
 	"Homarge (Pogo)"; "https://www.youtube.com/watch?v=XKyop_elE6Y"
@@ -663,7 +715,7 @@ On_kero.recommendbuttoncaption
 recommendsites_kero : array
 {
 	"Ladybug Lane"; "https://ladybug-lane.neocities.org/"
-	"Rubbercat.net/simpsons/";	"https://rubbercat.net/simpsons/"
+	"Rubbercat.net/simpsons/"; "https://rubbercat.net/simpsons/"
 	"Allen Thompson's House of Donuts"; "https://web.archive.org/web/19981207025157/http://www.teleport.com/%7Eallent/donuts.html"
 }
 

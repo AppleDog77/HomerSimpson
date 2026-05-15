@@ -25,7 +25,7 @@ RandomTalk : nonoverlap_pool
 	"\0\s[5]\w8\s[6]\w8\w9\s[5]ZZZZZZ"
 	"\0\s[5]Mmm...\w8 %(foods)..."
 	"\0\s[5]...%(foods)... %(foods)..."
-	"\0\s[23]...Where...am I?"
+	"\0\s[23]...Where...\w8am I?"
 	"\0\s[5]What's happenin'...\w8 here?"
 	"\0\s[23]Back off...\w8you're mean..."
 	"\0\s[21]...Marge..."
@@ -48,7 +48,7 @@ RandomTalk : nonoverlap_pool
 	"\0\s[3]I saw this SCARY movie where GIANT cookies were taking over the world! \s[0]But luckily, the hero ate all of the cookies! Then, he started eating all the cakes, pies, chips, donuts, candies...\w8\s[8]\w9 chocolates...\w8\w9\w9\s[0]\n What was I saying?\w8 Oh yeah, the movie where cookies were trying to take over the world, but the hero ate all of 'em, then\w5 he ate everything else,\w5\s[4] and the world ran out of sweets,\w5 so the hero became the villain,\w5\s[0] and a new hero had to step up and defeat the villain so everybody could eat %(yummy) food again!\w5 What a crazy movie!"
 	"\0\s[3]Thought I needed to do something...\w8 Hmm...\w5 What was it?\w8\s[0] Oh yeah, I was gonna go over to Moe's -\w5 he announced a new drink available for a limited time only! \s[3]He said it was sorta strange though..."
 	"\0\s[8]Mmm... %(foods)..."
-	"\0\s[0]So I was eating this huge %(flavor) cake that my lovely wife Marge baked for me,\s[7] and suddenly some cake pieces tried to escape and fell from my chin before I could lick them up! Then,\w5\s[4] the dog ran towards me and pounced on my belly to lick off all the pieces! I was so surprised that I accidentally knocked over the cake! It was a horrible tragedy...\w8 Its guts splattered all over the walls!\w8\s[2]\n I chased the stupid mutt away so that I could mourn the loss of my beloved in peace.\s[0] When Marge came home I'd already eaten the remains of the %(yummy)...\w8\w8\s[8] %(yummy)...\w9\w9 cake..."
+	"\0\s[0]So I was eating this huge %(flavor) cake that my lovely wife Marge baked for me,\s[7] and suddenly \w3some cake pieces tried to escape and fell from my chin before I could lick them up! Then,\w5\s[4] the dog ran towards me and pounced on my belly to lick off all the pieces! I was so surprised that I accidentally knocked over the cake! It was a horrible tragedy...\w8 Its guts splattered all over the walls!\w8\s[2]\n I chased the stupid mutt away so that I could mourn the loss of my beloved in peace.\s[0] When Marge came home I'd already eaten the remains of the %(yummy)...\w8\w8\s[8] %(yummy)...\w9\w9 cake..."
 	"\0\s[3]I feel like I've forgotten something...\w8\s[0] Nevermind, it's probably not important."
 	"\0\s[0]You look bored. Maybe you should %(ideas)!"
 	"\0\s[0]I've always wondered whether zebras have black stripes, or white stripes. For that matter, do killer tomatoes really exist? Are they the cause of all the major problems of the world, like\w8\s[2] me missing a 90% off donut sale, or when there's a huge traffic jam, and\s[3] I end up late for work, and have to stay overtime to make up for it?\s[2] Damn you, killer tomatoes! DAMN YOU!!!"
@@ -95,6 +95,13 @@ RandomTalk : nonoverlap_pool
 	"\0\s[0]I saw the biggest fireworks ever last 4th of July! \s[7]But I also saw the biggest spider ever...\w8 On my shirt! The fireworks landed on my shirt and I freaked out and threw it away! \s[0]But the spider was gone! Marge thought it was killed by the fireworks. \s[3]But Bart saved it...\w8\s[2] He showed it to me and I screamed louder than the fireworks! \s[0]Thankfully, Marge saved me from the spider and gave me %(foods)."
 	"\0\s[0]My favorite drawing of mine is the one in which %(favdrawings)!"
 	"\0\s[7]Sharks are scary! \s[3]But they look kinda cool. I wish sharks weren't so scary...\w8 I guess baby sharks can be cute..."
+	"\0\s[0]Did you have any really weird dreams lately? \s[3]Last night, I had a dream in which %(dreams)! \w8\s[3]...I think there was more, but I forgot the rest, though..."
+	"\0\s[7]...\w8Woah, that's cool! \s[0]I just saw something really awesome, %(username)! Did you see it? \w8\s[3]...No? \s[0]Oh well, at least I saw it, and you didn't! \s[1]\![embed,OnHeheSoundBite]Heh heh."
+	"\0\s[0]You sure do have a lotta cool music on your phone...\w8 I wonder if my favorite %(musicgenre) tunes are there..."
+	"\0\s[0]You have lots of cool drawings on your phone! \s[1]I wonder if there's any doodles of me on it..."
+	"\0\s[3]...Uh... Did you hear that? ...\w8Huh... It kinda sounded like an explosion...\w8 \s[0]Oh well."
+	"\0\s[0]One time I spotted a trail of donuts in lots of %(yummy) flavors like %(flavor), and %(flavor), and %(flavor), and I followed 'em to a tower of %(foods)!"
+	"\0\s[3]Don't ya hate it when you're watching a really fun movie on TV, and you see an awesome commercial that should be the ending of the movie, but then you see the actual ending, \s[2]and the real ending's stupid?"
 	}
 }
 
