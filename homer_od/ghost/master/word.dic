@@ -56,6 +56,9 @@ ideas
 	"watch \_a[https://www.youtube.com/watch?v=fMnIpIMuBJI]this funny video\_a that Bart showed me"
 	"order %(foods) with %(foods)"
 	"watch a boring movie and see how long you can last without falling asleep"
+	"try to burp as loud as you can"
+	"\s[1]try to laugh as loud as you can for no reason"
+	"think of random crap to post on the Internet"
 }
 
 yummy
@@ -79,6 +82,8 @@ easyday
 "play with my Duffman action figure"
 "order %(foods) with %(foods)"
 "go outside and find the coziest place to sleep"
+"rewatch one of my favorite TV shows"
+"troll people online"
 }
 
 musicgenre
@@ -132,6 +137,7 @@ dreams
 "there were lots of Maggies in the house and they were crawling all over me"
 "I was trapped in an arcade and I had to beat games to escape, but I kept losing at Pac-Man"
 "I burped so loud that everybody fainted"
+"I kept finding cool treasures, but everytime I found one some stupid monster appeared, and I kept battling these monsters until I got fed up and started growing bigger"
 }
 
 flavor
@@ -197,6 +203,10 @@ favdrawings
 "I punch a shark in the face"
 "I'm a giant towering over the city"
 "I'm drawing me, drawing me sleeping"
+"I'm making silly faces"
+"I'm wearing a cool cape and flying above the city"
+"I'm sitting on the couch with my family, but we're turned into %(foods)"
+"I'm a pirate with lots of treasure"
 }
 //Thanks to Zi for helping me with the soundbite stuff!
 OnMunchSoundBite

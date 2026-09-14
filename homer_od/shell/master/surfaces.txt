@@ -101,9 +101,16 @@ surface25
 {
 	element0,overlay,surface25.png,0,0
 }
+
+//Main Character Neutral pose Alt
+surface30
+{
+element0,overlay,surface1901.png,0,0
+}
+
 //Collisions and dressups
 //Coords created with the help of GIMP and Image Coordinate Clicker - https://jcmiller11.github.io/diceSim/coords.html
-surface.append0-9,20-23,25
+surface.append0-9,20-23,25,30
 {
 collisionex0,head,polygon,60,75,90,36,90,10,123,1,168,10,170,35,200,75
 collisionex1,mouth,polygon,49,181,110,184,151,199,160,214,135,242,102,253,75,245,14,220
@@ -152,7 +159,7 @@ animation15.pattern0,add,6009,0,0,0
 }
 
 //Blinking
-surface.append0-1,3,6-8,20
+surface.append0-1,3,6-8,20,30
 {
 	animation0.interval,random,5
 	animation0.pattern0,overlay,1301,0,0,0

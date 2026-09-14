@@ -64,6 +64,16 @@ OnKeyPress
 
 OnSecondChange
 {
+	if passsec == 59
+ 		{
+	 	passsec = 0
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+
 	//This gets the time since the last dialogue ended, in seconds. SHIORI3FW.TalkEndTime is a variable that comes with YAYA as SHIORI
 	_since = GETSECCOUNT - SHIORI3FW.TalkEndTime
 
@@ -102,6 +112,7 @@ OnSurfaceRestore
 	"\1\s[10]\0\s[0]"
 	"\1\s[10]\0\s[1]"
 	"\1\s[10]\0\s[3]"
+	"\1\s[10]\0\s[30]"
 	}
 }
 
@@ -517,7 +528,7 @@ OnNeedlePoke
 			{
 				"\0\s[3]Why are you poking me with that?"
 				"\0\s[7]Huh? \s[3]Why're you poking me?"
-				"\0\s[3]That doesn't hurt, but it is kinda annoying."
+				"\0\s[30]That doesn't hurt, but it is kinda annoying."
 			}
 			elseif reference1 == "Hands Included"
 			{
@@ -635,7 +646,7 @@ On_homeurl
 
 ghostver
 {
-	"v1.7.0"
+	"v1.8.0"
 }
 
 //—————————————————————————————— Right click menu links ——————————————————————————————
@@ -692,6 +703,8 @@ portalsites_sakura : array
 	"Homerpalooza"; "https://web.archive.org/web/20041211223256/http://www.simpsoncrazy.com/homer/"
 	"Homer - A Tribute"; "https://web.archive.org/web/20020718075252/http://homer.kidmoe.com/"
 	"Homer Simpson"; "https://web.archive.org/web/20010429193008/http://www.homer.8k.com"
+	"Homer Simpson - THE coolest guy on TV"; "https://web.archive.org/web/20050206202114/http://www.geocities.com/pearly1900/homer/homer.html"
+	"Homer's Web - Reality is Duff"; "https://web.archive.org/web/20030214184607/http://www.mike.lawton.clara.net/Homersweb/Abouthomer.htm"
 	"Homerisms"; "https://web.archive.org/web/19990209113303/http://www.gti.net/iksrog/chris/hisms.htm"
 	"Homer Simpson Wisdom"; "https://web.archive.org/web/20050214094612/http://www.korpisworld.com/quotes/Homer%20Simpson.htm"
 	"Homer Club Dance"; "https://web.archive.org/web/20090830194634/http://geocities.com/abc0123bg/simpsons/homer/index.htm"
